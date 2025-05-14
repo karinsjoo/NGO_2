@@ -13,11 +13,12 @@ import oru.inf.InfException;
  */
 public class Inloggning extends javax.swing.JFrame {
 
-    private InfDB idb; //Fält för att lagra databasuppkoppling
+    private final InfDB idb; //Fält för att lagra databasuppkoppling
     /**
      * Creates new form Inloggning
+     * @param idb
      */
-    public Inloggning(InfDB idb) {
+    public Inloggning(InfDB idb) { // Det jag sickar in som parameter
         this.idb = idb;
         initComponents();
         lblfelmeddelande.setVisible(false);
@@ -115,22 +116,33 @@ public class Inloggning extends javax.swing.JFrame {
         
         String ePost = tfepost.getText(); // Lagrar lokal variabel användarens E-post
         String losen = tflosenord.getText(); // Lagrar lokal variabel användarens lösenord
-        
+        // try är om man vill göra något inom databasen
         try{
-            String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
-            System.out.println(sqlFraga);
-            String dbLosen = idb.fetchSingle(sqlFraga);
-            if(losen.equals(dbLosen)){
-                new Meny(idb, ePost).setVisible(true);
-                this.setVisible(false);
-            }
-            else{
-                lblfelmeddelande.setVisible(true);
-            }
-                
-        }catch(Exception ex){
+            // SQL frågor för att först kolla att lösenord och e-post matchar hos anställd
+            String dbLosen = idb.fetchSingle("SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'");
+            // Om lösenordet inte är = null och dbLosen (lokal parameter) stämmer
+            if(dbLosen != null && losen.equals(dbLosen)){
+            // Om lösenordet är korrekt - hämta AID ifrån anställd tabell
+            String aid = idb.fetchSingle("SELECT AID FROM anstalld WHERE epost = '" + ePost + "'");
             
-        }
+            //Här nedan kommer if satsen baserad på om anställd är handläggare eller inte
+            if(aid != null){ // Först kollar vi att aid inte är lika med null
+                String aidHandläggare = idb.fetchSingle("SELECT COUNT(*) FROM handlaggare WHERE AID = '" + aid + "'");
+                // Om AID finns i handläggare tabellen; öppna MenyHandläggare, annars öppna Meny
+                if("0".equals(aidHandläggare)){ // Om AID finns i handlaggare; öppna MenyHandläggare - annars öppna Meny
+                    new Meny(idb, aid).setVisible(true); // Öppnar Meny
+                } else {
+                    new MenyHandlaggare(idb, aid).setVisible(true);
+                }
+            } this.setVisible(false); // Dölj inloggningsfönstret
+            } else {
+            lblfelmeddelande.setText("Anställd eller ePost hittades inte");
+            lblfelmeddelande.setVisible(true);
+            }
+        }catch(InfException ex){
+                    System.out.println("Inloggningsfel: " + ex.getMessage());
+                    }
+            
     }//GEN-LAST:event_btnloggainActionPerformed
 
     /**
@@ -162,11 +174,11 @@ public class Inloggning extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new Inloggning().setVisible(true);
-            }
-        });
+        //java.awt.EventQueue.invokeLater(new Runnable() {
+        //    public void run() {
+        //        //new Inloggning().setVisible(true);
+        //    }
+        //});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -177,4 +189,5 @@ public class Inloggning extends javax.swing.JFrame {
     private javax.swing.JTextField tfepost;
     private javax.swing.JTextField tflosenord;
     // End of variables declaration//GEN-END:variables
+
 }

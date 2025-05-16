@@ -13,15 +13,20 @@ import oru.inf.InfException;
  */
 public class Inloggning extends javax.swing.JFrame {
 
-    private final InfDB idb; //Fält för att lagra databasuppkoppling
+    private InfDB idb; //Fält för att lagra databasuppkoppling
+    private final Behorighet behorighet; // Objektet Behorighet är en instansvariabel
     /**
      * Creates new form Inloggning
      * @param idb
      */
     public Inloggning(InfDB idb) { // Det jag sickar in som parameter
         this.idb = idb;
+        this.behorighet = new Behorighet(idb); // Lägger till behörighet ifrån klass
         initComponents();
         lblfelmeddelande.setVisible(false);
+        setSize(500, 300); // Storlek på fönstret
+        setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
+        setLayout(null); // Sätter hela layouten på mitten av rutan
     }
 
     /**
@@ -41,10 +46,17 @@ public class Inloggning extends javax.swing.JFrame {
         lblfelmeddelande = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         lblepost.setText("E-Post");
+        getContentPane().add(lblepost);
+        lblepost.setBounds(39, 73, 54, 20);
 
         lbllosenord.setText("Lösenord");
+        getContentPane().add(lbllosenord);
+        lbllosenord.setBounds(39, 102, 54, 20);
+        getContentPane().add(tfepost);
+        tfepost.setBounds(128, 70, 173, 23);
 
         btnloggain.setText("Logga in");
         btnloggain.addActionListener(new java.awt.event.ActionListener() {
@@ -52,58 +64,21 @@ public class Inloggning extends javax.swing.JFrame {
                 btnloggainActionPerformed(evt);
             }
         });
+        getContentPane().add(btnloggain);
+        btnloggain.setBounds(216, 163, 79, 23);
 
         tflosenord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tflosenordActionPerformed(evt);
             }
         });
+        getContentPane().add(tflosenord);
+        tflosenord.setBounds(128, 99, 173, 23);
 
         lblfelmeddelande.setForeground(new java.awt.Color(255, 0, 0));
         lblfelmeddelande.setText("Felaktig Epost eller Lösenord");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnloggain)
-                            .addComponent(lblfelmeddelande, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblepost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbllosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfepost, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addComponent(tflosenord)))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblepost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(tfepost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tflosenord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lbllosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(lblfelmeddelande)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnloggain)
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
+        getContentPane().add(lblfelmeddelande);
+        lblfelmeddelande.setBounds(39, 140, 256, 17);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,36 +88,27 @@ public class Inloggning extends javax.swing.JFrame {
     }//GEN-LAST:event_tflosenordActionPerformed
 
     private void btnloggainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloggainActionPerformed
-        
-        String ePost = tfepost.getText(); // Lagrar lokal variabel användarens E-post
-        String losen = tflosenord.getText(); // Lagrar lokal variabel användarens lösenord
-        // try är om man vill göra något inom databasen
+        Behorighet behorighet = new Behorighet(idb);
         try{
-            // SQL frågor för att först kolla att lösenord och e-post matchar hos anställd
-            String dbLosen = idb.fetchSingle("SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'");
-            // Om lösenordet inte är = null och dbLosen (lokal parameter) stämmer
-            if(dbLosen != null && losen.equals(dbLosen)){
-            // Om lösenordet är korrekt - hämta AID ifrån anställd tabell
-            String aid = idb.fetchSingle("SELECT AID FROM anstalld WHERE epost = '" + ePost + "'");
-            
-            //Här nedan kommer if satsen baserad på om anställd är handläggare eller inte
-            if(aid != null){ // Först kollar vi att aid inte är lika med null
-                String aidHandläggare = idb.fetchSingle("SELECT COUNT(*) FROM handlaggare WHERE AID = '" + aid + "'");
-                // Om AID finns i handläggare tabellen; öppna MenyHandläggare, annars öppna Meny
-                if("0".equals(aidHandläggare)){ // Om AID finns i handlaggare; öppna MenyHandläggare - annars öppna Meny
-                    new Meny(idb, aid).setVisible(true); // Öppnar Meny
-                } else {
-                    new MenyHandlaggare(idb, aid).setVisible(true);
-                }
-            } this.setVisible(false); // Dölj inloggningsfönstret
-            } else {
-            lblfelmeddelande.setText("Anställd eller ePost hittades inte");
+            String losenDB = idb.fetchSingle("SELECT losenord FROM anstalld WHERE epost = '" + tfepost.getText() + "'");
+        if(losenDB != null && losenDB.equals(tflosenord.getText())){
+            String aid = behorighet.getAID(tfepost.getText());
+            if(aid != null){
+            if(behorighet.isProjektledare(aid)){
+                new MenyProjektledare(idb, aid).setVisible(true);
+            }else if(behorighet.isHandlaggare(aid)){
+                new MenyHandlaggare(idb, aid).setVisible(true);
+            }else{
+                new Meny(idb, aid).setVisible(true);
+            }
+            this.setVisible(false); // Stänger inloggningsfönstret
+        } else {
+            lblfelmeddelande.setText("Fel lösenord eller e-post");
             lblfelmeddelande.setVisible(true);
             }
-        }catch(InfException ex){
-                    System.out.println("Inloggningsfel: " + ex.getMessage());
-                    }
-            
+        }}catch(InfException ex){
+            System.out.println("Fel vid hämtning av Anställd" + ex.getMessage());
+                 }
     }//GEN-LAST:event_btnloggainActionPerformed
 
     /**

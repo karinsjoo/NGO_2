@@ -6,6 +6,10 @@ package sdgsweden;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -13,13 +17,16 @@ import oru.inf.InfException;
  */
 public class Meny extends javax.swing.JFrame {
 
-    private InfDB idb; 
-    private String aid;
+    private final InfDB idb; 
+    private final String aid;
   
     public Meny(InfDB idb, String aid) {
         this.idb = idb;
         this.aid = aid;
         initComponents();
+        setSize(1250, 1750); // Storlek på fönstret
+        setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
+        setLayout(null); // Sätter hela layouten i mitten av rutan
         
     }
 
@@ -35,24 +42,25 @@ public class Meny extends javax.swing.JFrame {
         lblinloggadanvandare = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(50, 50));
 
-        lblinloggadanvandare.setText("jLabel1");
+        lblinloggadanvandare.setText("Ändra Uppgifter Anställda");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(93, 93, 93)
                 .addComponent(lblinloggadanvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(328, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(149, 149, 149)
                 .addComponent(lblinloggadanvandare)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         pack();

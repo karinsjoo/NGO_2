@@ -6,6 +6,10 @@ package sdgsweden;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -13,13 +17,16 @@ import oru.inf.InfException;
  */
 public class MenyHandlaggare extends javax.swing.JFrame {
 
-    private InfDB idb; 
-    private String aid;
+    private final InfDB idb; 
+    private final String aid;
   
     public MenyHandlaggare(InfDB idb, String aid) {
         this.idb = idb;
         this.aid = aid;
         initComponents();
+        setSize(1250, 1750); // Storlek på fönstret
+        setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
+        setLayout(null); // Sätter hela layouten i mitten av rutan
       
     }
 
@@ -33,30 +40,82 @@ public class MenyHandlaggare extends javax.swing.JFrame {
     private void initComponents() {
 
         lblinloggadanvandare = new javax.swing.JLabel();
+        MinaUppgifterHandlaggare = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblinloggadanvandare.setText("Hello World");
+
+        MinaUppgifterHandlaggare.setText("Mina Uppgifter");
+        MinaUppgifterHandlaggare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MinaUppgifterHandlaggareActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(lblinloggadanvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblinloggadanvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(MinaUppgifterHandlaggare)))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(10, 10, 10)
                 .addComponent(lblinloggadanvandare)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(MinaUppgifterHandlaggare)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MinaUppgifterHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinaUppgifterHandlaggareActionPerformed
+        // TODO add your handling code here:
+        // Öppnar popup fönster med information om användaren
+        try{
+            String query = "SELECT fornamn, efternamn, adress, epost, telefon FROM anstalld WHERE aid = '" + aid + "'"; // Sql frågan emot databasen
+            // Hämta en rad ifrån databasen och lagrar som Hashmap för att komma åt nyckeln
+            HashMap<String, String> resultat = idb.fetchRow(query);
+            if(resultat != null){
+            // Skapa ett nytt JFrame som popup
+            JFrame popupMinaUppgifter = new JFrame("Mina Uppgifter");
+            popupMinaUppgifter.setSize(300, 200); // Sätt storlek på fönstret
+            setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
+            setLayout(null); // Sätter hela layouten i mitten av rutan
+            popupMinaUppgifter.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger fönstret men behåller programmet öppet
+
+            // Kollar igenom resultatet för visning
+            String textMinaUppgifter = "<html>";
+            for(String nyckel : resultat.keySet()){
+                textMinaUppgifter += nyckel + ": " + resultat.get(nyckel) + "<br>";
+            }
+            textMinaUppgifter += "</html>";
+
+
+            // Skapa en JLabel för att visa användarens uppgifter
+            JLabel infoMinaUppgifter = new JLabel(textMinaUppgifter);
+            popupMinaUppgifter.add(infoMinaUppgifter); // Lägg till texten i fönstret
+            // Visar popup-fönster med mina uppgifter
+            popupMinaUppgifter.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Ingen data hittades för användaren: " + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+            }
+        
+        }catch(InfException ex){
+            JOptionPane.showMessageDialog(this, "Fel vid hämtning av data: " + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+        }  
+    }//GEN-LAST:event_MinaUppgifterHandlaggareActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,14 +148,23 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new Meny().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            //new Meny().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton MinaUppgifterHandlaggare;
     private javax.swing.JLabel lblinloggadanvandare;
     // End of variables declaration//GEN-END:variables
+
+    private static class ex {
+
+        private static String getMessage() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public ex() {
+        }
+    }
 }

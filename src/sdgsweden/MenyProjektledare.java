@@ -14,9 +14,9 @@ import javax.swing.JFrame;
 /**
   *Gemensamma rubriker på alla menyer:
 "Min profil" – Se och ändra egna uppgifter - DONE
-"Projekt" – Se projekt man är tilldelad på
+"Projekt" – Se projekt man är tilldelad på - DONE
 "Partners" – Se vilka samarbetspartners som finns i projekten
-"Hållbarhetsmål" – Se en lista över hållbarhetsmålen
+"Hållbarhetsmål" – Se en lista över hållbarhetsmålen - DONE
 "Personal" – Se och söka efter personal på avdelningen
 "Sök projekt" – Sök efter projekt baserat på datum
 "Logga ut" – För att logga ut från systemet
@@ -73,6 +73,7 @@ public class MenyProjektledare extends javax.swing.JFrame {
         btnMinaUppgifterProjektledare = new javax.swing.JButton();
         lblinloggadanvandare2 = new javax.swing.JLabel();
         btnMinaProjektProjektledare = new javax.swing.JButton();
+        btnAllaMal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,32 +93,46 @@ public class MenyProjektledare extends javax.swing.JFrame {
             }
         });
 
+        btnAllaMal.setIcon(new javax.swing.ImageIcon("/Users/erikaekholm/Documents/GitHub/NGO_2/SUSDEVALL.jpg")); // NOI18N
+        btnAllaMal.setText("jButton1");
+        btnAllaMal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllaMalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblinloggadanvandare2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnMinaUppgifterProjektledare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMinaProjektProjektledare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(lblinloggadanvandare2, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(592, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnMinaUppgifterProjektledare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMinaProjektProjektledare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(lblinloggadanvandare2)
-                .addGap(29, 29, 29)
-                .addComponent(btnMinaUppgifterProjektledare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMinaProjektProjektledare)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btnMinaUppgifterProjektledare)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMinaProjektProjektledare))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,7 +148,13 @@ public class MenyProjektledare extends javax.swing.JFrame {
         new MinaProjektPopup(idb, aid).setVisible(true); // Öppnar mina MinaProjektPopup
     }//GEN-LAST:event_btnMinaProjektProjektledareActionPerformed
 
+    private void btnAllaMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaMalActionPerformed
+        // TODO add your handling code here:
+        new Hallbarhetsmalen(idb, aid).setVisible(true); // Öppnar Hallbarhetsmalen
+    }//GEN-LAST:event_btnAllaMalActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAllaMal;
     private javax.swing.JButton btnMinaProjektProjektledare;
     private javax.swing.JButton btnMinaUppgifterProjektledare;
     private javax.swing.JLabel lblinloggadanvandare2;

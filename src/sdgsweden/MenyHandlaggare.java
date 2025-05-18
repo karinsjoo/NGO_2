@@ -15,9 +15,9 @@ import javax.swing.JTextField;
 /**
  * Gemensamma rubriker på alla menyer:
 "Mina Uppgifter" – Se och ändra egna uppgifter - DONE
-"Projekt" – Se projekt man är tilldelad på
+"Projekt" – Se projekt man är tilldelad på - DONE
 "Partners" – Se vilka samarbetspartners som finns i projekten
-"Hållbarhetsmål" – Se en lista över hållbarhetsmålen
+"Hållbarhetsmål" – Se en lista över hållbarhetsmålen - DONE
 "Personal" – Se och söka efter personal på avdelningen
 "Sök projekt" – Sök efter projekt baserat på datum
 "Logga ut" – För att logga ut från systemet
@@ -69,6 +69,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         btnMinaUppgifterHandlaggare = new javax.swing.JButton();
         btnMinAvdelning = new javax.swing.JButton();
         btnAllaMal = new javax.swing.JButton();
+        btnPersonal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,7 +89,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
             }
         });
 
-        btnMinAvdelning.setText("Partners");
+        btnMinAvdelning.setText("Avdelning");
         btnMinAvdelning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMinAvdelningActionPerformed(evt);
@@ -103,6 +104,13 @@ public class MenyHandlaggare extends javax.swing.JFrame {
             }
         });
 
+        btnPersonal.setText("Personal");
+        btnPersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,12 +120,12 @@ public class MenyHandlaggare extends javax.swing.JFrame {
                 .addComponent(lblinloggadanvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMinAvdelning)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnMinaUppgifterHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMinaProjektHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnMinaUppgifterHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMinaProjektHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMinAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
@@ -133,9 +141,11 @@ public class MenyHandlaggare extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addComponent(btnMinaProjektHandlaggare)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnMinAvdelning))
+                        .addComponent(btnMinAvdelning)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnPersonal))
                     .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,6 +160,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
 
     private void btnMinAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinAvdelningActionPerformed
         // TODO add your handling code here:
+        new MinAvdelning(idb, aid).setVisible(true);
     }//GEN-LAST:event_btnMinAvdelningActionPerformed
 
     private void btnMinaUppgifterHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterHandlaggareActionPerformed
@@ -161,6 +172,11 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Hallbarhetsmalen(idb, aid).setVisible(true); // Öppnar Hallbarhetsmalen
     }//GEN-LAST:event_btnAllaMalActionPerformed
+
+    private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
+        // TODO add your handling code here:
+        new PersonalAvdelning(idb, aid).setVisible(true);
+    }//GEN-LAST:event_btnPersonalActionPerformed
 
     private static class ex {
 
@@ -214,6 +230,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
     private javax.swing.JButton btnMinAvdelning;
     private javax.swing.JButton btnMinaProjektHandlaggare;
     private javax.swing.JButton btnMinaUppgifterHandlaggare;
+    private javax.swing.JButton btnPersonal;
     private javax.swing.JLabel lblinloggadanvandare;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,11 +29,11 @@ public class MinaProjektPopup extends javax.swing.JFrame {
     public MinaProjektPopup(InfDB idb, String aid) {
         this.idb = idb;
         this.aid = aid;
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
         initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
         // setSize(1750, 500); // Storlek på fönstret, tog bort denna och lade till storleksanpassning nedan istället
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av dataskärmen
         laddaProjektData(); // Öppnar tabellen direkt när konstruktorn körs och objektet skapas
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
         
         
         // Tabell - höjden anpassas efter antal rader som laddas för användaren
@@ -75,7 +75,7 @@ public class MinaProjektPopup extends javax.swing.JFrame {
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
             ArrayList<HashMap<String, String>> projektData = idb.fetchRows(query);
             
-            if(projektData != null){ // Använder oss ine av Valideringsklassen här. Skulle behövt iterera igenom varje rad
+            if(projektData != null){ // Använder oss inte av Valideringsklassen här. Skulle behövt iterera igenom varje rad
                 // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
                 for(HashMap<String, String> anvandarProjekt : projektData){
                     projektModell.addRow(new Object []{
@@ -113,8 +113,10 @@ public class MinaProjektPopup extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         lblMinaProjektPopup = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrMinaProjekt = new javax.swing.JScrollPane();
         tblMinaProjekt = new javax.swing.JTable();
+        btnSokaProjekt = new javax.swing.JButton();
+        txtSokfaltProjekt = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,34 +149,63 @@ public class MinaProjektPopup extends javax.swing.JFrame {
                 "Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Kostnad", "Status", "Prioritet", "Projektchef", "Land"
             }
         ));
-        jScrollPane2.setViewportView(tblMinaProjekt);
+        scrMinaProjekt.setViewportView(tblMinaProjekt);
+
+        btnSokaProjekt.setText("Sök");
+        btnSokaProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokaProjektActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(lblMinaProjektPopup))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 929, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(txtSokfaltProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnSokaProjekt))
+                    .addComponent(scrMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 935, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMinaProjektPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(32, 32, 32)
                 .addComponent(lblMinaProjektPopup)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSokaProjekt)
+                    .addComponent(txtSokfaltProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(scrMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSokaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokaProjektActionPerformed
+        // TODO add your handling code here:
+                // TODO add your handling code here:
+        // Sökknapp för att leta efter en anställd på avdelningen
+        String sokaTextRuta = txtSokfaltProjekt.getText();
+        DefaultTableModel projektModell = (DefaultTableModel) tblMinaProjekt.getModel();
+        TableRowSorter<DefaultTableModel> tabellSortera = (TableRowSorter<DefaultTableModel>) tblMinaProjekt.getRowSorter();
+        
+        if(sokaTextRuta.trim().isEmpty()){ // Validering fungerade inte här
+            tabellSortera.setRowFilter(null); // Visar ALLA rader om vi inte söker på något
+        } else {
+            // RowFilter med (?i) gör sökningen case-insensitive
+            tabellSortera.setRowFilter(RowFilter.regexFilter("(?i)" + sokaTextRuta)); // Fritextsökning som inte beror på stora/små bokstäver
+        }
+         
+    }//GEN-LAST:event_btnSokaProjektActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,10 +243,13 @@ public class MinaProjektPopup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSokaProjekt;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblMinaProjektPopup;
+    private javax.swing.JScrollPane scrMinaProjekt;
     private javax.swing.JTable tblMinaProjekt;
+    private javax.swing.JTextField txtSokfaltProjekt;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -70,9 +70,17 @@ public class Meny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnMinaProjektAdmin = new javax.swing.JButton();
         lblinloggadanvandare3 = new javax.swing.JLabel();
         btnMinaUppgifterAdmin = new javax.swing.JButton();
-        btnMinaProjektAdmin = new javax.swing.JButton();
+        btnAllaMal = new javax.swing.JButton();
+
+        btnMinaProjektAdmin.setText("Mina Projekt");
+        btnMinaProjektAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinaProjektAdminActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(50, 50));
@@ -86,10 +94,11 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
-        btnMinaProjektAdmin.setText("Mina Projekt");
-        btnMinaProjektAdmin.addActionListener(new java.awt.event.ActionListener() {
+        btnAllaMal.setIcon(new javax.swing.ImageIcon("/Users/erikaekholm/Documents/GitHub/NGO_2/SUSDEVALL.jpg")); // NOI18N
+        btnAllaMal.setText("jButton1");
+        btnAllaMal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinaProjektAdminActionPerformed(evt);
+                btnAllaMalActionPerformed(evt);
             }
         });
 
@@ -97,16 +106,17 @@ public class Meny extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(lblinloggadanvandare3, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMinaProjektAdmin)
-                    .addComponent(btnMinaUppgifterAdmin))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblinloggadanvandare3, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnMinaUppgifterAdmin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,10 +124,10 @@ public class Meny extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(lblinloggadanvandare3)
                 .addGap(18, 18, 18)
-                .addComponent(btnMinaUppgifterAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMinaProjektAdmin)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnMinaUppgifterAdmin)
+                    .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,6 +142,11 @@ public class Meny extends javax.swing.JFrame {
         // TODO add your handling code here:
         new MinaProjektPopup(idb, aid).setVisible(true);
     }//GEN-LAST:event_btnMinaProjektAdminActionPerformed
+
+    private void btnAllaMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaMalActionPerformed
+        // TODO add your handling code here:
+        new Hallbarhetsmalen(idb, aid).setVisible(true); // Öppnar Hallbarhetsmalen
+    }//GEN-LAST:event_btnAllaMalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +195,7 @@ public class Meny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAllaMal;
     private javax.swing.JButton btnMinaProjektAdmin;
     private javax.swing.JButton btnMinaUppgifterAdmin;
     private javax.swing.JLabel lblinloggadanvandare3;

@@ -30,8 +30,6 @@ public class Hallbarhetsmalen extends javax.swing.JFrame {
         this.idb = idb;
         this.aid = aid;
         initComponents();
-        lstHallbarhetsmal = new javax.swing.JList<>();
-        jspHallbarhetsmal = new javax.swing.JScrollPane(lstHallbarhetsmal);
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
         laddaHallbarhetsMal(); // Öppnar fakta om Hållbarhetsmålen när rutan öppnas
@@ -54,7 +52,7 @@ public class Hallbarhetsmalen extends javax.swing.JFrame {
                 }
             }
             // Lägger in listan i modellen i GUI
-            lstHallbarhetsmal.setModel((ListModel<String>) resultatHallbarhetsMal);
+            lstHallbarhetsmal.setModel(modellListan);
             
         } catch(InfException ex){
             JOptionPane.showMessageDialog(this, "Inga Hållbarhetsmål hittades!" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
@@ -92,7 +90,7 @@ public class Hallbarhetsmalen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jspHallbarhetsmal, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addComponent(jspHallbarhetsmal, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(lblCirkelMal, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())

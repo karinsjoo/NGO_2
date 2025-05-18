@@ -56,7 +56,7 @@ public class Inloggning extends javax.swing.JFrame {
         getContentPane().add(lbllosenord);
         lbllosenord.setBounds(39, 102, 54, 20);
         getContentPane().add(tfepost);
-        tfepost.setBounds(128, 70, 173, 23);
+        tfepost.setBounds(128, 70, 250, 23);
 
         btnloggain.setText("Logga in");
         btnloggain.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +73,7 @@ public class Inloggning extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tflosenord);
-        tflosenord.setBounds(128, 99, 173, 23);
+        tflosenord.setBounds(128, 99, 250, 23);
 
         lblfelmeddelande.setForeground(new java.awt.Color(255, 0, 0));
         lblfelmeddelande.setText("Felaktig Epost eller Lösenord");

@@ -23,18 +23,22 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="lblinloggadanvandare" max="32767" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                      <Component id="lblinloggadanvandare" min="-2" pref="153" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="MinaUppgifterHandlaggare" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMinAvdelning" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnMinaUppgifterHandlaggare" max="32767" attributes="0"/>
+                      <Component id="btnMinaProjektHandlaggare" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="285" max="32767" attributes="0"/>
+              <EmptySpace pref="121" max="32767" attributes="0"/>
+              <Component id="btnAllaMal" min="-2" pref="612" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,9 +47,18 @@
           <Group type="102" attributes="0">
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Component id="lblinloggadanvandare" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="MinaUppgifterHandlaggare" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="232" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btnMinaUppgifterHandlaggare" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="btnMinaProjektHandlaggare" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnMinAvdelning" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="btnAllaMal" min="-2" pref="408" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,15 +66,44 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblinloggadanvandare">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hello World"/>
+        <Property name="text" type="java.lang.String" value="Inloggad SDG Sweden"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="MinaUppgifterHandlaggare">
+    <Component class="javax.swing.JButton" name="btnMinaProjektHandlaggare">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Projekt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinaProjektHandlaggareActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMinaUppgifterHandlaggare">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mina Uppgifter"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MinaUppgifterHandlaggareActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinaUppgifterHandlaggareActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMinAvdelning">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Partners"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinAvdelningActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAllaMal">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/erikaekholm/Documents/GitHub/NGO_2/SUSDEVALL.jpg"/>
+        </Property>
+        <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/erikaekholm/Desktop/GlobalaM&#xe5;lenBilder/Globala1.jpg"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllaMalActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

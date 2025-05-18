@@ -19,19 +19,29 @@ public class Validation{
 * @return "true" om epost har rätt format annars "false
 */
 public static boolean okEpost(String epost){
-        if(isNullOrEmpty(epost)){
-        return false;
+    if(isNullOrEmpty(epost)){
+    return false;
     }
     return epost.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
     }
 
 /**
  * Kollar om String är tom eller null
- * @param value som ska kollas
+ * @param telefon som ska kollas
  * @return "true" om den är tom eller null, annars "false"
  */
-public static boolean nullEllerTom(String value){
-    return value == null || value.trim().isEmpty();
+public static boolean okTelefon(String telefon){
+    return telefon.matches("\\d{7,15}"); // Tillåter 7 till 15 siffror
 }
+
+/**
+ * Kollar om String är tom eller null
+ * @param text som ska kollas
+ * @return "true" om den är tom eller null, annars "false"
+ */
+public static boolean okNullEllerTom(String text){
+    return text != null && !text.trim().isEmpty();
+}
+
 
 }

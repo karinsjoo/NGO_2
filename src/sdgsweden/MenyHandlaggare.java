@@ -1,4 +1,4 @@
-/*
+/**
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -10,9 +10,18 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 /**
- *
+ * Gemensamma rubriker på alla menyer:
+"Mina Uppgifter" – Se och ändra egna uppgifter - DONE
+"Projekt" – Se projekt man är tilldelad på
+"Partners" – Se vilka samarbetspartners som finns i projekten
+"Hållbarhetsmål" – Se en lista över hållbarhetsmålen
+"Personal" – Se och söka efter personal på avdelningen
+"Sök projekt" – Sök efter projekt baserat på datum
+"Logga ut" – För att logga ut från systemet
+* 
  * @author karin
  */
 public class MenyHandlaggare extends javax.swing.JFrame {
@@ -23,11 +32,27 @@ public class MenyHandlaggare extends javax.swing.JFrame {
     public MenyHandlaggare(InfDB idb, String aid) {
         this.idb = idb;
         this.aid = aid;
-        initComponents();
-        setSize(1250, 1750); // Storlek på fönstret
+        
+        initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
+        // setSize(1250, 1750); // Storlek på fönstret - tog bort och fixar GUI istället
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
         setLayout(null); // Sätter hela layouten i mitten av rutan
-      
+        
+        // Lägger till den användare som är inloggad direkt under lblinloggadanvandare
+        try{
+            String query = "SELECT fornamn, efternamn FROM anstalld WHERE aid = '" + aid + "'";
+            HashMap<String, String> resultat = idb.fetchRow(query);
+            
+            if(resultat != null){
+                lblinloggadanvandare.setText("Inloggad som: " + resultat.get("fornamn") + " " + resultat.get("efternamn"));
+            } else {
+                lblinloggadanvandare.setText("Inloggad som: Okänd");
+            }
+        
+        } catch(InfException ex){
+            lblinloggadanvandare.setText("Fel vid hämtning av användarnamn!");
+            System.out.println("Fel vid hämtning av användarnamn" + ex.getMessage());
+        }
     }
 
     /**
@@ -40,16 +65,41 @@ public class MenyHandlaggare extends javax.swing.JFrame {
     private void initComponents() {
 
         lblinloggadanvandare = new javax.swing.JLabel();
-        MinaUppgifterHandlaggare = new javax.swing.JButton();
+        btnMinaProjektHandlaggare = new javax.swing.JButton();
+        btnMinaUppgifterHandlaggare = new javax.swing.JButton();
+        btnMinAvdelning = new javax.swing.JButton();
+        btnAllaMal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblinloggadanvandare.setText("Hello World");
+        lblinloggadanvandare.setText("Inloggad SDG Sweden");
 
-        MinaUppgifterHandlaggare.setText("Mina Uppgifter");
-        MinaUppgifterHandlaggare.addActionListener(new java.awt.event.ActionListener() {
+        btnMinaProjektHandlaggare.setText("Projekt");
+        btnMinaProjektHandlaggare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MinaUppgifterHandlaggareActionPerformed(evt);
+                btnMinaProjektHandlaggareActionPerformed(evt);
+            }
+        });
+
+        btnMinaUppgifterHandlaggare.setText("Mina Uppgifter");
+        btnMinaUppgifterHandlaggare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinaUppgifterHandlaggareActionPerformed(evt);
+            }
+        });
+
+        btnMinAvdelning.setText("Partners");
+        btnMinAvdelning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinAvdelningActionPerformed(evt);
+            }
+        });
+
+        btnAllaMal.setIcon(new javax.swing.ImageIcon("/Users/erikaekholm/Documents/GitHub/NGO_2/SUSDEVALL.jpg")); // NOI18N
+        btnAllaMal.setSelectedIcon(new javax.swing.ImageIcon("/Users/erikaekholm/Desktop/GlobalaMålenBilder/Globala1.jpg")); // NOI18N
+        btnAllaMal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllaMalActionPerformed(evt);
             }
         });
 
@@ -57,66 +107,70 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lblinloggadanvandare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(lblinloggadanvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(MinaUppgifterHandlaggare)))
-                .addContainerGap(285, Short.MAX_VALUE))
+                    .addComponent(btnMinAvdelning)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnMinaUppgifterHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMinaProjektHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(lblinloggadanvandare)
-                .addGap(26, 26, 26)
-                .addComponent(MinaUppgifterHandlaggare)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnMinaUppgifterHandlaggare)
+                        .addGap(15, 15, 15)
+                        .addComponent(btnMinaProjektHandlaggare)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnMinAvdelning))
+                    .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MinaUppgifterHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MinaUppgifterHandlaggareActionPerformed
+    
+    private void btnMinaProjektHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaProjektHandlaggareActionPerformed
         // TODO add your handling code here:
-        // Öppnar popup fönster med information om användaren
-        try{
-            String query = "SELECT fornamn, efternamn, adress, epost, telefon FROM anstalld WHERE aid = '" + aid + "'"; // Sql frågan emot databasen
-            // Hämta en rad ifrån databasen och lagrar som Hashmap för att komma åt nyckeln
-            HashMap<String, String> resultat = idb.fetchRow(query);
-            if(resultat != null){
-            // Skapa ett nytt JFrame som popup
-            JFrame popupMinaUppgifter = new JFrame("Mina Uppgifter");
-            popupMinaUppgifter.setSize(300, 200); // Sätt storlek på fönstret
-            setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
-            setLayout(null); // Sätter hela layouten i mitten av rutan
-            popupMinaUppgifter.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger fönstret men behåller programmet öppet
+        // Öppnar popup fönster med projekt relevanta för handläggaren
+        new MinaProjektPopup(idb, aid).setVisible(true);
+    }//GEN-LAST:event_btnMinaProjektHandlaggareActionPerformed
 
-            // Kollar igenom resultatet för visning
-            String textMinaUppgifter = "<html>";
-            for(String nyckel : resultat.keySet()){
-                textMinaUppgifter += nyckel + ": " + resultat.get(nyckel) + "<br>";
-            }
-            textMinaUppgifter += "</html>";
+    private void btnMinAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinAvdelningActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMinAvdelningActionPerformed
 
+    private void btnMinaUppgifterHandlaggareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterHandlaggareActionPerformed
+        // TODO add your handling code here:
+        new MinaUppgifterPopup(idb, aid).setVisible(true); // Öppnar MinaUppgifterPopup
+    }//GEN-LAST:event_btnMinaUppgifterHandlaggareActionPerformed
 
-            // Skapa en JLabel för att visa användarens uppgifter
-            JLabel infoMinaUppgifter = new JLabel(textMinaUppgifter);
-            popupMinaUppgifter.add(infoMinaUppgifter); // Lägg till texten i fönstret
-            // Visar popup-fönster med mina uppgifter
-            popupMinaUppgifter.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(this, "Ingen data hittades för användaren: " + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
-            }
-        
-        }catch(InfException ex){
-            JOptionPane.showMessageDialog(this, "Fel vid hämtning av data: " + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
-        }  
-    }//GEN-LAST:event_MinaUppgifterHandlaggareActionPerformed
+    private void btnAllaMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaMalActionPerformed
+        // TODO add your handling code here:
+        new Hallbarhetsmalen(idb, aid).setVisible(true); // Öppnar Hallbarhetsmalen
+    }//GEN-LAST:event_btnAllaMalActionPerformed
 
+    private static class ex {
+
+        private static String getMessage() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public ex() {
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -153,18 +207,13 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         });
     }
 
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton MinaUppgifterHandlaggare;
+    private javax.swing.JButton btnAllaMal;
+    private javax.swing.JButton btnMinAvdelning;
+    private javax.swing.JButton btnMinaProjektHandlaggare;
+    private javax.swing.JButton btnMinaUppgifterHandlaggare;
     private javax.swing.JLabel lblinloggadanvandare;
     // End of variables declaration//GEN-END:variables
-
-    private static class ex {
-
-        private static String getMessage() {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        public ex() {
-        }
-    }
 }

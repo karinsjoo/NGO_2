@@ -12,7 +12,24 @@ import javax.swing.JLabel;
 import javax.swing.JFrame;
 
 /**
- *
+ *Gemensamma rubriker på alla menyer:
+"Mina Uppgifter" – Se och ändra egna uppgifter
+"Projekt" – Se projekt man är tilldelad på
+"Partners" – Se vilka samarbetspartners som finns i projekten
+"Hållbarhetsmål" – Se en lista över hållbarhetsmålen
+"Personal" – Se och söka efter personal på avdelningen
+"Sök projekt" – Sök efter projekt baserat på datum
+"Logga ut" – För att logga ut från systemet
+* 
+* * Rubriker för Meny (administratör)
+"Anställda" – Lägg till/ta bort en anställd
+"Generera lösenord" – Skapa slumpmässigt lösenord för ny anställd
+"Hantera avdelningar" – Lägg till/ändra uppgifter för avdelningar
+"Hantera projekt" – Lägg till/ändra projekt och ansvariga
+"Hantera partners" – Lägg till/ändra uppgifter om partners
+"Hantera länder" – Lägg till/ändra uppgifter om länder
+* 
+* 
  * @author karin
  */
 public class Meny extends javax.swing.JFrame {
@@ -23,11 +40,25 @@ public class Meny extends javax.swing.JFrame {
     public Meny(InfDB idb, String aid) {
         this.idb = idb;
         this.aid = aid;
-        initComponents();
+        initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
         setSize(1250, 1750); // Storlek på fönstret
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
         setLayout(null); // Sätter hela layouten i mitten av rutan
         
+                // Lägger till den användare som är inloggad direkt under lblinloggadanvandare
+        try{
+            String query = "SELECT fornamn, efternamn FROM anstalld WHERE aid = '" + aid + "'";
+            HashMap<String, String> resultat = idb.fetchRow(query);
+            
+            if(resultat != null){
+                lblinloggadanvandare3.setText("Inloggad som: " + resultat.get("fornamn") + " " + resultat.get("efternamn"));
+            } else {
+                lblinloggadanvandare3.setText("inloggad som: Okänd");
+            }
+        } catch(InfException ex){
+            lblinloggadanvandare3.setText("Fel vid hämtning av användarnamn!");
+            System.out.println("Fel vid hämtning av användarnamn" + ex.getMessage());
+        }  
     }
 
     /**
@@ -39,32 +70,68 @@ public class Meny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblinloggadanvandare = new javax.swing.JLabel();
+        lblinloggadanvandare3 = new javax.swing.JLabel();
+        btnMinaUppgifterAdmin = new javax.swing.JButton();
+        btnMinaProjektAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(50, 50));
 
-        lblinloggadanvandare.setText("Ändra Uppgifter Anställda");
+        lblinloggadanvandare3.setText("Inloggad användare SDG Sweden");
+
+        btnMinaUppgifterAdmin.setText("Mina Uppgifter");
+        btnMinaUppgifterAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinaUppgifterAdminActionPerformed(evt);
+            }
+        });
+
+        btnMinaProjektAdmin.setText("Mina Projekt");
+        btnMinaProjektAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinaProjektAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(lblinloggadanvandare3, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(155, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(lblinloggadanvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnMinaProjektAdmin)
+                    .addComponent(btnMinaUppgifterAdmin))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(lblinloggadanvandare)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(lblinloggadanvandare3)
+                .addGap(18, 18, 18)
+                .addComponent(btnMinaUppgifterAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMinaProjektAdmin)
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMinaUppgifterAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterAdminActionPerformed
+        // TODO add your handling code here:
+        new MinaUppgifterPopup(idb, aid).setVisible(true);
+    }//GEN-LAST:event_btnMinaUppgifterAdminActionPerformed
+
+    private void btnMinaProjektAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaProjektAdminActionPerformed
+        // TODO add your handling code here:
+        new MinaProjektPopup(idb, aid).setVisible(true);
+    }//GEN-LAST:event_btnMinaProjektAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,8 +168,21 @@ public class Meny extends javax.swing.JFrame {
             }
         });
     }
+    
+        private static class ex {
+
+        private static String getMessage() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public ex() {
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblinloggadanvandare;
+    private javax.swing.JButton btnMinaProjektAdmin;
+    private javax.swing.JButton btnMinaUppgifterAdmin;
+    private javax.swing.JLabel lblinloggadanvandare3;
     // End of variables declaration//GEN-END:variables
 }
+

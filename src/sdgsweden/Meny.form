@@ -26,28 +26,56 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <Component id="lblinloggadanvandare3" min="-2" pref="398" max="-2" attributes="0"/>
+              <EmptySpace pref="155" max="32767" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-              <Component id="lblinloggadanvandare" min="-2" pref="153" max="-2" attributes="0"/>
-              <EmptySpace pref="328" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnMinaProjektAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMinaUppgifterAdmin" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
-              <Component id="lblinloggadanvandare" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="275" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="lblinloggadanvandare3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnMinaUppgifterAdmin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnMinaProjektAdmin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="327" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblinloggadanvandare">
+    <Component class="javax.swing.JLabel" name="lblinloggadanvandare3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra Uppgifter Anst&#xe4;llda"/>
+        <Property name="text" type="java.lang.String" value="Inloggad anv&#xe4;ndare SDG Sweden"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMinaUppgifterAdmin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mina Uppgifter"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinaUppgifterAdminActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMinaProjektAdmin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mina Projekt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinaProjektAdminActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

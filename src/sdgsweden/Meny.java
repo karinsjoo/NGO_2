@@ -5,22 +5,25 @@
 package sdgsweden;
 
 import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /**
  *
  * @author karin
  */
 public class Meny extends javax.swing.JFrame {
-
-    private InfDB idb; 
-    private String inloggadAnvandare;
-  
-    public Meny(InfDB idb, String inloggadAnvandare) {
+    private final InfDB idb; //Databsuppkoppling
+    private String epost;
+    /**
+     * Creates new form Meny
+     */
+    public Meny(InfDB idb, String epost) {
         this.idb = idb;
-        this.inloggadAnvandare = inloggadAnvandare;
+        this.epost = epost;
+        
         initComponents();
-        lblinloggadanvandare.setText(inloggadAnvandare);
+        
+        
+        
     }
 
     /**
@@ -32,31 +35,52 @@ public class Meny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblinloggadanvandare = new javax.swing.JLabel();
+        btnVisaProjektOversikt = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblinloggadanvandare.setText("jLabel1");
+        btnVisaProjektOversikt.setText("Mina projekt");
+        btnVisaProjektOversikt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisaProjektOversiktActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Meny");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(lblinloggadanvandare, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(btnVisaProjektOversikt, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(lblinloggadanvandare)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(37, 37, 37)
+                .addComponent(btnVisaProjektOversikt)
+                .addContainerGap(305, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVisaProjektOversiktActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisaProjektOversiktActionPerformed
+        
+         new ProjektOversiktV2(idb, epost).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnVisaProjektOversiktActionPerformed
 
     /**
      * @param args the command line arguments
@@ -84,7 +108,6 @@ public class Meny extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Meny.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -95,6 +118,7 @@ public class Meny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblinloggadanvandare;
+    private javax.swing.JButton btnVisaProjektOversikt;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

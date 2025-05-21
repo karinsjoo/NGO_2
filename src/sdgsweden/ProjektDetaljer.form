@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="jList1">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+                <StringItem index="4" value="Item 5"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lblProjektnamn" pref="96" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtProjektnamn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="lblProjektID" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txtProjektID" min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="lblLand" min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txtLand" min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="lblProjektbeskrivning" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblStatus" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cbStatus" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="lblKostnad" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="lblProjektchef" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtProjektchef" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtKostnad" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblPrio" min="-2" pref="46" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cbPrio" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblStartdatum" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtStartdatum" min="-2" pref="83" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="lblSlutdatum" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtSlutdatum" min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="btnLaggtillHl" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnTabortHl" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="scrollHL" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="lblHandlaggare" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btnLaggtillP" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnTabortP" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblPartner" min="-2" pref="88" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="btnStang" min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="btnSpara" min="-2" pref="78" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="scrollPartner" min="-2" pref="158" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnRedigera" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtProjektnamn" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="txtProjektID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblProjektnamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblProjektID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLand" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblProjektbeskrivning" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblKostnad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtKostnad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPrio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbPrio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSlutdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSlutdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="lblProjektchef" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtProjektchef" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblHandlaggare" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnRedigera" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="scrollHL" pref="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="scrollPartner" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSpara" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLaggtillHl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTabortHl" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnStang" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnLaggtillP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTabortP" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="txtProjektnamn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Projektnamn"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtBeskrivning">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Beskrivning"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JTextField" name="txtProjektID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ProjektID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbStatus">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="P&#xe5;g&#xe5;ende"/>
+            <StringItem index="1" value="Avslutat"/>
+            <StringItem index="2" value="Planerat"/>
+            <StringItem index="3" value=" "/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtKostnad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kostnad"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbPrio">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="L&#xe5;g"/>
+            <StringItem index="1" value="Medel"/>
+            <StringItem index="2" value="H&#xf6;g"/>
+            <StringItem index="3" value=" "/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtStartdatum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Startdatum"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSlutdatum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Slutdatum"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtProjektchef">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Projektchef"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Land"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRedigera">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Redigera"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRedigeraActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSpara">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Spara"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnStang">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="St&#xe4;ng"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProjektnamn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Projektnamn"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProjektID">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ProjektID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Land"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStartdatum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Startdatum YYYY-MM-DD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSlutdatum">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Avslutat YYYY-MM-DD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProjektbeskrivning">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Projektbeskrivning"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Status"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblKostnad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kostnad"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPrio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prioritet"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblProjektchef">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Projektchef"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblHandlaggare">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Handl&#xe4;ggare"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="scrollHL">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JList" name="listHandlaggare">
+              <Properties>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                  <StringArray count="5">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                    <StringItem index="4" value="Item 5"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnLaggtillHl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTabortHl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta Bort"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPartner">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Partner"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="scrollPartner">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="listPartner">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+                <StringItem index="4" value="Item 5"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnLaggtillP">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTabortP">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

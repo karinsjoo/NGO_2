@@ -29,16 +29,6 @@ public class SdgSweden {
             System.out.println(ex.getMessage());
         }
 
-//   try
-//        {
-//            idb = new InfDB("sdgsweden", "3306", "dbAdmin2024", "dbAdmin2024PW");
-//            new ProjektVy(idb).setVisible(true);
-//            System.out.println("funkar");
-//        }catch (InfException ex)
-//        {
-//            System.out.println(ex.getMessage());
-//        }
-
     }
     
 }

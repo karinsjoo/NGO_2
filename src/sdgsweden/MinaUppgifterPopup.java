@@ -30,9 +30,9 @@ public class MinaUppgifterPopup extends javax.swing.JFrame {
         this.aid = aid;
         setSize(300, 250);
         setLayout(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
         initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
         
         // Hämtar användare och deras uppgifter ifrån databasen
         try{

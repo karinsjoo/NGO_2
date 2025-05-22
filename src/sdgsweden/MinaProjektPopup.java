@@ -62,14 +62,19 @@ public class MinaProjektPopup extends javax.swing.JFrame {
         try{
             // SQL fråga som hämtar projekt kopplade till inloggade användaren. Konstruktorn bär med sig info kring aid
             // aid skickas med vid skapandet av MinaProjektPopup och sedan använder vi aid i SQl frågan nedan som filter för resultatet
-            String query = "SELECT projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, projekt.prioritet, projekt.projektchef, projekt.land "
+            // DISTINCT kopplar bara samman samma projekt med partner en gång, fick dubbla rader först på en användare
+            String query = "SELECT DISTINCT projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, "
+                    + "projekt.prioritet, projekt.projektchef, projekt.land, partner.namn, partner.branch "
                     + "FROM projekt "
                     + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
+                    // Left JOIN för att även se projekt utan partner
+                    + "LEFT JOIN projekt_partner ON projekt.pid = projekt_partner.pid "
+                    + "LEFT JOIN partner ON projekt_partner.pid = partner.pid "
                     + "WHERE ans_proj.aid = '" + aid + "'";
             
             // Här skapas tabellen med tabellnamnen
             DefaultTableModel projektModell = new DefaultTableModel();
-            String [] kolumnNamn = {"Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Kostnad", "Status","Prioritet", "Projektchef", "Land"};
+            String [] kolumnNamn = {"Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Kostnad", "Status","Prioritet", "Projektchef", "Land", "Partner namn", "Partner branch"};
             projektModell.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
@@ -88,6 +93,8 @@ public class MinaProjektPopup extends javax.swing.JFrame {
                         anvandarProjekt.get("prioritet"),
                         anvandarProjekt.get("projektchef"),
                         anvandarProjekt.get("land"),
+                        anvandarProjekt.get("namn"),
+                        anvandarProjekt.get("branch")
                     });
                 }
             } else { // Om projektData är null eller tom
@@ -137,16 +144,16 @@ public class MinaProjektPopup extends javax.swing.JFrame {
 
         tblMinaProjekt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Kostnad", "Status", "Prioritet", "Projektchef", "Land"
+                "Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Kostnad", "Status", "Prioritet", "Projektchef", "Land", "Partner namn", "Partner bransch"
             }
         ));
         scrMinaProjekt.setViewportView(tblMinaProjekt);
@@ -163,15 +170,18 @@ public class MinaProjektPopup extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrMinaProjekt)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMinaProjektPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtSokfaltProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(btnSokaProjekt))
-                    .addComponent(scrMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 935, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMinaProjektPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addComponent(btnSokaProjekt)))
+                .addContainerGap(668, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

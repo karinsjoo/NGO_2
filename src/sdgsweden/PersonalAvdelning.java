@@ -32,6 +32,7 @@ public class PersonalAvdelning extends javax.swing.JFrame {
         initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av dataskärmen
         laddaPersonalData(); // Öppnar tabellen med personal på avdelningen direkt när konstruktorn körs och objektet skapas
+        laddaAvdelningPersonalNamn(); // Visar vilken avdelning användaren är inloggad på
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
         
         // Tabell - höjden anpassas efter antal rader som laddas för användaren
@@ -59,13 +60,15 @@ public class PersonalAvdelning extends javax.swing.JFrame {
     // Detta för att öppna den direkt när PersonalAvdelning öppnas 
     
         try{ // SQL-fråga för att hämta alla anställda ifrån listan som jobbar på samma avdelning som aid
-            String query = "SELECT aid, fornamn, efternamn, epost, telefon FROM anstalld "
-                    + "WHERE avdelning = (SELECT avdelning FROM anstalld WHERE aid = '" + aid + "') "
-                    + "ORDER BY aid ASC";
+            String query = "SELECT anstalld.aid, anstalld.fornamn, anstalld.efternamn, anstalld.epost, anstalld.telefon, handlaggare.aid FROM anstalld "
+                    + "LEFT JOIN handlaggare ON anstalld.aid = handlaggare.aid "
+                    + "WHERE anstalld.avdelning = (SELECT avdelning FROM anstalld WHERE aid = '" + aid + "') "
+                    + "ORDER BY anstalld.aid ASC";
+            
             
           // Här skapas tabellen med tabellnamnen
             DefaultTableModel anstalldModell = new DefaultTableModel();
-            String [] kolumnNamn = {"Anställd ID", "Förnamn", "Efternamn", "E-post", "Telefon"};
+            String [] kolumnNamn = {"Anställd ID", "Förnamn", "Efternamn", "E-post", "Telefon", "Handläggare"};
             anstalldModell.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
@@ -80,17 +83,39 @@ public class PersonalAvdelning extends javax.swing.JFrame {
                         anstalldLista.get("efternamn"),
                         anstalldLista.get("epost"),
                         anstalldLista.get("telefon"),
+                        anstalldLista.get("handlaggare.aid")
                     });
                 }
             }
             
             // Laddar upp anstalldLista till tabellen tblPersonalPaAvdelning
             tblPersonalPaAvdelning.setModel(anstalldModell);
+            
+            // Använder befintlig scroll
+            tblPersonalPaAvdelning.setFillsViewportHeight(true); // Gör så tabellen fyller skrollområdet
+            if(scrPersonalPaAvdelning.getParent() == null) { // Kolla om skrollpanelen redan finns i GUI
+                getContentPane().add(scrPersonalPaAvdelning);
+            }
+            revalidate();
+            repaint(); // Skrollning behöver läggas in EFTER att tabellen fyllts med data så den fungerar som den ska och har värden att sortera
         
         } catch(InfException ex){
             JOptionPane.showMessageDialog(this, "Fel vid hämtning av anställda på avdelningen" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void laddaAvdelningPersonalNamn(){
+    try{
+        String query = "SELECT avdelning.namn FROM anstalld "
+                + "JOIN avdelning ON anstalld.avdelning = avdelning.avdid "
+                + "WHERE anstalld.aid = '" + aid + "'";
+        
+        String avdelningsnamnet = idb.fetchSingle(query);
+        lblAvdelningsnamn.setText(avdelningsnamnet);
+    } catch(InfException ex){
+        JOptionPane.showMessageDialog(this, "Fel vid hämtning av avdelningsnamnet: " + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,18 +138,18 @@ public class PersonalAvdelning extends javax.swing.JFrame {
 
         tblPersonalPaAvdelning.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Anställd ID", "Förnamn", "Efternamn", "E-post", "Telefon", "Handläggare"
             }
         ));
         scrPersonalPaAvdelning.setViewportView(tblPersonalPaAvdelning);
 
-        btnSokKnapp.setText("Sök");
+        btnSokKnapp.setText("Sök fritext");
         btnSokKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSokKnappActionPerformed(evt);
@@ -136,32 +161,28 @@ public class PersonalAvdelning extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(lblAvdelningsnamn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtSokfalt, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSokKnapp))
-                            .addComponent(scrPersonalPaAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtSokfalt, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnSokKnapp))
+                    .addComponent(scrPersonalPaAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAvdelningsnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(lblAvdelningsnamn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSokfalt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSokKnapp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrPersonalPaAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(43, 43, 43))
         );
 
         pack();

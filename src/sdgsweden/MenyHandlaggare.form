@@ -24,20 +24,32 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="lblinloggadanvandare" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnMinaUppgifterHandlaggare" max="32767" attributes="0"/>
-                  <Component id="btnMinaProjektHandlaggare" max="32767" attributes="0"/>
-                  <Component id="btnMinAvdelning" max="32767" attributes="0"/>
-                  <Component id="btnPersonal" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblHallbarhetsmalenRubrik" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnMinaUppgifterHandlaggare" max="32767" attributes="0"/>
+                          <Component id="btnMinaProjektHandlaggare" max="32767" attributes="0"/>
+                          <Component id="btnMinAvdelning" max="32767" attributes="0"/>
+                          <Component id="btnPersonal" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="134" max="32767" attributes="0"/>
+                      <Component id="btnAllaMal" min="-2" pref="612" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="135" max="32767" attributes="0"/>
-              <Component id="btnAllaMal" min="-2" pref="612" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblinloggadanvandare" min="-2" pref="336" max="-2" attributes="0"/>
+                  <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,7 +58,9 @@
           <Group type="102" attributes="0">
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Component id="lblinloggadanvandare" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblHallbarhetsmalenRubrik" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="btnMinaUppgifterHandlaggare" min="-2" max="-2" attributes="0"/>
@@ -59,7 +73,9 @@
                   </Group>
                   <Component id="btnAllaMal" min="-2" pref="408" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,7 +83,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblinloggadanvandare">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Inloggad SDG Sweden"/>
+        <Property name="text" type="java.lang.String" value="Inloggad anv&#xe4;ndare SDG Sweden"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnMinaProjektHandlaggare">
@@ -114,6 +130,19 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPersonalActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLoggaUt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Logga Ut"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoggaUtActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblHallbarhetsmalenRubrik">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Klicka p&#xe5; bilden f&#xf6;r att se H&#xe5;llbarhetsm&#xe5;len vi jobbar f&#xf6;r!"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

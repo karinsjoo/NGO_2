@@ -17,7 +17,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author erikaekholm
  */
-public class MinAvdelning extends javax.swing.JFrame {
+public class MinAvdelningAlla extends javax.swing.JFrame {
     private final InfDB idb;
     private final String aid;
     
@@ -26,15 +26,15 @@ public class MinAvdelning extends javax.swing.JFrame {
      * @param idb
      * @param aid
      */
-    public MinAvdelning(InfDB idb, String aid) {
+    public MinAvdelningAlla(InfDB idb, String aid) {
         this.idb = idb;
         this.aid = aid;
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
+
         initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av dataskärmen
         laddaAvdelningData(); // Öppnar tabellen direkt när konstruktorn körs och objektet skapas
         laddaAvdelningNamn();
-        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
              
         // Tabell - höjden anpassas efter antal rader som laddas för användaren
         int antalRader = tblAvdelningTabell.getRowCount();
@@ -134,13 +134,13 @@ public class MinAvdelning extends javax.swing.JFrame {
 
         tblAvdelningTabell.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Avdelningsnamn", "Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Status", "Prioritet"
             }
         ));
         jskrAvdelningTabell.setViewportView(tblAvdelningTabell);
@@ -152,8 +152,8 @@ public class MinAvdelning extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAvdelningsNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jskrAvdelningTabell, javax.swing.GroupLayout.PREFERRED_SIZE, 947, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jskrAvdelningTabell, javax.swing.GroupLayout.PREFERRED_SIZE, 947, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAvdelningsNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -186,20 +186,21 @@ public class MinAvdelning extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MinAvdelning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinAvdelningAlla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MinAvdelning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinAvdelningAlla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MinAvdelning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinAvdelningAlla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MinAvdelning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MinAvdelningAlla.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-             //   new MinAvdelning().setVisible(true);
+             //   new MinAvdelningAlla().setVisible(true);
             }
         });
     }

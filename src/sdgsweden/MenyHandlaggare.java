@@ -99,7 +99,6 @@ public class MenyHandlaggare extends javax.swing.JFrame {
         });
 
         btnAllaMal.setIcon(new javax.swing.ImageIcon("/Users/erikaekholm/Documents/GitHub/NGO_2/SUSDEVALL.jpg")); // NOI18N
-        btnAllaMal.setSelectedIcon(new javax.swing.ImageIcon("/Users/erikaekholm/Desktop/GlobalaMålenBilder/Globala1.jpg")); // NOI18N
         btnAllaMal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAllaMalActionPerformed(evt);
@@ -138,7 +137,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
                             .addComponent(btnMinaProjektHandlaggare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnMinAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                         .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(42, 42, 42))
             .addGroup(layout.createSequentialGroup()

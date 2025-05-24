@@ -44,23 +44,25 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="lblHallbarhetsmalenRubrik" min="-2" pref="358" max="-2" attributes="0"/>
+                              <Component id="lblHallbarhetsmalenRubrik" min="-2" pref="393" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnMinaUppgifterAdmin" max="32767" attributes="0"/>
                                   <Component id="btnProjekt" max="32767" attributes="0"/>
                                   <Component id="btnAvdelning" max="32767" attributes="0"/>
                                   <Component id="btnPersonal" max="32767" attributes="0"/>
-                                  <Component id="btnHanteraAnstalld" max="32767" attributes="0"/>
+                                  <Component id="btnTaBortAnstalldAdmin" max="32767" attributes="0"/>
                                   <Component id="btnHanteraAvdelningar" alignment="0" max="32767" attributes="0"/>
                                   <Component id="btnHanteraProjekt" max="32767" attributes="0"/>
                                   <Component id="btnHanteraPartners" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnHanteraLand" max="32767" attributes="0"/>
+                                  <Component id="btnLaggTillAnstalldAdmin" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="99" max="32767" attributes="0"/>
+                              <EmptySpace pref="112" max="32767" attributes="0"/>
                               <Component id="btnAllaMal" min="-2" pref="612" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -96,14 +98,18 @@
                       <Component id="btnAvdelning" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnPersonal" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="btnHanteraAnstalld" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="btnLaggTillAnstalldAdmin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnTaBortAnstalldAdmin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnHanteraAvdelningar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnHanteraProjekt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnHanteraPartners" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnHanteraLand" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -142,36 +148,57 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Projekt"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProjektActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAvdelning">
       <Properties>
         <Property name="text" type="java.lang.String" value="Avdelning"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvdelningActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPersonal">
       <Properties>
         <Property name="text" type="java.lang.String" value="Personal"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPersonalActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnHanteraAnstalld">
+    <Component class="javax.swing.JButton" name="btnTaBortAnstalldAdmin">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hantera Anst&#xe4;lld"/>
+        <Property name="text" type="java.lang.String" value="Ta bort Anst&#xe4;lld"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortAnstalldAdminActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraAvdelningar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hantera Avdelningar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraAvdelningarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraProjekt">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hantera Projekt"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraProjektActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraPartners">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hantera Partners"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraPartnersActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHallbarhetsmalenRubrik">
       <Properties>
@@ -184,6 +211,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoggaUtActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnHanteraLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hantera Land"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraLandActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLaggTillAnstalldAdmin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till Anst&#xe4;lld"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillAnstalldAdminActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

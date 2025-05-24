@@ -23,93 +23,54 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="lblRubrikHanteraProjekt" min="-2" pref="302" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btnSparaAndringarHanteraProjekt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnSeProjektStatistikKostnad" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="scrHanteraProjekt" min="-2" pref="915" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="btnSparaAndringarHanteraAvdelningAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="srcHanteraAvdelningAdmin" min="-2" pref="889" max="-2" attributes="0"/>
+                  <Component id="lblRubrikHanteraAvdelningAdmin" alignment="0" min="-2" pref="407" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="lblRubrikHanteraProjekt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="scrHanteraProjekt" min="-2" pref="448" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnSparaAndringarHanteraProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSeProjektStatistikKostnad" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <Component id="lblRubrikHanteraAvdelningAdmin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="srcHanteraAvdelningAdmin" min="-2" pref="412" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnSparaAndringarHanteraAvdelningAdmin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblRubrikHanteraProjekt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mina projekt och projektpartners"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnSparaAndringarHanteraProjekt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Spara &#xc4;ndringar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparaAndringarHanteraProjektActionPerformed"/>
-      </Events>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="scrHanteraProjekt">
+    <Container class="javax.swing.JScrollPane" name="srcHanteraAvdelningAdmin">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblHanteraProjekt">
+        <Component class="javax.swing.JTable" name="tblHanteraAvdelningAdmin">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="4">
+              <Table columnCount="7" rowCount="4">
                 <Column editable="true" title="Namn" type="java.lang.Object"/>
-                <Column editable="true" title="Startdatum" type="java.lang.Object"/>
-                <Column editable="true" title="Slutdatum" type="java.lang.Object"/>
-                <Column editable="true" title="Kostnad" type="java.lang.Object"/>
-                <Column editable="true" title="Status" type="java.lang.Object"/>
-                <Column editable="true" title="Prio" type="java.lang.Object"/>
-                <Column editable="true" title="Projektchef" type="java.lang.Object"/>
-                <Column editable="true" title="Land" type="java.lang.Object"/>
-                <Column editable="true" title="Partner" type="java.lang.Object"/>
+                <Column editable="true" title="Beskrivning" type="java.lang.Object"/>
+                <Column editable="true" title="Adress" type="java.lang.Object"/>
+                <Column editable="true" title="Epost" type="java.lang.Object"/>
+                <Column editable="true" title="Telefon" type="java.lang.Object"/>
+                <Column editable="true" title="Stad" type="java.lang.Object"/>
+                <Column editable="true" title="Chef" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -154,13 +115,18 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnSeProjektStatistikKostnad">
+    <Component class="javax.swing.JButton" name="btnSparaAndringarHanteraAvdelningAdmin">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Se Projektstatistik"/>
+        <Property name="text" type="java.lang.String" value="Spara &#xc4;ndringar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSeProjektStatistikKostnadActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparaAndringarHanteraAvdelningAdminActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblRubrikHanteraAvdelningAdmin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="H&#xe4;r kan du &#xe4;ndra Avdelningsuppgifter som Admin"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

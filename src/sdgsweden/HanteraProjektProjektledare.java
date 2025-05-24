@@ -11,8 +11,6 @@ import oru.inf.InfException;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -216,17 +214,18 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
                 String pid = hanteraProjektModell.getValueAt(index, 0).toString();
                 String projektnamn = hanteraProjektModell.getValueAt(index, 1).toString();
                 String startdatum = hanteraProjektModell.getValueAt(index, 2).toString();        
-                String kostnad = hanteraProjektModell.getValueAt(index, 3).toString();                               
-                String status = hanteraProjektModell.getValueAt(index, 4).toString();
-                String prioritet = hanteraProjektModell.getValueAt(index, 5).toString();
-                String projektchef = hanteraProjektModell.getValueAt(index, 6).toString();
-                String land = hanteraProjektModell.getValueAt(index, 7).toString();
-                String partner = hanteraProjektModell.getValueAt(index, 8).toString();
+                String slutdatum = hanteraProjektModell.getValueAt(index, 3).toString();                 
+                String kostnad = hanteraProjektModell.getValueAt(index, 4).toString();                               
+                String status = hanteraProjektModell.getValueAt(index, 5).toString();
+                String prioritet = hanteraProjektModell.getValueAt(index, 6).toString();
+                String projektchef = hanteraProjektModell.getValueAt(index, 7).toString();
+                String land = hanteraProjektModell.getValueAt(index, 8).toString();
+                String partner = hanteraProjektModell.getValueAt(index, 9).toString();
             
             
             String updateQuery = "UPDATE projekt SET projektnamn = '" + projektnamn
                     + "', startdatum = '" + startdatum
-      //              + "', slutdatum = '" + slutdatum
+                    + "', slutdatum = '" + slutdatum
                     + "', kostnad = '" + kostnad
                     + "', status = '" + status
                     + "', prioritet = '" + prioritet
@@ -246,37 +245,39 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSparaAndringarHanteraProjektActionPerformed
 
     private void btnSeProjektStatistikKostnadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeProjektStatistikKostnadActionPerformed
- //       // TODO add your handling code here:
- //       // SQL fråga som hämtar sumerad kostnad baserad på om mitt projekt är avslutat eller pågående
- //       String query = "SELECT status, SUM(kostnad) AS total_kostnad FROM projekt WHERE projektchef = '" + aid + "' GROUP BY status";
- //       
- //       ArrayList<HashMap<String, String>> statistikOverProjekten;
- //       try {
- //           statistikOverProjekten = idb.fetchRows(query);
- //       } catch (InfException ex) {
- //           Logger.getLogger(HanteraProjektProjektledare.class.getName()).log(Level.SEVERE, null, ex);
- //       }
- //       
- //       // Lokala variabler för att lagra pågående och avslutade projekt
- //       int projektAvsSumKost = 0;
- //       int projektPagSumKost= 0;
- //       
- //       if(statistikOverProjekten != null) {
- //           for(HashMap<String, String> radenIListan : statistikOverProjekten){
- //               String status = radenIListan.get("status");
- //               // Använder Integrer.parseInt eftersom 
- //               int kostnad = Integer.parseInt(radenIListan.get("total_kostnad")); 
- //               
- //               if("Avslutat".equalsIgnoreCase(status)){
-//                    projektAvsSumKost = projektAvsSumKost + kostnad;
- //               } else if ("Pågående".equalsIgnoreCase(status)){
- //                   projektPagSumKost = projektPagSumKost + kostnad;
- //               }
- //           }
-//        }
-        // Visa statistiken i en ruta som poppar upp
-  //      JOptionPane.showMessageDialog(this, "Total kostnad avslutade projekt: " + projektAvsSumKost + " kr" +
-  //              "Total kostnad pågående projekt: " + projektPagSumKost + " kr" , JOptionPane.INFORMATION_MESSAGE);
+        // TODO add your handling code here:
+        // SQL fråga som hämtar sumerad kostnad baserad på om mitt projekt är avslutat eller pågående
+        String query = "SELECT status, SUM(kostnad) AS total_kostnad FROM projekt WHERE projektchef = '" + aid + "' GROUP BY status";
+        
+        ArrayList<HashMap<String, String>> statistikOverProjekten;
+        try {
+            statistikOverProjekten = idb.fetchRows(query);
+        } catch (InfException ex) {
+           JOptionPane.showMessageDialog(this, "Fel vid hämtning av projektdata" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+           return;
+        }
+        
+        // Lokala variabler för att lagra pågående och avslutade projekten
+        int projektAvsSumKost = 0;
+        int projektPagSumKost= 0;
+        
+        if(statistikOverProjekten != null) {
+            for(HashMap<String, String> radenIListan : statistikOverProjekten){
+                String status = radenIListan.get("status");
+                // Använder Integrer.parseInt eftersom det är ett kommando som gör String ifrån HashMapen till ett int värde som vi behöver för att räkna 
+                int kostnad = Integer.parseInt(radenIListan.get("total_kostnad")); 
+                
+                if("Avslutat".equalsIgnoreCase(status)){
+                    projektAvsSumKost = projektAvsSumKost + kostnad;
+                } else if ("Pågående".equalsIgnoreCase(status)){
+                    projektPagSumKost = projektPagSumKost + kostnad;
+                }
+            }
+        }
+        // Visa statistiken i en ruta som poppar upp JOptionPane.showMessageDialog
+        // " kr\n" är en radbrytningför Java swing 
+        JOptionPane.showMessageDialog(this, "Total kostnad avslutade projekt: " + projektAvsSumKost + "kr\n" +
+                "Total kostnad pågående projekt: " + projektPagSumKost + " kr", "Projektstatistik", JOptionPane.INFORMATION_MESSAGE);
         
     }//GEN-LAST:event_btnSeProjektStatistikKostnadActionPerformed
 

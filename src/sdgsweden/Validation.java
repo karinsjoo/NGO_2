@@ -43,5 +43,13 @@ public static boolean okNullEllerTom(String text){
     return text != null && !text.trim().isEmpty();
 }
 
+/**
+ * Kollar att lösenord innehåller bokstäver, siffror och är emellan 7-15 tecken långt
+ * @param losenord
+ */
+public static boolean okLosenord(String losenord){
+    return losenord.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{7,15}$");
+}
+
 
 }

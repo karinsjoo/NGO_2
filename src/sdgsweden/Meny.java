@@ -40,6 +40,7 @@ public class Meny extends javax.swing.JFrame {
     public Meny(InfDB idb, String aid) {
         this.idb = idb;
         this.aid = aid;
+        
         initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
         // setSize(1250, 1750); // Storlek på fönstret
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
@@ -77,12 +78,14 @@ public class Meny extends javax.swing.JFrame {
         btnProjekt = new javax.swing.JButton();
         btnAvdelning = new javax.swing.JButton();
         btnPersonal = new javax.swing.JButton();
-        btnHanteraAnstalld = new javax.swing.JButton();
+        btnTaBortAnstalldAdmin = new javax.swing.JButton();
         btnHanteraAvdelningar = new javax.swing.JButton();
         btnHanteraProjekt = new javax.swing.JButton();
         btnHanteraPartners = new javax.swing.JButton();
         lblHallbarhetsmalenRubrik = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
+        btnHanteraLand = new javax.swing.JButton();
+        btnLaggTillAnstalldAdmin = new javax.swing.JButton();
 
         btnMinaProjektAdmin.setText("Mina Projekt");
         btnMinaProjektAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -112,18 +115,53 @@ public class Meny extends javax.swing.JFrame {
         });
 
         btnProjekt.setText("Projekt");
+        btnProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProjektActionPerformed(evt);
+            }
+        });
 
         btnAvdelning.setText("Avdelning");
+        btnAvdelning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvdelningActionPerformed(evt);
+            }
+        });
 
         btnPersonal.setText("Personal");
+        btnPersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonalActionPerformed(evt);
+            }
+        });
 
-        btnHanteraAnstalld.setText("Hantera Anställd");
+        btnTaBortAnstalldAdmin.setText("Ta bort Anställd");
+        btnTaBortAnstalldAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortAnstalldAdminActionPerformed(evt);
+            }
+        });
 
         btnHanteraAvdelningar.setText("Hantera Avdelningar");
+        btnHanteraAvdelningar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHanteraAvdelningarActionPerformed(evt);
+            }
+        });
 
         btnHanteraProjekt.setText("Hantera Projekt");
+        btnHanteraProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHanteraProjektActionPerformed(evt);
+            }
+        });
 
         btnHanteraPartners.setText("Hantera Partners");
+        btnHanteraPartners.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHanteraPartnersActionPerformed(evt);
+            }
+        });
 
         lblHallbarhetsmalenRubrik.setText("Klicka på bilden för att se Hållbarhetsmålen vi jobbar för!");
 
@@ -131,6 +169,20 @@ public class Meny extends javax.swing.JFrame {
         btnLoggaUt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoggaUtActionPerformed(evt);
+            }
+        });
+
+        btnHanteraLand.setText("Hantera Land");
+        btnHanteraLand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHanteraLandActionPerformed(evt);
+            }
+        });
+
+        btnLaggTillAnstalldAdmin.setText("Lägg till Anställd");
+        btnLaggTillAnstalldAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillAnstalldAdminActionPerformed(evt);
             }
         });
 
@@ -145,21 +197,23 @@ public class Meny extends javax.swing.JFrame {
                         .addComponent(lblinloggadanvandare3, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lblHallbarhetsmalenRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblHallbarhetsmalenRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnMinaUppgifterAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnHanteraAnstalld, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnTaBortAnstalldAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnHanteraAvdelningar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnHanteraProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnHanteraPartners, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                                    .addComponent(btnHanteraPartners, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnHanteraLand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnLaggTillAnstalldAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                                 .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(34, 34, 34))))
             .addGroup(layout.createSequentialGroup()
@@ -187,14 +241,18 @@ public class Meny extends javax.swing.JFrame {
                         .addComponent(btnAvdelning)
                         .addGap(18, 18, 18)
                         .addComponent(btnPersonal)
-                        .addGap(81, 81, 81)
-                        .addComponent(btnHanteraAnstalld)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(50, 50, 50)
+                        .addComponent(btnLaggTillAnstalldAdmin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTaBortAnstalldAdmin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHanteraAvdelningar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHanteraProjekt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHanteraPartners)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnHanteraLand)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLoggaUt)))
                 .addContainerGap())
@@ -205,12 +263,11 @@ public class Meny extends javax.swing.JFrame {
 
     private void btnMinaUppgifterAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterAdminActionPerformed
         // TODO add your handling code here:
-        new MinaUppgifterPopup(idb, aid).setVisible(true);
+        new MinaUppgifterPopup(idb, aid).setVisible(true); // Öppnar MinaUppgifterPopup
     }//GEN-LAST:event_btnMinaUppgifterAdminActionPerformed
 
     private void btnMinaProjektAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaProjektAdminActionPerformed
         // TODO add your handling code here:
-        new MinaProjektPopup(idb, aid).setVisible(true);
     }//GEN-LAST:event_btnMinaProjektAdminActionPerformed
 
     private void btnAllaMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllaMalActionPerformed
@@ -223,6 +280,51 @@ public class Meny extends javax.swing.JFrame {
         new Inloggning(idb).setVisible(true); // Öppnar inloggningsfönstret
         dispose(); // Rensar och stänger fönstret som är öppet korrekt
     }//GEN-LAST:event_btnLoggaUtActionPerformed
+
+    private void btnHanteraProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraProjektActionPerformed
+        // TODO add your handling code here:
+        new HanteraProjektAdmin(idb, aid).setVisible(true); // Öppnar HanteraProjektAdmin där ADmin kan ändra uppgifter på alla projekt
+    }//GEN-LAST:event_btnHanteraProjektActionPerformed
+
+    private void btnHanteraAvdelningarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraAvdelningarActionPerformed
+        // TODO add your handling code here:
+        new HanteraAvdelningAdmin(idb, aid).setVisible(true); // Öppnar HanteraAvdelningAdmin där ADmin kan ändra uppgifter på alla avdelningar
+    }//GEN-LAST:event_btnHanteraAvdelningarActionPerformed
+
+    private void btnHanteraPartnersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraPartnersActionPerformed
+        // TODO add your handling code here:
+        new HanteraPartnerAdmin(idb, aid).setVisible(true); // Öppnar HanteraPartnerAdmin där ADmin kan ändra uppgifter på alla partners
+    }//GEN-LAST:event_btnHanteraPartnersActionPerformed
+
+    private void btnTaBortAnstalldAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortAnstalldAdminActionPerformed
+        // TODO add your handling code here:
+        new TaBortAnstalldAnstalldAdmin(idb, aid).setVisible(true); // Öppnar TaBortAnstalldAnstalldAdmin där Admin kan ändra uppgifter, lägga till nya anställda eller ta bort dem
+    }//GEN-LAST:event_btnTaBortAnstalldAdminActionPerformed
+
+    private void btnProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjektActionPerformed
+        // TODO add your handling code here:
+        new MinaProjektPopup(idb, aid).setVisible(true); //Öpnnar MinaProjektPopup
+    }//GEN-LAST:event_btnProjektActionPerformed
+
+    private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
+        // TODO add your handling code here:
+        new MinAvdelningAlla(idb, aid).setVisible(true); //Öpnnar MinAvdelningAlla
+    }//GEN-LAST:event_btnAvdelningActionPerformed
+
+    private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
+        // TODO add your handling code here:
+        new PersonalAvdelning(idb, aid).setVisible(true); //Öppnar PersonalAvdelning
+    }//GEN-LAST:event_btnPersonalActionPerformed
+
+    private void btnLaggTillAnstalldAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillAnstalldAdminActionPerformed
+        // TODO add your handling code here:
+        new LaggTillAnstalldAdmin(idb, aid).setVisible(true); //Öppnar LaggTillAnstalld
+    }//GEN-LAST:event_btnLaggTillAnstalldAdminActionPerformed
+
+    private void btnHanteraLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraLandActionPerformed
+        // TODO add your handling code here:
+        new HanteraLandAdmin(idb, aid).setVisible(true); //Öppnar HanteraLandAdmin
+    }//GEN-LAST:event_btnHanteraLandActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,15 +375,17 @@ public class Meny extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAllaMal;
     private javax.swing.JButton btnAvdelning;
-    private javax.swing.JButton btnHanteraAnstalld;
     private javax.swing.JButton btnHanteraAvdelningar;
+    private javax.swing.JButton btnHanteraLand;
     private javax.swing.JButton btnHanteraPartners;
     private javax.swing.JButton btnHanteraProjekt;
+    private javax.swing.JButton btnLaggTillAnstalldAdmin;
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnMinaProjektAdmin;
     private javax.swing.JButton btnMinaUppgifterAdmin;
     private javax.swing.JButton btnPersonal;
     private javax.swing.JButton btnProjekt;
+    private javax.swing.JButton btnTaBortAnstalldAdmin;
     private javax.swing.JLabel lblHallbarhetsmalenRubrik;
     private javax.swing.JLabel lblinloggadanvandare3;
     // End of variables declaration//GEN-END:variables

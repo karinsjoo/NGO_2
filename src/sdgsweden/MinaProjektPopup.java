@@ -202,7 +202,6 @@ public class MinaProjektPopup extends javax.swing.JFrame {
 
     private void btnSokaProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokaProjektActionPerformed
         // TODO add your handling code here:
-                // TODO add your handling code here:
         // Sökknapp för att leta efter en anställd på avdelningen
         String sokaTextRuta = txtSokfaltProjekt.getText();
         DefaultTableModel projektModell = (DefaultTableModel) tblMinaProjekt.getModel();

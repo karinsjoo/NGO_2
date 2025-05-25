@@ -75,7 +75,7 @@ public class MenyProjektledare extends javax.swing.JFrame {
         btnAllaMal = new javax.swing.JButton();
         btnMinAvdelning = new javax.swing.JButton();
         btnPersonal = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnHanteraProjektProjektledare = new javax.swing.JButton();
         lblHallbarhetsmalenRubrik = new javax.swing.JLabel();
         btnLoggaUt = new javax.swing.JButton();
 
@@ -119,10 +119,10 @@ public class MenyProjektledare extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Hantera Projekt");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnHanteraProjektProjektledare.setText("Hantera Projekt");
+        btnHanteraProjektProjektledare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnHanteraProjektProjektledareActionPerformed(evt);
             }
         });
 
@@ -154,7 +154,7 @@ public class MenyProjektledare extends javax.swing.JFrame {
                                 .addComponent(btnMinaProjektProjektledare, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnMinAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton1))
+                            .addComponent(btnHanteraProjektProjektledare))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAllaMal, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39))
@@ -179,7 +179,7 @@ public class MenyProjektledare extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnPersonal)
                         .addGap(87, 87, 87)
-                        .addComponent(jButton1))
+                        .addComponent(btnHanteraProjektProjektledare))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(lblHallbarhetsmalenRubrik)
@@ -224,19 +224,19 @@ public class MenyProjektledare extends javax.swing.JFrame {
         new PersonalAvdelning(idb, aid).setVisible(true); // Öppnar Personalfliken PersonalAvdelning - Alla anställda 
     }//GEN-LAST:event_btnPersonalActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnHanteraProjektProjektledareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraProjektProjektledareActionPerformed
         // TODO add your handling code here:
         new HanteraProjektProjektledare(idb, aid).setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnHanteraProjektProjektledareActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAllaMal;
+    private javax.swing.JButton btnHanteraProjektProjektledare;
     private javax.swing.JButton btnLoggaUt;
     private javax.swing.JButton btnMinAvdelning;
     private javax.swing.JButton btnMinaProjektProjektledare;
     private javax.swing.JButton btnMinaUppgifterProjektledare;
     private javax.swing.JButton btnPersonal;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblHallbarhetsmalenRubrik;
     private javax.swing.JLabel lblinloggadanvandare2;
     // End of variables declaration//GEN-END:variables

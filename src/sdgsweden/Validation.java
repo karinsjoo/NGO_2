@@ -5,6 +5,9 @@
 package sdgsweden;
 
 import static com.mysql.cj.util.StringUtils.isNullOrEmpty;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Eftersom alla metoder nedan är satta som static behöver vi ingen konstruktor
@@ -51,5 +54,18 @@ public static boolean okLosenord(String losenord){
     return losenord.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{7,15}$");
 }
 
+/**
+ * Kollar om datum är av formatet YYYY-MM-DD
+ */
+public static boolean okDatumFormat(String datum){
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    sdf.setLenient(false); // Förhindrar datum som inte finns ex skottdag etc
+    try {
+        Date parseDate = sdf.parse(datum);
+        return true;
+    } catch (ParseException ex){
+        return false;
+    }
+}
 
 }

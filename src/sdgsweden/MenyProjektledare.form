@@ -40,7 +40,7 @@
                               <Component id="btnMinAvdelning" max="32767" attributes="0"/>
                               <Component id="btnPersonal" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnHanteraProjektProjektledare" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnAllaMal" min="-2" pref="617" max="-2" attributes="0"/>
@@ -71,7 +71,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnPersonal" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnHanteraProjektProjektledare" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -136,12 +136,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPersonalActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnHanteraProjektProjektledare">
       <Properties>
         <Property name="text" type="java.lang.String" value="Hantera Projekt"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraProjektProjektledareActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHallbarhetsmalenRubrik">

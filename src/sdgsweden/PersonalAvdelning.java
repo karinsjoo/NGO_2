@@ -47,7 +47,7 @@ public class PersonalAvdelning extends javax.swing.JFrame {
         
         // Ställer in tabellen efter storleken på anpassningarna ovanför
         tblPersonalPaAvdelning.setPreferredSize(new Dimension(totalaBredden, totalHojden));
-        tblPersonalPaAvdelning.revalidate();
+        tblPersonalPaAvdelning.revalidate(); // Uppdaaterar layout på tabell utifrån storleken på mängden data
         
         // Här kan man sortera på värdena i kolumnerna
         DefaultTableModel anstalldModell = (DefaultTableModel) tblPersonalPaAvdelning.getModel();
@@ -60,15 +60,14 @@ public class PersonalAvdelning extends javax.swing.JFrame {
     // Detta för att öppna den direkt när PersonalAvdelning öppnas 
     
         try{ // SQL-fråga för att hämta alla anställda ifrån listan som jobbar på samma avdelning som aid
-            String query = "SELECT anstalld.aid, anstalld.fornamn, anstalld.efternamn, anstalld.epost, anstalld.telefon, handlaggare.aid FROM anstalld "
-                    + "LEFT JOIN handlaggare ON anstalld.aid = handlaggare.aid "
+            String query = "SELECT anstalld.aid, anstalld.fornamn, anstalld.efternamn, anstalld.epost, anstalld.telefon FROM anstalld "
                     + "WHERE anstalld.avdelning = (SELECT avdelning FROM anstalld WHERE aid = '" + aid + "') "
                     + "ORDER BY anstalld.aid ASC";
             
             
           // Här skapas tabellen med tabellnamnen
             DefaultTableModel anstalldModell = new DefaultTableModel();
-            String [] kolumnNamn = {"Anställd ID", "Förnamn", "Efternamn", "E-post", "Telefon", "Handläggare"};
+            String [] kolumnNamn = {"Anställd ID", "Förnamn", "Efternamn", "E-post", "Telefon"};
             anstalldModell.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
@@ -82,8 +81,7 @@ public class PersonalAvdelning extends javax.swing.JFrame {
                         anstalldLista.get("fornamn"),
                         anstalldLista.get("efternamn"),
                         anstalldLista.get("epost"),
-                        anstalldLista.get("telefon"),
-                        anstalldLista.get("handlaggare.aid")
+                        anstalldLista.get("telefon")
                     });
                 }
             }
@@ -138,18 +136,18 @@ public class PersonalAvdelning extends javax.swing.JFrame {
 
         tblPersonalPaAvdelning.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Anställd ID", "Förnamn", "Efternamn", "E-post", "Telefon", "Handläggare"
+                "Anställd ID", "Förnamn", "Efternamn", "E-post", "Telefon"
             }
         ));
         scrPersonalPaAvdelning.setViewportView(tblPersonalPaAvdelning);
 
-        btnSokKnapp.setText("Sök fritext");
+        btnSokKnapp.setText("Sök efter Handläggare, ange E-post");
         btnSokKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSokKnappActionPerformed(evt);
@@ -163,12 +161,13 @@ public class PersonalAvdelning extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSokfalt, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnSokKnapp))
                     .addComponent(scrPersonalPaAvdelning, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAvdelningsnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtSokfalt, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSokKnapp))
+                        .addComponent(lblAvdelningsnamn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,19 +189,59 @@ public class PersonalAvdelning extends javax.swing.JFrame {
 
     private void btnSokKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokKnappActionPerformed
         // TODO add your handling code here:
-        // Sökknapp för att leta efter en anställd på avdelningen
+        // Sökknapp för att leta efter en handläggare via epost
         String sokaTextRuta = txtSokfalt.getText();
-        DefaultTableModel anstalldModell = (DefaultTableModel) tblPersonalPaAvdelning.getModel();
-        TableRowSorter<DefaultTableModel> tabellSortera = (TableRowSorter<DefaultTableModel>) tblPersonalPaAvdelning.getRowSorter();
+        String query;
         
-        if(sokaTextRuta.trim().isEmpty()){ // Validering fungerade inte här
-            tabellSortera.setRowFilter(null); // Visar ALLA rader om vi inte söker på något
+        if(!Validation.okNullEllerTom(sokaTextRuta)){
+            // Om rutan är tom visas alla anställda utan filter
+            laddaPersonalData();
+            return;
+            } else {
+            // Om man anger e-post i textfältet txtSokfalt - filtrera på handläggare inom avdelningen
+            query = "SELECT anstalld.aid, anstalld.fornamn, anstalld.efternamn, anstalld.epost, anstalld.telefon FROM anstalld "
+                    + "JOIN handlaggare ON anstalld.aid = handlaggare.aid " // Sök bara på handläggare
+                    + "WHERE anstalld.avdelning = (SELECT avdelning FROM anstalld WHERE aid = '" + aid + "') "
+                    + "AND anstalld.epost LIKE '%" + sokaTextRuta + "%' "
+                    + "ORDER BY anstalld.aid ASC";
+                    }
+        
+        DefaultTableModel anstalldModell = (DefaultTableModel) tblPersonalPaAvdelning.getModel();
+        anstalldModell.setRowCount(0); // Rensar befintliga rader
+        
+        try {
+        
+        ArrayList<HashMap<String, String>> anstalldData = idb.fetchRows(query);
+        
+        if(anstalldData != null){
+            for(HashMap<String, String> anstalldLista : anstalldData) {
+            anstalldModell.addRow(new Object[]{
+                anstalldLista.get("aid"),
+                anstalldLista.get("fornamn"),
+                anstalldLista.get("efternamn"),
+                anstalldLista.get("epost"),
+                anstalldLista.get("telefon")
+            
+            });
+            }
         } else {
-            // RowFilter med (?i) gör sökningen case-insensitive
-            tabellSortera.setRowFilter(RowFilter.regexFilter("(?i)" + sokaTextRuta)); // Fritextsökning som inte beror på stora/små bokstäver
+            JOptionPane.showMessageDialog(this, "Ingen Handläggare med den e-postadressen hittades.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
-    }//GEN-LAST:event_btnSokKnappActionPerformed
+       // Sortering och filtrering av data
+       TableRowSorter<DefaultTableModel> tabellSortering = (TableRowSorter<DefaultTableModel>) tblPersonalPaAvdelning.getRowSorter();
+       if(sokaTextRuta.isEmpty()){
+           tabellSortering.setRowFilter(null); // Visar alla rader om textrutan är tom!
+       } else {
+           tabellSortering.setRowFilter(RowFilter.regexFilter("(?i)" + sokaTextRuta)); // Case insensitive sätt att söka i rutan.
+       }
 
+    }//GEN-LAST:event_btnSokKnappActionPerformed
+        catch(InfException ex){
+            JOptionPane.showMessageDialog(this, "Fel vid sökning av handläggare: ", ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+    
+        }
+    }
     /**
      * @param args the command line arguments
      */

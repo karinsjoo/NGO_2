@@ -124,6 +124,9 @@ public class MinaProjektPopup extends javax.swing.JFrame {
         tblMinaProjekt = new javax.swing.JTable();
         btnSokaProjekt = new javax.swing.JButton();
         txtSokfaltProjekt = new javax.swing.JTextField();
+        btnSokAktivtProjektEnligtDatum = new javax.swing.JButton();
+        txtDatumForsta = new javax.swing.JTextField();
+        txtDatumAndra = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,6 +168,13 @@ public class MinaProjektPopup extends javax.swing.JFrame {
             }
         });
 
+        btnSokAktivtProjektEnligtDatum.setText("Sök aktivt projekt inom datum");
+        btnSokAktivtProjektEnligtDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSokAktivtProjektEnligtDatumActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,23 +188,35 @@ public class MinaProjektPopup extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMinaProjektPopup, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSokfaltProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSokfaltProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtDatumForsta, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtDatumAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(33, 33, 33)
-                        .addComponent(btnSokaProjekt)))
-                .addContainerGap(668, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSokaProjekt)
+                            .addComponent(btnSokAktivtProjektEnligtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(490, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(23, 23, 23)
                 .addComponent(lblMinaProjektPopup)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSokaProjekt)
-                    .addComponent(txtSokfaltProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(txtSokfaltProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSokaProjekt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSokAktivtProjektEnligtDatum)
+                    .addComponent(txtDatumForsta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDatumAndra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addComponent(scrMinaProjekt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -215,6 +237,60 @@ public class MinaProjektPopup extends javax.swing.JFrame {
         }
          
     }//GEN-LAST:event_btnSokaProjektActionPerformed
+
+    private void btnSokAktivtProjektEnligtDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSokAktivtProjektEnligtDatumActionPerformed
+        // TODO add your handling code here:
+        String startdatum = txtDatumForsta.getText(); // Hämtar startdatum ifrån första texremsam 
+        String slutdatum = txtDatumAndra.getText(); // Hämtar slutdatum ifrån andra textremsan
+        
+        // Kollar så rutorna är ifyllda
+        if (!Validation.okNullEllerTom(startdatum) || !Validation.okNullEllerTom(slutdatum)) { // Om båda datum är tomma skicka meddelande nedan med en Pane
+            JOptionPane.showMessageDialog(this, "Du måste fylla i både start och slutdatum för att söka på projekt inom datum", "Fel", JOptionPane.ERROR_MESSAGE);
+            return; }
+        // Kollar så datum som fylls i har rätt format
+        if(!Validation.okDatumFormat(startdatum) || !Validation.okDatumFormat(slutdatum)){
+            JOptionPane.showMessageDialog(this, "Du måste fylla i datum i formatet YYYY-MM-DD. ", "Fel", JOptionPane.ERROR_MESSAGE);
+            return; }
+            
+        
+        try {
+            String query = "SELECT DISTINCT projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, "
+                    + "projekt.prioritet, projekt.projektchef, projekt.land, partner.namn, partner.branch "
+                    + "FROM projekt "
+                    + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
+                    // Left JOIN för att även se projekt utan partner
+                    + "LEFT JOIN projekt_partner ON projekt.pid = projekt_partner.pid "
+                    + "LEFT JOIN partner ON projekt_partner.pid = partner.pid "
+                    + "WHERE projekt.startdatum >= '" + startdatum + "' AND projekt.slutdatum <= '" +slutdatum + "'";
+            
+            // Hämtar befintlig modell igen
+            DefaultTableModel projektModell = (DefaultTableModel) tblMinaProjekt.getModel();
+            projektModell.setRowCount(0); // Rensar rader
+            
+            ArrayList<HashMap<String, String>> projektData = idb.fetchRows(query);
+            
+            if(projektData != null){
+                for(HashMap<String, String> projektDatum : projektData){
+                    projektModell.addRow(new Object[]{
+                    projektDatum.get("projektnamn"),
+                    projektDatum.get("beskrivning"),
+                    projektDatum.get("startdatum"),
+                    projektDatum.get("slutdatum"),
+                    projektDatum.get("kostnad"),
+                    projektDatum.get("status"),
+                    projektDatum.get("prioritet"),
+                    projektDatum.get("projektchef"),
+                    projektDatum.get("land"),
+                    projektDatum.get("namn"),
+                    projektDatum.get("branch"),
+                });
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Inga projekt hittades emmellan dessa datum", "Info", JOptionPane.INFORMATION_MESSAGE);    
+            }} catch(InfException ex){
+            JOptionPane.showMessageDialog(this, "Fel vid hämtning av projektdata", "Fel", JOptionPane.ERROR_MESSAGE);
+            }
+    }//GEN-LAST:event_btnSokAktivtProjektEnligtDatumActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,12 +328,15 @@ public class MinaProjektPopup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSokAktivtProjektEnligtDatum;
     private javax.swing.JButton btnSokaProjekt;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblMinaProjektPopup;
     private javax.swing.JScrollPane scrMinaProjekt;
     private javax.swing.JTable tblMinaProjekt;
+    private javax.swing.JTextField txtDatumAndra;
+    private javax.swing.JTextField txtDatumForsta;
     private javax.swing.JTextField txtSokfaltProjekt;
     // End of variables declaration//GEN-END:variables
 

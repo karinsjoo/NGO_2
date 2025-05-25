@@ -38,6 +38,9 @@ public class Inloggning extends javax.swing.JFrame {
         btnloggain = new javax.swing.JButton();
         tflosenord = new javax.swing.JTextField();
         lblfelmeddelande = new javax.swing.JLabel();
+        btnTestUser1 = new javax.swing.JButton();
+        btnTestUser2 = new javax.swing.JButton();
+        btnTestUser3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +64,27 @@ public class Inloggning extends javax.swing.JFrame {
         lblfelmeddelande.setForeground(new java.awt.Color(255, 0, 0));
         lblfelmeddelande.setText("Felaktig Epost eller Lösenord");
 
+        btnTestUser1.setText("Admin");
+        btnTestUser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestUser1ActionPerformed(evt);
+            }
+        });
+
+        btnTestUser2.setText("Hanläggare");
+        btnTestUser2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestUser2ActionPerformed(evt);
+            }
+        });
+
+        btnTestUser3.setText("Projektchef");
+        btnTestUser3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestUser3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,13 +101,22 @@ public class Inloggning extends javax.swing.JFrame {
                                 .addGap(0, 47, Short.MAX_VALUE)))
                         .addContainerGap(52, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblepost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbllosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfepost, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                            .addComponent(tflosenord)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnTestUser1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnTestUser2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnTestUser3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblepost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbllosenord, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfepost, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                    .addComponent(tflosenord))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +137,12 @@ public class Inloggning extends javax.swing.JFrame {
                 .addComponent(lblfelmeddelande)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnloggain)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTestUser1)
+                    .addComponent(btnTestUser2)
+                    .addComponent(btnTestUser3))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,6 +173,70 @@ public class Inloggning extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnloggainActionPerformed
+
+    private void btnTestUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestUser1ActionPerformed
+                
+          String ePost = "maria.g@example.com"; // Lagrar lokal variabel användarens E-post
+          String losen = "password123"; // Lagrar lokal variabel användarens lösenord
+        
+        try{
+            String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
+            System.out.println(sqlFraga);
+            String dbLosen = idb.fetchSingle(sqlFraga);
+            if(losen.equals(dbLosen)){
+                new Meny(idb, ePost).setVisible(true);
+                this.setVisible(false);
+            }
+            else{
+                lblfelmeddelande.setVisible(true);
+            }
+                
+        }catch(Exception ex){
+            
+        }
+    }//GEN-LAST:event_btnTestUser1ActionPerformed
+
+    private void btnTestUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestUser2ActionPerformed
+        String ePost = "ahmed.khan@example.com"; // Lagrar lokal variabel användarens E-post 
+          String losen = "password789"; // Lagrar lokal variabel användarens lösenord
+        
+        try{
+            String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
+            System.out.println(sqlFraga);
+            String dbLosen = idb.fetchSingle(sqlFraga);
+            if(losen.equals(dbLosen)){
+                new Meny(idb, ePost).setVisible(true);
+                this.setVisible(false);
+            }
+            else{
+                lblfelmeddelande.setVisible(true);
+            }
+                
+        }catch(Exception ex){
+            
+        }
+    }//GEN-LAST:event_btnTestUser2ActionPerformed
+
+    private void btnTestUser3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestUser3ActionPerformed
+         String ePost = "sofia.a@example.com"; // Lagrar lokal variabel användarens E-post 
+          String losen = "passwordabc"; // Lagrar lokal variabel användarens lösenord
+        
+        try{
+            String sqlFraga = "SELECT losenord FROM anstalld WHERE epost = '" + ePost + "'";
+            System.out.println(sqlFraga);
+            String dbLosen = idb.fetchSingle(sqlFraga);
+            if(losen.equals(dbLosen)){
+                new Meny(idb, ePost).setVisible(true);
+                this.setVisible(false);
+            }
+            else{
+                lblfelmeddelande.setVisible(true);
+            }
+                
+        }catch(Exception ex){
+            
+        }
+    }//GEN-LAST:event_btnTestUser3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,6 +275,9 @@ public class Inloggning extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTestUser1;
+    private javax.swing.JButton btnTestUser2;
+    private javax.swing.JButton btnTestUser3;
     private javax.swing.JButton btnloggain;
     private javax.swing.JLabel lblepost;
     private javax.swing.JLabel lblfelmeddelande;

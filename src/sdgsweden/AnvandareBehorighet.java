@@ -12,7 +12,6 @@ public class AnvandareBehorighet {
 
     public String aId;
     public String avdelningId;
-
     public boolean isAdmin;
     public boolean isHandlaggare;
     public boolean isProjektChef;

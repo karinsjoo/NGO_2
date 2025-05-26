@@ -5,6 +5,13 @@
 package sdgsweden;
 
 import oru.inf.InfDB;
+import oru.inf.InfException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import sdgsweden.MinaUppgifter;
+
 
 /**
  *
@@ -13,6 +20,7 @@ import oru.inf.InfDB;
 public class Meny extends javax.swing.JFrame {
     private final InfDB idb; //Databsuppkoppling
     private String epost;
+    private AnvandareBehorighet anvandareBehorighet;
     /**
      * Creates new form Meny
      */
@@ -20,11 +28,114 @@ public class Meny extends javax.swing.JFrame {
         this.idb = idb;
         this.epost = epost;
         
-        initComponents();
+         var aId = getId(epost);
+        this.anvandareBehorighet = getAnvandareBehorighet(aId);
+
         
+        initComponents();
+       
         
         
     }
+    
+     private AnvandareBehorighet getAnvandareBehorighet(String aId) //
+    {
+        boolean isAdmin = false;
+        boolean isHandlaggare = false;
+        boolean isProjektChef = false;
+        String avdelningId = "";
+
+        //hämta admin behörighet
+        try {
+            String sqlFraga = "SELECT aid FROM admin WHERE aid = '" + aId + "'";
+
+            //Hämta resultat från DB: 
+            String resultat = idb.fetchSingle(sqlFraga);
+
+            if (resultat != null && aId.equals(resultat)) {
+                isAdmin = true;
+            }
+        } catch (InfException e) {
+            //lblFelDatumFormat.setText("Fel uppstod vid hämtning av projekt.");
+            System.out.println("Databasfel: " + e.getMessage());
+        }
+
+        //hämta handläggare behörighet
+        try {
+            String sqlFraga = "SELECT aid FROM handlaggare WHERE aid = '" + aId + "'";
+
+            //Hämta resultat från DB: 
+            String resultat = idb.fetchSingle(sqlFraga);
+
+            if (resultat != null && aId.equals(resultat)) {
+                isHandlaggare = true;
+            }
+        } catch (InfException e) {
+            //lblFelDatumFormat.setText("Fel uppstod vid hämtning av projekt.");
+            System.out.println("Databasfel: " + e.getMessage());
+        }
+
+        //hämta projektchef behörighet
+        try {
+            String sqlFraga = "SELECT projektchef FROM projekt WHERE projektchef = '" + aId + "'";
+
+            //Hämta resultat från DB: 
+            String resultat = idb.fetchSingle(sqlFraga);
+
+            if (resultat != null && aId.equals(resultat)) {
+                isProjektChef = true;
+            }
+        } catch (InfException e) {
+            //lblFelDatumFormat.setText("Fel uppstod vid hämtning av projekt.");
+            System.out.println("Databasfel: " + e.getMessage());
+        }
+
+        //hämta avdelningId
+        try {
+            String sqlFraga = "SELECT avdelning FROM anstalld WHERE aid = '" + aId + "'";
+
+            //Hämta resultat från DB: 
+            String resultat = idb.fetchSingle(sqlFraga);
+            avdelningId = resultat;
+
+        } catch (InfException e) {
+            //lblFelDatumFormat.setText("Fel uppstod vid hämtning av projekt.");
+            System.out.println("Databasfel: " + e.getMessage());
+        }
+
+        var anvandareBehorighet = new AnvandareBehorighet();
+        anvandareBehorighet.isAdmin = isAdmin;
+        anvandareBehorighet.isHandlaggare = isHandlaggare;
+        anvandareBehorighet.isProjektChef = isProjektChef;
+        anvandareBehorighet.aId = aId;
+        anvandareBehorighet.avdelningId = avdelningId;
+
+        return anvandareBehorighet;
+
+    }
+     
+      private String getId(String epost) {
+        //hämta aId
+
+        String aId = "";
+
+        try {
+            String sqlFraga = "SELECT aid FROM anstalld WHERE epost = '" + epost + "'";
+
+            //Hämta resultat från DB: 
+            String resultat = idb.fetchSingle(sqlFraga);
+
+            aId = resultat;
+
+        } catch (InfException e) {
+            // lblFelDatumFormat.setText("Fel uppstod vid hämtning av projekt.");
+            System.out.println("Databasfel: " + e.getMessage());
+        }
+
+        return aId;
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,6 +148,8 @@ public class Meny extends javax.swing.JFrame {
 
         btnVisaProjektOversikt = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnHallbarhetsMal = new javax.swing.JButton();
+        btnMinaUppgifter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,16 +163,32 @@ public class Meny extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Meny");
 
+        btnHallbarhetsMal.setText("Hållbarhetsmål");
+        btnHallbarhetsMal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHallbarhetsMalActionPerformed(evt);
+            }
+        });
+
+        btnMinaUppgifter.setText("Mina Uppgifter");
+        btnMinaUppgifter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinaUppgifterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVisaProjektOversikt, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(336, Short.MAX_VALUE))
+                    .addComponent(btnVisaProjektOversikt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHallbarhetsMal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,7 +197,11 @@ public class Meny extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(78, 78, 78)
                 .addComponent(btnVisaProjektOversikt)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnHallbarhetsMal)
+                .addGap(18, 18, 18)
+                .addComponent(btnMinaUppgifter)
+                .addContainerGap(178, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,6 +212,14 @@ public class Meny extends javax.swing.JFrame {
         new ProjektOversiktV2(idb, epost).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnVisaProjektOversiktActionPerformed
+
+    private void btnHallbarhetsMalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHallbarhetsMalActionPerformed
+        new HallbarhetsMal(idb).setVisible(true);
+    }//GEN-LAST:event_btnHallbarhetsMalActionPerformed
+
+    private void btnMinaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinaUppgifterActionPerformed
+        new MinaUppgifter(idb, anvandareBehorighet).setVisible(true);
+    }//GEN-LAST:event_btnMinaUppgifterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,6 +257,8 @@ public class Meny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHallbarhetsMal;
+    private javax.swing.JButton btnMinaUppgifter;
     private javax.swing.JButton btnVisaProjektOversikt;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

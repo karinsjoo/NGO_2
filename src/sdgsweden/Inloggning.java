@@ -71,7 +71,7 @@ public class Inloggning extends javax.swing.JFrame {
             }
         });
 
-        btnTestUser2.setText("Hanläggare");
+        btnTestUser2.setText("Handläggare");
         btnTestUser2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTestUser2ActionPerformed(evt);

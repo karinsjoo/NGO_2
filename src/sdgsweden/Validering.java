@@ -13,7 +13,7 @@ public class Validering
   
     // Kontrollerar att text inte är tom och innehåller bokstäver (valfritt bindestreck/blanksteg)
     public static boolean arText(String text) {
-        return text != null && text.matches("^[A-Za-zÅÄÖåäö\\s\\-]+$");
+        return text != null && text.matches("^[A-Za-zÅÄÖåäö0-9\\s\\-]+$");
     }
 
     // Kontrollerar att ett datum följer formatet YYYY-MM-DD

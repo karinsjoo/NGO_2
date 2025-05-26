@@ -142,7 +142,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnTestUser2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hanl&#xe4;ggare"/>
+        <Property name="text" type="java.lang.String" value="Handl&#xe4;ggare"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTestUser2ActionPerformed"/>

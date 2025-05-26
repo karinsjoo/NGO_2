@@ -294,6 +294,19 @@ private void fyllPartner() {
         }
         cbProjektchef.setEnabled(anvandareBehorighet.isAdmin);
     }
+    
+private void setFaltRedigerbara(boolean redigerbar) {
+        txtProjektnamn.setEditable(redigerbar);
+        txtStartdatum.setEditable(redigerbar);
+        txtSlutdatum.setEditable(redigerbar);
+        txtKostnad.setEditable(redigerbar);
+        txtLand.setEditable(redigerbar);
+        txtBeskrivning.setEditable(redigerbar);
+        cbStatus.setEnabled(redigerbar);
+        cbPrio.setEnabled(redigerbar);
+        cbProjektchef.setEnabled(anvandareBehorighet.isAdmin); // Endast admin får byta chef
+        btnSpara.setEnabled(redigerbar);
+    }
 
     private void fyllProjektchefCombo(String aktuellChefId) {
         try {
@@ -323,55 +336,7 @@ private void fyllPartner() {
 
     }
 
-//    private void setFaltRedigerbara(boolean redigerbar) 
-//    {
-//        txtProjektnamn.setEditable(redigerbar);
-//        txtStartdatum.setEditable(redigerbar);
-//        txtSlutdatum.setEditable(redigerbar);
-//        txtKostnad.setEditable(redigerbar);
-//        txtProjektchef.setEditable(redigerbar);
-//        txtLand.setEditable(redigerbar);
-//        txtBeskrivning.setEditable(redigerbar);
-//        cbStatus.setEnabled(redigerbar);
-//        cbPrio.setEnabled(redigerbar);
-//        btnSpara.setEnabled(redigerbar);
-//    }
-//
-//    private void kontrolleraBehorighet() {
-//        String roll = anvandare.getRoll();
-//        boolean arAdmin = roll.equals("admin");
-//        // Låser redigering från början
-//        btnRedigera.setEnabled(false);
-//        btnLaggtillHl.setEnabled(false);
-//        btnTabortHl.setEnabled(false);
-//        btnLaggtillP.setEnabled(false);
-//        btnTabortP.setEnabled(false);
-//
-//        if (arAdmin) {
-//            //Allt får ändras
-//            btnRedigera.setEnabled(true);
-//            btnLaggtillHl.setEnabled(true);
-//            btnTabortHl.setEnabled(true);
-//            btnLaggtillP.setEnabled(true);
-//            btnTabortP.setEnabled(true);
-//        } else if (roll.equals("projektchef")) {
-//            try {
-//                String sql = "SELECT projektchef FROM projekt WHERE pid = '" + projektID + "'";
-//                String ansvarig = idb.fetchSingle(sql);
-//                if (ansvarig.equals(anvandare.getAid())) {
-//                    btnRedigera.setEnabled(true);
-//                    btnLaggtillHl.setEnabled(true);
-//                    btnTabortHl.setEnabled(true);
-//                    btnLaggtillP.setEnabled(true);
-//                    btnTabortP.setEnabled(true);
-//                }
-//            } catch (InfException e) 
-//            {
-//                System.out.println("Fel vid behörighetskontroll: " + e.getMessage());
-//            }
-//        }
-//
-//    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -419,6 +384,8 @@ private void fyllPartner() {
         btnLaggtillP = new javax.swing.JButton();
         btnTabortP = new javax.swing.JButton();
         cbProjektchef = new javax.swing.JComboBox<>();
+        btnNyttProjekt = new javax.swing.JButton();
+        btnTaBortProjekt = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -465,6 +432,11 @@ private void fyllPartner() {
         });
 
         btnStang.setText("Stäng");
+        btnStang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStangActionPerformed(evt);
+            }
+        });
 
         lblProjektnamn.setText("Projektnamn");
 
@@ -535,6 +507,20 @@ private void fyllPartner() {
         });
 
         cbProjektchef.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnNyttProjekt.setText("Nytt Projekt");
+        btnNyttProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNyttProjektActionPerformed(evt);
+            }
+        });
+
+        btnTaBortProjekt.setText("Ta bort Projekt");
+        btnTaBortProjekt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortProjektActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -614,9 +600,15 @@ private void fyllPartner() {
                                 .addComponent(lblSlutdatum)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtSlutdatum, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnRedigera)
-                            .addComponent(btnSpara, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnStang, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnStang, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnRedigera)
+                                    .addComponent(btnSpara, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnNyttProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnTaBortProjekt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -676,9 +668,13 @@ private void fyllPartner() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnTabortHl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(btnRedigera)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRedigera)
+                    .addComponent(btnNyttProjekt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSpara)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSpara)
+                    .addComponent(btnTaBortProjekt))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnStang)
                 .addGap(68, 68, 68))
@@ -689,134 +685,75 @@ private void fyllPartner() {
 
     private void btnRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedigeraActionPerformed
          
-    //setFaltRedigerbara(true);//När användaren klickar på knappen
-//    try {
-//        String sql = "SELECT projektchef FROM projekt WHERE pid = '" + projektID + "'";
-//        String projektchefID = idb.fetchSingle(sql);
-//
-//        boolean arAdmin = anvandare.getRoll().equals("admin");
-//        boolean arProjektchef = anvandare.getRoll().equals("projektchef") && anvandare.getAid().equals(projektchefID);
-//
-//        if (arAdmin || arProjektchef) {
-//            txtProjektnamn.setEditable(true);
-//            txtStartdatum.setEditable(true);
-//            txtSlutdatum.setEditable(true);
-//            txtKostnad.setEditable(true);
-//            txtProjektchef.setEditable(true); // ev. slå av om bara admin ska få ändra detta
-//            txtLand.setEditable(true);
-//            txtBeskrivning.setEditable(true);
-//            cbStatus.setEnabled(true);
-//            cbPrio.setEnabled(true);
-//
-//            btnSpara.setEnabled(true); // aktivera spara-knappen
-//        } else {
-//            javax.swing.JOptionPane.showMessageDialog(this, 
-//                "Du har inte behörighet att redigera detta projekt.",
-//                "Behörighet saknas", javax.swing.JOptionPane.WARNING_MESSAGE);
-//        }
-//
-//    } catch (InfException e) {
-//        System.out.println("Fel vid kontroll av projektchef: " + e.getMessage());
-//    }
+        boolean tillatet = false;
+
+        if (anvandareBehorighet.isAdmin) {
+            tillatet = true;
+        } else if (anvandareBehorighet.isProjektChef) {
+            try {
+                String sql = "SELECT projektchef FROM projekt WHERE pid = '" + projektID + "'";
+                String ansvarigAid = idb.fetchSingle(sql);
+
+                if (anvandareBehorighet.aId.equals(ansvarigAid)) {
+                    tillatet = true;
+                }
+            } catch (InfException e) {
+                System.out.println("Fel vid kontroll av projektchef: " + e.getMessage());
+            }
+        }
+
+        if (tillatet) {
+            setFaltRedigerbara(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Du har inte behörighet att redigera detta projekt.");
+        }
+    
 
 
     }//GEN-LAST:event_btnRedigeraActionPerformed
 
 //Metod för att spara ändringar gjorda till databasen
     private void btnSparaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaActionPerformed
-        
-        String projektchefId = null;
-        String projektnamn = txtProjektnamn.getText().trim();
 
+        String projektnamn = txtProjektnamn.getText().trim();
+        String startdatum = txtStartdatum.getText().trim();
+        String slutdatum = txtSlutdatum.getText().trim();
+        String kostnad = txtKostnad.getText().trim();
+        String status = (String) cbStatus.getSelectedItem();
+        String prioritet = (String) cbPrio.getSelectedItem();
+        String beskrivning = txtBeskrivning.getText().trim();
+        String land = txtLand.getText().trim();
+
+        String projektchefId = null;
         if (anvandareBehorighet.isAdmin) {
             String valtChef = (String) cbProjektchef.getSelectedItem();
             projektchefId = valtChef.split(" - ")[0];
-
-            String sql = "UPDATE projekt SET projektnamn = '" + projektnamn + "', "
-                    + "projektchef = '" + projektchefId + "' "
-                    + "WHERE pid = '" + projektID + "'";
-
         }
 
-//    String projektnamn = txtProjektnamn.getText().trim();
-//    String startdatum = txtStartdatum.getText().trim();
-//    String slutdatum = txtSlutdatum.getText().trim();
-//    String kostnad = txtKostnad.getText().trim();
-//    String status = (String) cbStatus.getSelectedItem();
-//    String prio = (String) cbPrio.getSelectedItem();
-//    String beskrivning = txtBeskrivning.getText().trim();
-//
-//    // Samla alla fel i en sträng
-//    StringBuilder felmeddelanden = new StringBuilder();
-//
-//    if (!Validering.arText(projektnamn)) 
-//    {
-//        felmeddelanden.append("Projektnamn får bara innehålla bokstäver.\n");
-//    }
-//
-//    if (!Validering.arDatum(startdatum)) 
-//    {
-//        felmeddelanden.append("Startdatum måste ha formatet YYYY-MM-DD.\n");
-//    }
-//
-//    if (!Validering.arDatum(slutdatum)) 
-//    {
-//        felmeddelanden.append("Slutdatum måste ha formatet YYYY-MM-DD.\n");
-//    }
-//
-//    if (!Validering.arHeltal(kostnad)) 
-//    {
-//        felmeddelanden.append("Kostnad måste vara ett heltal.\n");
-//    }
-//    //Kontroll att slutdatum inte är före startdatum.
-//    if (Validering.arDatum(startdatum) && Validering.arDatum(slutdatum)) 
-//    {
-//    if (startdatum.compareTo(slutdatum) > 0) 
-//    {
-//        felmeddelanden.append("Slutdatum kan inte vara före startdatum.\n");
-//    }
-//    // Visa alla fel på en gång om det finns några
-//    if (felmeddelanden.length() > 0) 
-//    {
-//        JOptionPane.showMessageDialog(this, felmeddelanden.toString(), "Fel i inmatning", JOptionPane.WARNING_MESSAGE);
-//    } 
-//    else 
-//    {
-//        // Uppdatera databasen om alla fält är godkända
-//        try {
-//            String sql =
-//                    "UPDATE projekt SET " +
-//                    "projektnamn = '" + projektnamn + "', " +
-//                    "startdatum = '" + startdatum + "', " +
-//                    "slutdatum = '" + slutdatum + "', " +
-//                    "kostnad = '" + kostnad + "', " +
-//                    "status = '" + status + "', " +
-//                    "prioritet = '" + prio + "', " +
-//                    "beskrivning = '" + beskrivning + "' " +
-//                    "WHERE pid = '" + projektID + "'";
-//
-//            idb.update(sql);
-//
-//            JOptionPane.showMessageDialog(this, "Projektet har uppdaterats.", "Sparat", JOptionPane.INFORMATION_MESSAGE);
-//
-//            // Lås fälten igen (valfritt)
-//            txtProjektnamn.setEditable(false);
-//            txtStartdatum.setEditable(false);
-//            txtSlutdatum.setEditable(false);
-//            txtKostnad.setEditable(false);
-//            txtProjektchef.setEditable(false);
-//            txtLand.setEditable(false);
-//            txtBeskrivning.setEditable(false);
-//            cbStatus.setEnabled(false);
-//            cbPrio.setEnabled(false);
-//            btnSpara.setEnabled(false);
-//
-//        } 
-//        catch (InfException e) 
-//        {
-//            JOptionPane.showMessageDialog(this, "Fel vid uppdatering: " + e.getMessage(), "Databasfel", JOptionPane.ERROR_MESSAGE);
-//        }
-    
+        try {
+            String sql = "UPDATE projekt SET "
+                    + "projektnamn = '" + projektnamn + "', "
+                    + "startdatum = '" + startdatum + "', "
+                    + "slutdatum = '" + slutdatum + "', "
+                    + "kostnad = '" + kostnad + "', "
+                    + "status = '" + status + "', "
+                    + "prioritet = '" + prioritet + "', "
+                    + "beskrivning = '" + beskrivning + "', "
+                    + "land = '" + land + "'";
+
+            if (projektchefId != null) {
+                sql += ", projektchef = '" + projektchefId + "'";
+            }
+
+            sql += " WHERE pid = '" + projektID + "'";
+
+            idb.update(sql);
+            JOptionPane.showMessageDialog(this, "Projektet har uppdaterats.");
+            setFaltRedigerbara(false); // stäng redigeringsläget
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(this, "Fel vid uppdatering: " + e.getMessage());
+        }
+
 
     }//GEN-LAST:event_btnSparaActionPerformed
 
@@ -835,6 +772,43 @@ private void fyllPartner() {
     private void btnTabortPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabortPActionPerformed
         tabortPartner();
     }//GEN-LAST:event_btnTabortPActionPerformed
+
+    private void btnNyttProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNyttProjektActionPerformed
+        new NyttProjekt(idb, anvandareBehorighet).setVisible(true);
+    
+
+    }//GEN-LAST:event_btnNyttProjektActionPerformed
+
+    private void btnTaBortProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortProjektActionPerformed
+
+        if (!anvandareBehorighet.isAdmin) {
+            JOptionPane.showMessageDialog(this, "Endast administratörer kan ta bort projekt.");
+            return;
+        }
+
+        int bekrafta = JOptionPane.showConfirmDialog(this,
+                "Är du säker på att du vill ta bort detta projekt?",
+                "Bekräfta borttagning", JOptionPane.YES_NO_OPTION);
+
+        if (bekrafta != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+            String sql = "DELETE FROM projekt WHERE pid = '" + projektID + "'";
+            idb.delete(sql);
+            JOptionPane.showMessageDialog(this, "Projektet har raderats.");
+            this.dispose(); // Stänger fönstret efter borttagning
+        } catch (InfException e) {
+            JOptionPane.showMessageDialog(this, "Fel vid borttagning: " + e.getMessage());
+        }
+    
+
+    }//GEN-LAST:event_btnTaBortProjektActionPerformed
+
+    private void btnStangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStangActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnStangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -874,9 +848,11 @@ private void fyllPartner() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLaggtillHl;
     private javax.swing.JButton btnLaggtillP;
+    private javax.swing.JButton btnNyttProjekt;
     private javax.swing.JButton btnRedigera;
     private javax.swing.JButton btnSpara;
     private javax.swing.JButton btnStang;
+    private javax.swing.JButton btnTaBortProjekt;
     private javax.swing.JButton btnTabortHl;
     private javax.swing.JButton btnTabortP;
     private javax.swing.JComboBox<String> cbPrio;

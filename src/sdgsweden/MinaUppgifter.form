@@ -27,27 +27,34 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblRubrik" min="-2" pref="110" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblFornamn" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="lblEfternamn" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEpost" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="lblTelefon" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                          <Component id="lblAvdelning" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtEfternamn" max="32767" attributes="0"/>
-                          <Component id="txtFornamn" max="32767" attributes="0"/>
-                          <Component id="txtEpost" max="32767" attributes="0"/>
-                          <Component id="txtTelefon" max="32767" attributes="0"/>
-                          <Component id="txtAvdelning" pref="93" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Component id="btnSpara" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="btnStang" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblTelefon" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="lblAvdelning" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                          <Component id="lblFornamn" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="lblEfternamn" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblEpost" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="76" pref="76" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtEfternamn" alignment="0" pref="115" max="32767" attributes="0"/>
+                                  <Component id="txtFornamn" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtAvdelning" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="txtEpost" alignment="1" min="-2" pref="115" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="txtTelefon" alignment="1" min="-2" pref="115" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="467" max="32767" attributes="0"/>
+              <EmptySpace pref="357" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

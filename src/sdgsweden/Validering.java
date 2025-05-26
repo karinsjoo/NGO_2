@@ -30,6 +30,11 @@ public class Validering
     public static boolean arTomt(String text) {
         return text == null || text.trim().isEmpty();
     }
+    //Kontrollerar Epost
+    public static boolean arEpost(String epost) {
+    return epost != null && epost.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+}
+
 }
 
 

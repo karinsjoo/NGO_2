@@ -30,6 +30,7 @@
                   <Component id="btnVisaProjektOversikt" max="32767" attributes="0"/>
                   <Component id="btnHallbarhetsMal" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnMinaUppgifter" max="32767" attributes="0"/>
+                  <Component id="btnAvdelning" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="312" max="32767" attributes="0"/>
           </Group>
@@ -46,7 +47,9 @@
               <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnMinaUppgifter" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="178" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnAvdelning" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="137" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,6 +85,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinaUppgifterActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAvdelning">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Avdelning"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAvdelningActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

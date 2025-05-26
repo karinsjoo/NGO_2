@@ -151,6 +151,7 @@ public class Meny extends javax.swing.JFrame {
         btnHallbarhetsMal = new javax.swing.JButton();
         btnMinaUppgifter = new javax.swing.JButton();
         btnAvdelning = new javax.swing.JButton();
+        btnHanteraAnstallda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,6 +186,13 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
+        btnHanteraAnstallda.setText("Hantera anställda");
+        btnHanteraAnstallda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHanteraAnstalldaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -196,8 +204,9 @@ public class Meny extends javax.swing.JFrame {
                     .addComponent(btnVisaProjektOversikt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHallbarhetsMal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(312, Short.MAX_VALUE))
+                    .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHanteraAnstallda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(299, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +221,9 @@ public class Meny extends javax.swing.JFrame {
                 .addComponent(btnMinaUppgifter)
                 .addGap(18, 18, 18)
                 .addComponent(btnAvdelning)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnHanteraAnstallda)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
@@ -235,6 +246,14 @@ public class Meny extends javax.swing.JFrame {
     private void btnAvdelningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvdelningActionPerformed
         new AvdelningsOversikt(idb, anvandareBehorighet).setVisible(true);
     }//GEN-LAST:event_btnAvdelningActionPerformed
+
+    private void btnHanteraAnstalldaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraAnstalldaActionPerformed
+        if (anvandareBehorighet.isAdmin) {
+            new AnstalldHantera(idb, anvandareBehorighet).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Endast administratörer har behörighet att hantera anställda.");
+        }
+    }//GEN-LAST:event_btnHanteraAnstalldaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,6 +293,7 @@ public class Meny extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvdelning;
     private javax.swing.JButton btnHallbarhetsMal;
+    private javax.swing.JButton btnHanteraAnstallda;
     private javax.swing.JButton btnMinaUppgifter;
     private javax.swing.JButton btnVisaProjektOversikt;
     private javax.swing.JLabel jLabel1;

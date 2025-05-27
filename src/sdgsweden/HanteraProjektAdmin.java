@@ -61,13 +61,13 @@ public class HanteraProjektAdmin extends javax.swing.JFrame {
     // Detta för att öppna den direkt när MinaProjektPopup öppnas
         try{
             // SQL fråga som hämtar ALLA projekt
-            String query = "SELECT projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, "
+            String query = "SELECT pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, "
                     + "prioritet, projektchef, land "
                     + "FROM projekt ";
             
             // Här skapas tabellen med tabellnamnen
             DefaultTableModel projektModell = new DefaultTableModel();
-            String [] kolumnNamn = {"Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Kostnad", "Status","Prioritet", "Projektchef", "Land"};
+            String [] kolumnNamn = {"Projekt-ID", "Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Kostnad", "Status","Prioritet", "Projektchef", "Land"};
             projektModell.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
@@ -77,6 +77,7 @@ public class HanteraProjektAdmin extends javax.swing.JFrame {
                 // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
                 for(HashMap<String, String> hanteraProjektAdmin : projektAdmin){
                     projektModell.addRow(new Object []{
+                        hanteraProjektAdmin.get("pid"),
                         hanteraProjektAdmin.get("projektnamn"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
                         hanteraProjektAdmin.get("beskrivning"),
                         hanteraProjektAdmin.get("startdatum"),
@@ -170,15 +171,16 @@ public class HanteraProjektAdmin extends javax.swing.JFrame {
         try{
             DefaultTableModel hanteraProjektModell = (DefaultTableModel) tblHanteraProjekt.getModel();
             for(int index = 0; index < hanteraProjektModell.getRowCount(); index++){
-                String projektnamn = hanteraProjektModell.getValueAt(index, 0).toString();
-                String beskrivning = hanteraProjektModell.getValueAt(index, 1).toString();        
-                String startdatum = hanteraProjektModell.getValueAt(index, 2).toString();        
-                String slutdatum = hanteraProjektModell.getValueAt(index, 3).toString();        
-                String kostnad = hanteraProjektModell.getValueAt(index, 4).toString();                               
-                String status = hanteraProjektModell.getValueAt(index, 5).toString();
-                String prioritet = hanteraProjektModell.getValueAt(index, 6).toString();
-                String projektchef = hanteraProjektModell.getValueAt(index, 7).toString();      
-                String land = hanteraProjektModell.getValueAt(index, 8).toString(); 
+                int pid = Integer.parseInt(hanteraProjektModell.getValueAt(index, 0).toString());
+                String projektnamn = hanteraProjektModell.getValueAt(index, 1).toString();
+                String beskrivning = hanteraProjektModell.getValueAt(index, 2).toString();        
+                String startdatum = hanteraProjektModell.getValueAt(index, 3).toString();        
+                String slutdatum = hanteraProjektModell.getValueAt(index, 4).toString();        
+                String kostnad = hanteraProjektModell.getValueAt(index, 5).toString();                               
+                String status = hanteraProjektModell.getValueAt(index, 6).toString();
+                String prioritet = hanteraProjektModell.getValueAt(index, 7).toString();
+                String projektchef = hanteraProjektModell.getValueAt(index, 8).toString();      
+                String land = hanteraProjektModell.getValueAt(index, 9).toString(); 
             
             String updateQuery = "UPDATE projekt SET projektnamn = '" + projektnamn
                     + "', beskrivning = '" + beskrivning
@@ -188,7 +190,8 @@ public class HanteraProjektAdmin extends javax.swing.JFrame {
                     + "', status = '" + status
                     + "', prioritet = '" + prioritet
                     + "', projektchef = '" + projektchef
-                    + "', land = '" + land;
+                    + "', land = '" + land
+                    + "' WHERE pid = " + pid;
                     
                     idb.update(updateQuery);
             } 

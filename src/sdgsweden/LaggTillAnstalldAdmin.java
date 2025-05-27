@@ -36,7 +36,9 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
     txtAdressLaggTill.setText("");
     txtEpostLaggTill.setText("");
     txtTelefonLaggTill.setText("");
+    txtAnstallningsdatumLaggTill.setText("");
     txtSlumpatLosenLaggTill.setText("");
+    txtAvdelningLaggTill.setText("");
     setVisible(true);
     }
 
@@ -59,6 +61,17 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
         txtSlumpatLosenLaggTill = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnSlumpaNyttLosenord = new javax.swing.JButton();
+        txtAnstallningsdatumLaggTill = new javax.swing.JTextField();
+        txtAvdelningLaggTill = new javax.swing.JTextField();
+        lblAIDLaggTill = new javax.swing.JLabel();
+        lblFornamnLaggTill = new javax.swing.JLabel();
+        lblEfternamnLaggTill = new javax.swing.JLabel();
+        lblAdressLaggTill = new javax.swing.JLabel();
+        lblEpostLaggTill = new javax.swing.JLabel();
+        lblTelefonLaggTill = new javax.swing.JLabel();
+        lblAnstallningsdatumLaggTill = new javax.swing.JLabel();
+        lblLosenordLaggTill = new javax.swing.JLabel();
+        lblAvdelningLaggTill = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +105,28 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
             }
         });
 
+        txtAnstallningsdatumLaggTill.setText("Anställningsdatum");
+
+        txtAvdelningLaggTill.setText("Avdelning");
+
+        lblAIDLaggTill.setText("AID");
+
+        lblFornamnLaggTill.setText("Förnamn");
+
+        lblEfternamnLaggTill.setText("Efternamn");
+
+        lblAdressLaggTill.setText("Adress");
+
+        lblEpostLaggTill.setText("E-post");
+
+        lblTelefonLaggTill.setText("Telefon");
+
+        lblAnstallningsdatumLaggTill.setText("Anställningsdatum");
+
+        lblLosenordLaggTill.setText("Lösenord");
+
+        lblAvdelningLaggTill.setText("Avdelning");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,27 +134,46 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtAvdelningLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSlumpatLosenLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(txtAnstallningsdatumLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAnstallningsdatumLaggTill)
+                            .addComponent(lblAvdelningLaggTill)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblLosenordLaggTill)
+                                .addGap(43, 43, 43)
+                                .addComponent(btnSlumpaNyttLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(146, 146, 146))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLaggTillNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblLaggTillNyAnstalld, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtSlumpatLosenLaggTill)
-                                .addGap(55, 55, 55)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSlumpaNyttLosenord, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
-                        .addGap(54, 54, 54))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtTelefonLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEpostLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAdressLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEfternamnLaggTill, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                            .addComponent(txtFornamnLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAidLaggTill, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtTelefonLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEpostLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAdressLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEfternamnLaggTill, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(txtFornamnLaggTill, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtAidLaggTill, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAIDLaggTill)
+                                    .addComponent(lblFornamnLaggTill)
+                                    .addComponent(lblEfternamnLaggTill)
+                                    .addComponent(lblAdressLaggTill)
+                                    .addComponent(lblEpostLaggTill)
+                                    .addComponent(lblTelefonLaggTill))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,24 +181,45 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(lblLaggTillNyAnstalld)
                 .addGap(26, 26, 26)
-                .addComponent(txtAidLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAidLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAIDLaggTill))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFornamnLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFornamnLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFornamnLaggTill))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEfternamnLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEfternamnLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEfternamnLaggTill))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAdressLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAdressLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAdressLaggTill))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEpostLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEpostLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEpostLaggTill))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTelefonLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTelefonLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTelefonLaggTill))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAnstallningsdatumLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAnstallningsdatumLaggTill))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSlumpatLosenLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSlumpaNyttLosenord))
-                .addGap(31, 31, 31)
+                    .addComponent(btnSlumpaNyttLosenord)
+                    .addComponent(lblLosenordLaggTill))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAvdelningLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAvdelningLaggTill))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -166,16 +241,28 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
         String adress = txtAdressLaggTill.getText();
         String epost = txtEpostLaggTill.getText();
         String telefon = txtTelefonLaggTill.getText();
+        String anstallningsdatum = txtAnstallningsdatumLaggTill.getText();
         
-        if(aid.isEmpty() || fornamn.isEmpty() || efternamn.isEmpty() || adress.isEmpty() || epost.isEmpty() || telefon.isEmpty()){
+        String losenord = txtSlumpatLosenLaggTill.getText();
+        String avdelning = txtAvdelningLaggTill.getText();
+        
+        if(!Validation.okNullEllerTom(aid) || 
+                !Validation.okNullEllerTom(fornamn) || 
+                !Validation.okNullEllerTom(efternamn) || 
+                !Validation.okNullEllerTom(adress) || 
+                !Validation.okEpost(epost) || 
+                !Validation.okTelefon(telefon) || 
+                !Validation.okDatumFormat(anstallningsdatum) ||
+                !Validation.okNullEllerTom(losenord) || 
+                !Validation.okNullEllerTom(avdelning)){
             JOptionPane.showMessageDialog(this, "Fyll i alla uppgifter för ny Anställd!", "Fel", JOptionPane.ERROR_MESSAGE);
             return;
         }
+                    String query = "INSERT INTO anstalld(aid, fornamn, efternamn, adress, epost, telefon, anstallningsdatum, losenord, avdelning) VALUES ('"
+                    + aid + "', '" + fornamn + "', '" + efternamn + "', '" + adress + "', '" + epost + "', '"
+                    + telefon + "', '" + anstallningsdatum + "', '" + losenord + "', '" + avdelning +"')";
         
         try{
-            String query = "INSERT INTO anstalld(aid, fornamn, efternamn, adress, epost, telefon, losenord) VALUES ('"
-                    + aid + "', '" + fornamn + "', '" + efternamn + "', '" + adress + "', '" + epost + "', '"
-                    + telefon + "')";
             idb.insert(query);
             JOptionPane.showMessageDialog(this, "Ny användare tillagd! ", "Lyckades", JOptionPane.INFORMATION_MESSAGE);
         } catch(InfException ex){
@@ -236,9 +323,20 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSlumpaNyttLosenord;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel lblAIDLaggTill;
+    private javax.swing.JLabel lblAdressLaggTill;
+    private javax.swing.JLabel lblAnstallningsdatumLaggTill;
+    private javax.swing.JLabel lblAvdelningLaggTill;
+    private javax.swing.JLabel lblEfternamnLaggTill;
+    private javax.swing.JLabel lblEpostLaggTill;
+    private javax.swing.JLabel lblFornamnLaggTill;
     private javax.swing.JLabel lblLaggTillNyAnstalld;
+    private javax.swing.JLabel lblLosenordLaggTill;
+    private javax.swing.JLabel lblTelefonLaggTill;
     private javax.swing.JTextField txtAdressLaggTill;
     private javax.swing.JTextField txtAidLaggTill;
+    private javax.swing.JTextField txtAnstallningsdatumLaggTill;
+    private javax.swing.JTextField txtAvdelningLaggTill;
     private javax.swing.JTextField txtEfternamnLaggTill;
     private javax.swing.JTextField txtEpostLaggTill;
     private javax.swing.JTextField txtFornamnLaggTill;

@@ -63,12 +63,11 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
         // SQL fråga som hämtar projekt kopplade till inloggade användaren. Konstruktorn bär med sig info kring aid
         // aid skickas med vid skapandet av MinaProjektPopup och sedan använder vi aid i SQl frågan nedan som filter för resultatet
         System.out.println("aid: " + aid);
-        String query = "SELECT projekt.pid, projekt.projektnamn, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, "
-                + "projekt.prioritet, projekt.projektchef, projekt.land, partner.namn "
+        String query = "SELECT DISTINCT projekt.pid, projekt.projektnamn, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, "
+                + "projekt.prioritet, projekt.projektchef, projekt.land, projekt_partner.partner_pid "
                 + "FROM projekt "
                 + "LEFT JOIN ans_proj ON projekt.pid = ans_proj.pid " // Kopplar projektchefens aid till projektet
                 + "LEFT JOIN projekt_partner ON projekt.pid = projekt_partner.pid " // Kopplar projekt till partner
-                + "LEFT JOIN partner ON projekt_partner.partner_pid = partner.pid " // Hämtar namnet på partner till projekt
                 + "WHERE projekt.projektchef = '" + aid + "' "
                 + "ORDER BY projekt.pid";
         
@@ -76,7 +75,7 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
         // Här skapas tabellen med tabellnamnen
             hanteraProjektModell = new DefaultTableModel();
             tblHanteraProjekt.setModel(hanteraProjektModell);
-            String [] kolumnNamn = {"Projektnamn", "Startdatum", "Slutdatum", "Kostnad", "Status","Prioritet", "Projektchef", "Land", "Partner namn"};
+            String [] kolumnNamn = {"Projekt-ID", "Projektnamn", "Startdatum", "Slutdatum", "Kostnad", "Status","Prioritet", "Projektchef", "Land", "Partner ID"};
             hanteraProjektModell.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
@@ -86,6 +85,7 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
                 // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
                 for(HashMap<String, String> hanteraProjekt : hanteraProjektData){
                     hanteraProjektModell.addRow(new Object []{
+                        hanteraProjekt.get("pid"),
                         hanteraProjekt.get("projektnamn"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
                         hanteraProjekt.get("startdatum"),
                         hanteraProjekt.get("slutdatum"),
@@ -94,7 +94,7 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
                         hanteraProjekt.get("prioritet"),
                         hanteraProjekt.get("projektchef"),
                         hanteraProjekt.get("land"),
-                        hanteraProjekt.get("namn"),
+                        hanteraProjekt.get("partner_pid"), 
                     });
                     
                 }
@@ -107,7 +107,7 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
             // Skrollen
             if(scrHanteraProjekt.getParent() == null){
                 getContentPane().add(scrHanteraProjekt);
-            }
+            } //
             
             //Koppla tabellen till skrollen
             scrHanteraProjekt.setViewportView(tblHanteraProjekt);
@@ -210,32 +210,53 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
         
         try{
             DefaultTableModel hanteraProjektModell = (DefaultTableModel) tblHanteraProjekt.getModel();
-            for(int index = 0; index < hanteraProjektModell.getRowCount(); index++){
-                String pid = hanteraProjektModell.getValueAt(index, 0).toString();
-                String projektnamn = hanteraProjektModell.getValueAt(index, 1).toString();
-                String startdatum = hanteraProjektModell.getValueAt(index, 2).toString();        
-                String slutdatum = hanteraProjektModell.getValueAt(index, 3).toString();                 
-                String kostnad = hanteraProjektModell.getValueAt(index, 4).toString();                               
-                String status = hanteraProjektModell.getValueAt(index, 5).toString();
-                String prioritet = hanteraProjektModell.getValueAt(index, 6).toString();
-                String projektchef = hanteraProjektModell.getValueAt(index, 7).toString();
-                String land = hanteraProjektModell.getValueAt(index, 8).toString();
-                String partner = hanteraProjektModell.getValueAt(index, 9).toString();
-            
-            
-            String updateQuery = "UPDATE projekt SET projektnamn = '" + projektnamn
-                    + "', startdatum = '" + startdatum
-                    + "', slutdatum = '" + slutdatum
-                    + "', kostnad = '" + kostnad
-                    + "', status = '" + status
-                    + "', prioritet = '" + prioritet
-                    + "', projektchef = '" + projektchef
-                    + "', land = '" + land
-                    + "', partner = '" + partner + "' "
-                    + " WHERE pid = '" + pid + "'";
+                for(int index = 0; index < hanteraProjektModell.getRowCount(); index++){
+                    int pid = Integer.parseInt(hanteraProjektModell.getValueAt(index, 0).toString()); // Detta är projekt ID
                     
-                    idb.update(updateQuery);
-            } 
+                for(int kolumnIndex = 1; kolumnIndex < hanteraProjektModell.getColumnCount(); kolumnIndex++){ // Iterera över kolumnerna
+                    String kolumnNamn = hanteraProjektModell.getColumnName(kolumnIndex);
+                    String kolumnVarde = hanteraProjektModell.getValueAt(index, kolumnIndex).toString();
+
+                    String updateQuery = "";
+
+                    if(kolumnNamn.equals("Partner ID")){ // Uppdatera partner tabellen
+                        updateQuery = "UPDATE projekt_partner SET partner_pid = " + kolumnVarde + " WHERE pid = " + pid;
+                } else { // Uppdatera projekt tabellen
+                    updateQuery = "UPDATE project SET " + kolumnNamn + " = '" + kolumnVarde + "' WHERE pid = " + pid;
+                }
+                 System.out.println("SQL QUERY: " + updateQuery); // För att kunna se sql
+                 idb.update(updateQuery);  
+}
+}
+
+//        try{
+//            DefaultTableModel hanteraProjektModell = (DefaultTableModel) tblHanteraProjekt.getModel();
+//            for(int index = 0; index < hanteraProjektModell.getRowCount(); index++){
+//                int pid = Integer.parseInt(hanteraProjektModell.getValueAt(index, 0).toString());
+//                String projektnamn = hanteraProjektModell.getValueAt(index, 1).toString();
+//                String startdatum = hanteraProjektModell.getValueAt(index, 2).toString();        
+//                String slutdatum = hanteraProjektModell.getValueAt(index, 3).toString();                 
+//                String kostnad = hanteraProjektModell.getValueAt(index, 4).toString();                               
+//                String status = hanteraProjektModell.getValueAt(index, 5).toString();
+//                String prioritet = hanteraProjektModell.getValueAt(index, 6).toString();
+//                String projektchef = hanteraProjektModell.getValueAt(index, 7).toString();
+//                String land = hanteraProjektModell.getValueAt(index, 8).toString();
+//                String partner = hanteraProjektModell.getValueAt(index, 9).toString();
+            
+            
+//            String updateQuery = "UPDATE projekt SET projektnamn = '" + projektnamn
+//                    + "', startdatum = '" + startdatum
+//                    + "', slutdatum = '" + slutdatum
+//                    + ", kostnad = " + kostnad
+//                    + "', status = '" + status
+//                    + "', prioritet = '" + prioritet
+//                    + "', projektchef = '" + projektchef
+//                    + "', land = '" + land
+//                    + "', partner = '" + partner + "'"
+//                    + " WHERE pid = '" + pid + "'";
+                    
+
+             
             JOptionPane.showMessageDialog(this, "Projekt har uppdaterasts!", "Info", JOptionPane.INFORMATION_MESSAGE);
 
         }catch(InfException ex){
@@ -257,27 +278,32 @@ public class HanteraProjektProjektledare extends javax.swing.JFrame {
            return;
         }
         
-        // Lokala variabler för att lagra pågående och avslutade projekten
-        int projektAvsSumKost = 0;
-        int projektPagSumKost= 0;
+        // Lokala variabler för att lagra pågående, avslutade och planerade projekten
+        double projektAvsSumKost = 0.0;
+        double projektPagSumKost= 0.0;
+        double projektPlanSumKost = 0.0;
         
         if(statistikOverProjekten != null) {
             for(HashMap<String, String> radenIListan : statistikOverProjekten){
                 String status = radenIListan.get("status");
                 // Använder Integrer.parseInt eftersom det är ett kommando som gör String ifrån HashMapen till ett int värde som vi behöver för att räkna 
-                int kostnad = Integer.parseInt(radenIListan.get("total_kostnad")); 
+               double kostnad = Double.parseDouble(radenIListan.get("total_kostnad")); 
+             //   int kostnad = (totalKostnadStrang != null && !totalKostnadStrang.isEmpty()) ? Integer.parseInt(totalKostnadStrang) : 0;
                 
                 if("Avslutat".equalsIgnoreCase(status)){
                     projektAvsSumKost = projektAvsSumKost + kostnad;
                 } else if ("Pågående".equalsIgnoreCase(status)){
                     projektPagSumKost = projektPagSumKost + kostnad;
+                } else if ("Planerat".equalsIgnoreCase(status)) {
+                    projektPlanSumKost = projektPlanSumKost + kostnad;
                 }
             }
         }
         // Visa statistiken i en ruta som poppar upp JOptionPane.showMessageDialog
         // " kr\n" är en radbrytningför Java swing 
         JOptionPane.showMessageDialog(this, "Total kostnad avslutade projekt: " + projektAvsSumKost + "kr\n" +
-                "Total kostnad pågående projekt: " + projektPagSumKost + " kr", "Projektstatistik", JOptionPane.INFORMATION_MESSAGE);
+                "Total kostnad pågående projekt: " + projektPagSumKost + "kr\n" + 
+                "Total kostnad planerade projekt: " + projektPlanSumKost + " kr", "Projektstatistik", JOptionPane.INFORMATION_MESSAGE);
         
     }//GEN-LAST:event_btnSeProjektStatistikKostnadActionPerformed
 

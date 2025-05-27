@@ -153,16 +153,16 @@ public class MinaUppgifterPopup extends javax.swing.JFrame {
     private void btnSparaUppgifterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaUppgifterActionPerformed
         // TODO add your handling code here:
         // Valideringsklass
-        if(Validation.okTelefon(txtTelefon.getText()) && 
-                Validation.okEpost(txtEpost.getText()) &&
-                Validation.okNullEllerTom(txtAdress.getText()) &&
-                Validation.okNullEllerTom(txtFornamn.getText()) &&
-                Validation.okNullEllerTom(txtEfternamn.getText())) {
-    } else {
+        if(!Validation.okTelefon(txtTelefon.getText().trim()) || 
+                !Validation.okEpost(txtEpost.getText().trim()) ||
+                !Validation.okNullEllerTom(txtAdress.getText().trim()) ||
+                !Validation.okNullEllerTom(txtFornamn.getText().trim()) ||
+                !Validation.okNullEllerTom(txtEfternamn.getText().trim())) {
+     
             JOptionPane.showMessageDialog(this, "Felaktiga inmatningar!", "Validering fel", JOptionPane.ERROR_MESSAGE);
             return; // Om metoden inte fungerar så avbryts den
-        }
         
+        }
         try{
             String query = "UPDATE anstalld SET fornamn = '" + txtFornamn.getText() + "', efternamn = '" + txtEfternamn.getText() +
                     "', adress = '" + txtAdress.getText() + "', epost = '" + txtEpost.getText() + "', telefon = '" + txtTelefon.getText() +

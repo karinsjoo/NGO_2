@@ -28,12 +28,17 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel1" min="-2" pref="60" max="-2" attributes="0"/>
                   <Component id="btnVisaProjektOversikt" max="32767" attributes="0"/>
-                  <Component id="btnHallbarhetsMal" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnHallbarhetsMal" alignment="0" pref="125" max="32767" attributes="0"/>
                   <Component id="btnMinaUppgifter" max="32767" attributes="0"/>
                   <Component id="btnAvdelning" max="32767" attributes="0"/>
-                  <Component id="btnHanteraAnstallda" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="299" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnHanteraPartner" max="32767" attributes="0"/>
+                  <Component id="btnHanteraAnstallda" max="32767" attributes="0"/>
+                  <Component id="btnHanteraLand" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="87" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,16 +48,23 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-              <Component id="btnVisaProjektOversikt" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnVisaProjektOversikt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnHanteraPartner" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnHallbarhetsMal" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnHallbarhetsMal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnHanteraAnstallda" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnMinaUppgifter" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnMinaUppgifter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnHanteraLand" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnAvdelning" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnHanteraAnstallda" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="96" max="32767" attributes="0"/>
+              <EmptySpace pref="137" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,10 +112,26 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraAnstallda">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hantera anst&#xe4;llda"/>
+        <Property name="text" type="java.lang.String" value="Hantera Anst&#xe4;llda"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraAnstalldaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnHanteraPartner">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hantera Partner"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraPartnerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnHanteraLand">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hantera Land"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraLandActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -29,6 +29,15 @@ public class AnstalldHantera extends javax.swing.JFrame {
         this.anvandareBehorighet = anvandareBehorighet;
         fyllAnstalldaLista();
         fyllAvdelningar();
+        //Döljer fält eftersom JOptionpane andvänds
+        lblFornamn.setVisible(false);
+        txtFornamn.setVisible(false);
+        lblEfternamn.setVisible(false);
+        txtEfternamn.setVisible(false);
+        lblEpost.setVisible(false);
+        txtEpost.setVisible(false);
+        lblTelefon.setVisible(false);
+        txtTelefon.setVisible(false);
     }
     
     private void fyllAnstalldaLista() {
@@ -133,6 +142,7 @@ public class AnstalldHantera extends javax.swing.JFrame {
 
         cbRoll.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Handläggare", "Admin" }));
 
+        lblRubrik.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblRubrik.setText("Hantera anställda");
 
         btnLaggTill.setText("Lägg till anställd");
@@ -190,7 +200,7 @@ public class AnstalldHantera extends javax.swing.JFrame {
                                 .addComponent(btnLaggTill)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +218,7 @@ public class AnstalldHantera extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(lblEpost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(btnTaBort))

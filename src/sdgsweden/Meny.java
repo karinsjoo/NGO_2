@@ -152,6 +152,8 @@ public class Meny extends javax.swing.JFrame {
         btnMinaUppgifter = new javax.swing.JButton();
         btnAvdelning = new javax.swing.JButton();
         btnHanteraAnstallda = new javax.swing.JButton();
+        btnHanteraPartner = new javax.swing.JButton();
+        btnHanteraLand = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,10 +188,24 @@ public class Meny extends javax.swing.JFrame {
             }
         });
 
-        btnHanteraAnstallda.setText("Hantera anställda");
+        btnHanteraAnstallda.setText("Hantera Anställda");
         btnHanteraAnstallda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHanteraAnstalldaActionPerformed(evt);
+            }
+        });
+
+        btnHanteraPartner.setText("Hantera Partner");
+        btnHanteraPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHanteraPartnerActionPerformed(evt);
+            }
+        });
+
+        btnHanteraLand.setText("Hantera Land");
+        btnHanteraLand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHanteraLandActionPerformed(evt);
             }
         });
 
@@ -202,11 +218,15 @@ public class Meny extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVisaProjektOversikt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnHallbarhetsMal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHallbarhetsMal, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                     .addComponent(btnMinaUppgifter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnHanteraAnstallda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(299, Short.MAX_VALUE))
+                    .addComponent(btnAvdelning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(86, 86, 86)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnHanteraPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHanteraAnstallda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHanteraLand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,16 +234,20 @@ public class Meny extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(78, 78, 78)
-                .addComponent(btnVisaProjektOversikt)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVisaProjektOversikt)
+                    .addComponent(btnHanteraPartner))
                 .addGap(18, 18, 18)
-                .addComponent(btnHallbarhetsMal)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHallbarhetsMal)
+                    .addComponent(btnHanteraAnstallda))
                 .addGap(18, 18, 18)
-                .addComponent(btnMinaUppgifter)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMinaUppgifter)
+                    .addComponent(btnHanteraLand))
                 .addGap(18, 18, 18)
                 .addComponent(btnAvdelning)
-                .addGap(18, 18, 18)
-                .addComponent(btnHanteraAnstallda)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
@@ -254,6 +278,14 @@ public class Meny extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Endast administratörer har behörighet att hantera anställda.");
         }
     }//GEN-LAST:event_btnHanteraAnstalldaActionPerformed
+
+    private void btnHanteraPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraPartnerActionPerformed
+        new PartnerHantera(idb, anvandareBehorighet).setVisible(true);
+    }//GEN-LAST:event_btnHanteraPartnerActionPerformed
+
+    private void btnHanteraLandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraLandActionPerformed
+        new LandHantera(idb, anvandareBehorighet).setVisible(true);
+    }//GEN-LAST:event_btnHanteraLandActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,6 +326,8 @@ public class Meny extends javax.swing.JFrame {
     private javax.swing.JButton btnAvdelning;
     private javax.swing.JButton btnHallbarhetsMal;
     private javax.swing.JButton btnHanteraAnstallda;
+    private javax.swing.JButton btnHanteraLand;
+    private javax.swing.JButton btnHanteraPartner;
     private javax.swing.JButton btnMinaUppgifter;
     private javax.swing.JButton btnVisaProjektOversikt;
     private javax.swing.JLabel jLabel1;

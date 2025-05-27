@@ -92,6 +92,7 @@ public class HallbarhetsMal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstMal);
 
+        lblMal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblMal.setText("Hållbarhetsmål");
 
         btnStang.setText("Stäng");

@@ -77,6 +77,7 @@ public class MinaUppgifter extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblRubrik.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblRubrik.setText("Mina Uppgifter");
 
         lblFornamn.setText("Förnamn");
@@ -128,16 +129,14 @@ public class MinaUppgifter extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblEpost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(28, 28, 28)))
-                        .addGap(76, 76, 76)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtEfternamn, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                                    .addComponent(txtFornamn)
-                                    .addComponent(txtAvdelning))
-                                .addComponent(txtEpost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtTelefon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(357, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtEfternamn, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                .addComponent(txtFornamn)
+                                .addComponent(txtAvdelning))
+                            .addComponent(txtEpost, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(txtTelefon))))
+                .addContainerGap(349, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

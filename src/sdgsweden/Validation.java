@@ -34,7 +34,7 @@ public static boolean okEpost(String epost){
  * @return "true" om den är tom eller null, annars "false"
  */
 public static boolean okTelefon(String telefon){
-    return telefon.matches("\\d{7,15}"); // Tillåter 7 till 15 siffror
+    return telefon.matches("^\\d{3}-\\d{3}-\\d{4}$"); // Tillåter 7 till 15 siffror
 }
 
 /**

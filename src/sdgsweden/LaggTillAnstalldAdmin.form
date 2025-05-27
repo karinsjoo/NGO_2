@@ -26,35 +26,58 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="txtAvdelningLaggTill" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSlumpatLosenLaggTill" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txtAnstallningsdatumLaggTill" min="-2" pref="260" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblLaggTillNyAnstalld" min="-2" pref="249" max="-2" attributes="0"/>
-                              <EmptySpace pref="66" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="txtSlumpatLosenLaggTill" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                          <Component id="lblAnstallningsdatumLaggTill" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblAvdelningLaggTill" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblLosenordLaggTill" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="btnSlumpaNyttLosenord" min="-2" pref="177" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                          <Component id="btnSlumpaNyttLosenord" pref="177" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="txtTelefonLaggTill" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtEpostLaggTill" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtAdressLaggTill" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtEfternamnLaggTill" alignment="0" pref="260" max="32767" attributes="0"/>
-                          <Component id="txtFornamnLaggTill" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtAidLaggTill" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblLaggTillNyAnstalld" min="-2" pref="249" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtTelefonLaggTill" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtEpostLaggTill" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtAdressLaggTill" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtEfternamnLaggTill" alignment="0" pref="260" max="32767" attributes="0"/>
+                                  <Component id="txtFornamnLaggTill" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtAidLaggTill" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblAIDLaggTill" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFornamnLaggTill" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEfternamnLaggTill" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAdressLaggTill" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEpostLaggTill" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTelefonLaggTill" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="177" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,25 +87,54 @@
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="lblLaggTillNyAnstalld" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="txtAidLaggTill" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtAidLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAIDLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtFornamnLaggTill" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtFornamnLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFornamnLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtEfternamnLaggTill" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtEfternamnLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEfternamnLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtAdressLaggTill" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtAdressLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAdressLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtEpostLaggTill" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtEpostLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEpostLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtTelefonLaggTill" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtTelefonLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTelefonLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtAnstallningsdatumLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAnstallningsdatumLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtSlumpatLosenLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSlumpaNyttLosenord" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLosenordLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtAvdelningLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAvdelningLaggTill" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="44" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -143,6 +195,61 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSlumpaNyttLosenordActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAnstallningsdatumLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anst&#xe4;llningsdatum"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAvdelningLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Avdelning"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAIDLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="AID"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFornamnLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="F&#xf6;rnamn"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEfternamnLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Efternamn"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAdressLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adress"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEpostLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="E-post"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTelefonLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefon"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAnstallningsdatumLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anst&#xe4;llningsdatum"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLosenordLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xf6;senord"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAvdelningLaggTill">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Avdelning"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

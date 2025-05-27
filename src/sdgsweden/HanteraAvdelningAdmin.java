@@ -60,12 +60,12 @@ public class HanteraAvdelningAdmin extends javax.swing.JFrame {
     // Detta för att öppna den direkt när MinaProjektPopup öppnas
         try{
             // SQL fråga som hämtar ALLA projekt
-            String query = "SELECT namn, beskrivning, adress, epost, telefon, stad, chef "
+            String query = "SELECT avdid, namn, beskrivning, adress, epost, telefon, stad, chef "
                     + "FROM avdelning ";
             
             // Här skapas tabellen med tabellnamnen
             DefaultTableModel projektModellAdmin = new DefaultTableModel();
-            String [] kolumnNamn = {"Namn", "Beskrivning", "Adress", "E-post", "Telefon", "Stad","Chef"};
+            String [] kolumnNamn = {"Avdelning-ID", "Namn", "Beskrivning", "Adress", "E-post", "Telefon", "Stad","Chef"};
             projektModellAdmin.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
@@ -75,12 +75,12 @@ public class HanteraAvdelningAdmin extends javax.swing.JFrame {
                 // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
                 for(HashMap<String, String> hanteraAvdelningAdmin : avdelningAdmin){
                     projektModellAdmin.addRow(new Object []{
+                        hanteraAvdelningAdmin.get("avdid"),
                         hanteraAvdelningAdmin.get("namn"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
                         hanteraAvdelningAdmin.get("beskrivning"),
                         hanteraAvdelningAdmin.get("adress"),
                         hanteraAvdelningAdmin.get("epost"),
                         hanteraAvdelningAdmin.get("telefon"),
-                        hanteraAvdelningAdmin.get("status"),
                         hanteraAvdelningAdmin.get("stad"),
                         hanteraAvdelningAdmin.get("chef"),
 
@@ -168,21 +168,23 @@ public class HanteraAvdelningAdmin extends javax.swing.JFrame {
         try{
             DefaultTableModel avdelningModellAdmin = (DefaultTableModel) tblHanteraAvdelningAdmin.getModel();
             for(int index = 0; index < avdelningModellAdmin.getRowCount(); index++){
-                String namn = avdelningModellAdmin.getValueAt(index, 0).toString();
-                String beskrivning = avdelningModellAdmin.getValueAt(index, 1).toString();        
-                String adress = avdelningModellAdmin.getValueAt(index, 2).toString();        
-                String epost = avdelningModellAdmin.getValueAt(index, 3).toString();                               
-                String telefon = avdelningModellAdmin.getValueAt(index, 4).toString();
-                String stad = avdelningModellAdmin.getValueAt(index, 5).toString();      
-                String chef = avdelningModellAdmin.getValueAt(index, 6).toString(); 
+                int avdid = Integer.parseInt(avdelningModellAdmin.getValueAt(index, 0).toString());
+                String namn = avdelningModellAdmin.getValueAt(index, 1).toString();
+                String beskrivning = avdelningModellAdmin.getValueAt(index, 2).toString();        
+                String adress = avdelningModellAdmin.getValueAt(index, 3).toString();        
+                String epost = avdelningModellAdmin.getValueAt(index, 4).toString();                               
+                String telefon = avdelningModellAdmin.getValueAt(index, 5).toString();
+                String stad = avdelningModellAdmin.getValueAt(index, 6).toString();      
+                String chef = avdelningModellAdmin.getValueAt(index, 7).toString(); 
             
-            String updateQuery = "UPDATE projekt SET namn = '" + namn
+            String updateQuery = "UPDATE avdelning SET namn = '" + namn
                     + "', beskrivning = '" + beskrivning
                     + "', adress = '" + adress
                     + "', epost = '" + epost
                     + "', telefon = '" + telefon
                     + "', stad = '" + stad
-                    + "', chef = '" + chef;
+                    + "', chef = '" + chef
+                    + "' WHERE avdid = " + avdid;
                     
                     idb.update(updateQuery);
             } 

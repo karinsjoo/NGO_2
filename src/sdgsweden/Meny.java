@@ -42,7 +42,7 @@ public class Meny extends javax.swing.JFrame {
         this.aid = aid;
         
         initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
-        // setSize(1250, 1750); // Storlek på fönstret
+         setSize(900, 600); // Storlek på fönstret
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen
         setLayout(null); // Sätter hela layouten i mitten av rutan
         

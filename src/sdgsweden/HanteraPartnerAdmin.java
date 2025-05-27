@@ -61,12 +61,12 @@ public class HanteraPartnerAdmin extends javax.swing.JFrame {
     // Detta för att öppna den direkt när MinaProjektPopup öppnas
         try{
             // SQL fråga som hämtar ALLA projekt
-            String query = "SELECT namn, kontaktperson, kontaktepost, telefon, adress, branch, stad "
+            String query = "SELECT pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad "
                     + "FROM partner ";
             
             // Här skapas tabellen med tabellnamnen
             DefaultTableModel projektModellAdmin = new DefaultTableModel();
-            String [] kolumnNamn = {"Namn", "Kontaktperson", "E-post", "Telefon", "Adress", "Branch","Stad"};
+            String [] kolumnNamn = {"Partner-ID", "Namn", "Kontaktperson", "E-post", "Telefon", "Adress", "Branch","Stad"};
             projektModellAdmin.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
@@ -76,6 +76,7 @@ public class HanteraPartnerAdmin extends javax.swing.JFrame {
                 // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
                 for(HashMap<String, String> hanteraPartnerAdmin : partnerAdmin){
                     projektModellAdmin.addRow(new Object []{
+                        hanteraPartnerAdmin.get("pid"),
                         hanteraPartnerAdmin.get("namn"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
                         hanteraPartnerAdmin.get("kontaktperson"),
                         hanteraPartnerAdmin.get("kontaktepost"),
@@ -169,25 +170,28 @@ public class HanteraPartnerAdmin extends javax.swing.JFrame {
         try{
             DefaultTableModel partnerModellAdmin = (DefaultTableModel) tblHanteraPartnerAdmin.getModel();
             for(int index = 0; index < partnerModellAdmin.getRowCount(); index++){
-                String namn = partnerModellAdmin.getValueAt(index, 0).toString();
-                String kontaktperson = partnerModellAdmin.getValueAt(index, 1).toString();        
-                String kontaktepost = partnerModellAdmin.getValueAt(index, 2).toString();        
-                String telefon = partnerModellAdmin.getValueAt(index, 3).toString();                               
-                String adress = partnerModellAdmin.getValueAt(index, 4).toString();
-                String branch = partnerModellAdmin.getValueAt(index, 5).toString();      
-                String stad = partnerModellAdmin.getValueAt(index, 6).toString(); 
+                int pid = Integer.parseInt(partnerModellAdmin.getValueAt(index, 0).toString());
+                String namn = partnerModellAdmin.getValueAt(index, 1).toString();
+                String kontaktperson = partnerModellAdmin.getValueAt(index, 2).toString();        
+                String kontaktepost = partnerModellAdmin.getValueAt(index, 3).toString();        
+                String telefon = partnerModellAdmin.getValueAt(index, 4).toString();                               
+                String adress = partnerModellAdmin.getValueAt(index, 5).toString();
+                String branch = partnerModellAdmin.getValueAt(index, 6).toString();      
+                String stad = partnerModellAdmin.getValueAt(index, 7).toString(); 
             
-            String updateQuery = "UPDATE projekt SET namn = '" + namn
+            String updateQuery = "UPDATE partner SET namn = '" + namn
                     + "', kontaktperson = '" + kontaktperson
                     + "', kontaktepost = '" + kontaktepost
                     + "', telefon = '" + telefon
                     + "', adress = '" + adress
                     + "', branch = '" + branch
-                    + "', stad = '" + stad;
-                    
+                    + "', stad = '" + stad
+                    + "' WHERE pid = " + pid;
+            
+                    System.out.println("SQL QUERY: " + updateQuery);        
                     idb.update(updateQuery);
             } 
-            JOptionPane.showMessageDialog(this, "Partner har uppdaterasts!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Partner har uppdaterats!", "Info", JOptionPane.INFORMATION_MESSAGE);
 
         }catch(InfException ex){
             JOptionPane.showMessageDialog(this, "Fel vid uppdatering av partner" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);

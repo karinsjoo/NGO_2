@@ -61,21 +61,22 @@ public class HanteraLandAdmin extends javax.swing.JFrame {
     // Detta för att öppna den direkt när MinaProjektPopup öppnas
         try{
             // SQL fråga som hämtar ALLA projekt
-            String query = "SELECT namn, sprak, valuta, tidszon, politisk_struktur, ekonomi "
+            String query = "SELECT lid, namn, sprak, valuta, tidszon, politisk_struktur, ekonomi "
                     + "FROM land ";
             
             // Här skapas tabellen med tabellnamnen
             DefaultTableModel projektModellAdmin = new DefaultTableModel();
-            String [] kolumnNamn = {"Namn", "Språk", "Valuta", "Tidszon", "Politisk struktur", "Ekonomi"};
+            String [] kolumnNamn = {"Land-ID", "Namn", "Språk", "Valuta", "Tidszon", "Politisk struktur", "Ekonomi"};
             projektModellAdmin.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
             ArrayList<HashMap<String, String>> landAdmin = idb.fetchRows(query);
             
-            if(landAdmin != null){ // Använder oss inte av Valideringsklassen här. Skulle behövt iterera igenom varje rad
+            if(landAdmin != null && !landAdmin.isEmpty()){ // Använder oss inte av Valideringsklassen här. Skulle behövt iterera igenom varje rad
                 // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
                 for(HashMap<String, String> hanteraPartnerAdmin : landAdmin){
                     projektModellAdmin.addRow(new Object []{
+                        hanteraPartnerAdmin.get("lid"),
                         hanteraPartnerAdmin.get("namn"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
                         hanteraPartnerAdmin.get("sprak"),
                         hanteraPartnerAdmin.get("valuta"),
@@ -164,28 +165,30 @@ public class HanteraLandAdmin extends javax.swing.JFrame {
 
     private void btnSparaAndringarHanteraLandAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAndringarHanteraLandAdminActionPerformed
         // TODO add your handling code here:
-                // TODO add your handling code here:
                             
         try{
             DefaultTableModel landModellAdmin = (DefaultTableModel) tblHanteraLandAdmin.getModel();
             for(int index = 0; index < landModellAdmin.getRowCount(); index++){
-                String namn = landModellAdmin.getValueAt(index, 0).toString();
-                String sprak = landModellAdmin.getValueAt(index, 1).toString();        
-                String valuta = landModellAdmin.getValueAt(index, 2).toString();        
-                String tidszon = landModellAdmin.getValueAt(index, 3).toString();                               
-                String politisk_struktur = landModellAdmin.getValueAt(index, 4).toString();
-                String ekonomi = landModellAdmin.getValueAt(index, 5).toString();      
+                int lid = Integer.parseInt(landModellAdmin.getValueAt(index, 0).toString());
+                String namn = landModellAdmin.getValueAt(index, 1).toString();
+                String sprak = landModellAdmin.getValueAt(index, 2).toString();        
+                String valuta = landModellAdmin.getValueAt(index, 3).toString();        
+                String tidszon = landModellAdmin.getValueAt(index, 4).toString();                               
+                String politisk_struktur = landModellAdmin.getValueAt(index, 5).toString();
+                String ekonomi = landModellAdmin.getValueAt(index, 6).toString();      
             
             String updateQuery = "UPDATE land SET namn = '" + namn
                     + "', sprak = '" + sprak
                     + "', valuta = '" + valuta
                     + "', tidszon = '" + tidszon
                     + "', politisk_struktur = '" + politisk_struktur
-                    + "', ekonomi = '" + ekonomi;
+                    + "', ekonomi = '" + ekonomi
+                    + "' WHERE lid = " + lid;
                     
+                    System.out.println("SQL QUERY: " + updateQuery);
                     idb.update(updateQuery);
             } 
-            JOptionPane.showMessageDialog(this, "Land har uppdaterasts!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Land har uppdaterats!", "Info", JOptionPane.INFORMATION_MESSAGE);
 
         }catch(InfException ex){
             JOptionPane.showMessageDialog(this, "Fel vid uppdatering av länder" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);

@@ -46,10 +46,9 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
         btnSok.setVisible(false);
 
 // Dölj felmeddelande
-        lblFelDatumFormat.setVisible(false);
-
+        
         lblFelDatumFormat.setText(anvandareBehorighet.aId + anvandareBehorighet.avdelningId + anvandareBehorighet.isHandlaggare + anvandareBehorighet.isAdmin + anvandareBehorighet.isProjektChef);
-        lblFelDatumFormat.setVisible(true);
+        lblFelDatumFormat.setVisible(false);
         lblFrom.setVisible(false);//Sätter dessa datumfält till false så att de inte syns från start
         txtFrom.setVisible(false);
         lblTo.setVisible(false);
@@ -275,7 +274,7 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
     }
 
     private void laggTillProjektLyssnare() {
-        lstProjekt.addListSelectionListener(e -> {
+        lstProjekt.addListSelectionListener(e -> {//lambda, används i listor
             if (!e.getValueIsAdjusting()) {
                 String valtProjektnamn = lstProjekt.getSelectedValue();
                 if (valtProjektnamn != null) {
@@ -324,6 +323,7 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
         cbStatusFilter = new javax.swing.JComboBox<>();
         lblFiltrerastatus = new javax.swing.JLabel();
         btnVisaStatistik = new javax.swing.JButton();
+        btnStang = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -384,6 +384,13 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
             }
         });
 
+        btnStang.setText("Stäng");
+        btnStang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStangActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -398,21 +405,24 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
                             .addComponent(lblFiltrerastatus, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbStatusFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDatumProjekt)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblFrom)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSok)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnStang)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnDatumProjekt)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblFrom)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblTo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnSok)))
                                 .addGap(82, 82, 82)
-                                .addComponent(lblFelDatumFormat, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbStatusFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblFelDatumFormat, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(btnVisaStatistik, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(150, Short.MAX_VALUE))
         );
@@ -437,7 +447,9 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
                 .addComponent(btnVisaStatistik)
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(btnStang)
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -493,7 +505,7 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
         for (HashMap<String, String> rad : resultat) {
             String kostnadStr = rad.get("kostnad");
             if (kostnadStr != null && kostnadStr.trim().matches("\\d+(\\.\\d+)?")) {
-                totalKostnad += Double.parseDouble(kostnadStr.trim());
+                totalKostnad += Double.parseDouble(kostnadStr.trim());//Omvandlar kostnaden till double
                 antalProjekt++;
             }
         }
@@ -512,6 +524,10 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnVisaStatistikActionPerformed
+
+    private void btnStangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStangActionPerformed
+       dispose();
+    }//GEN-LAST:event_btnStangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -552,6 +568,7 @@ public class ProjektOversiktV2 extends javax.swing.JFrame {
     private javax.swing.JButton btnAvdProjekt;
     private javax.swing.JButton btnDatumProjekt;
     private javax.swing.JButton btnSok;
+    private javax.swing.JButton btnStang;
     private javax.swing.JButton btnVisaStatistik;
     private javax.swing.JComboBox<String> cbStatusFilter;
     private javax.swing.JScrollPane jScrollPane1;

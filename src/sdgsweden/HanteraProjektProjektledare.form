@@ -65,7 +65,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblRubrikHanteraProjekt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mina projekt och projektpartners"/>
+        <Property name="text" type="java.lang.String" value="Mina projekt och projektstatistik"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSparaAndringarHanteraProjekt">

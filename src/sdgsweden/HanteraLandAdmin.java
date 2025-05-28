@@ -177,6 +177,9 @@ public class HanteraLandAdmin extends javax.swing.JFrame {
                 String politisk_struktur = landModellAdmin.getValueAt(index, 5).toString();
                 String ekonomi = landModellAdmin.getValueAt(index, 6).toString();      
             
+                // Validering
+                
+                
             String updateQuery = "UPDATE land SET namn = '" + namn
                     + "', sprak = '" + sprak
                     + "', valuta = '" + valuta

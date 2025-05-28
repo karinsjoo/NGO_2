@@ -1,0 +1,226 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package sdgsweden;
+
+import java.awt.Dimension;
+import java.util.ArrayList;
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
+import javax.swing.table.TableRowSorter;
+
+/**
+ *
+ * @author erikaekholm
+ */
+public class HanteraPartnerProjektledare extends javax.swing.JFrame {
+    private final InfDB idb;
+    private final String aid;
+    
+    /**
+     * Creates new form HanteraPartnerProjektledare
+     * @param idb
+     * @param aid
+     */
+    public HanteraPartnerProjektledare(InfDB idb, String aid) {
+        this.idb = idb;
+        this.aid = aid;
+        initComponents();
+        setLocationRelativeTo(null); // Fönstret hamnar i mitten av dataskärmen
+        laddaHanteraPartnerProjektledare(); // Öppnar tabellen direkt när konstruktorn körs och objektet skapas
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Stänger MinaUppgifterPopup när man trycker på krysset i rutan utan att stänga ner hela programmet
+        
+        // Tabell - höjden anpassas efter antal rader som laddas för användaren
+        int antalRader = tblHanteraPartnerProjektledare.getRowCount();
+        int radHojden = tblHanteraPartnerProjektledare.getRowHeight();
+        int totalHojden = antalRader * radHojden;
+        
+        // Tabell - bredden anpassas efter en satt bredd och antal kolumner
+        int antalKolumner = tblHanteraPartnerProjektledare.getColumnCount();
+        int kolumnBredden = 150; // Den satta bredden varje kolumn får, kommer klippa värdet
+        int totalaBredden = antalKolumner * kolumnBredden;
+        
+        // Ställer in tabellen efter storleken på anpassningarna ovanför
+        tblHanteraPartnerProjektledare.setPreferredSize(new Dimension(totalaBredden, totalHojden));
+        tblHanteraPartnerProjektledare.revalidate();
+        
+        // Här kan man sortera på värdena i kolumnerna
+        DefaultTableModel projektModell = (DefaultTableModel) tblHanteraPartnerProjektledare.getModel();
+        TableRowSorter<DefaultTableModel> tabellSortering = new TableRowSorter<>(projektModell);
+        tblHanteraPartnerProjektledare.setRowSorter(tabellSortering);
+    }
+    
+    public void laddaHanteraPartnerProjektledare(){
+    // Detta för att öppna den direkt när MinaProjektPopup öppnas
+        try{
+            // SQL fråga som hämtar ALLA projekt
+            String query = "SELECT DISTINCT projekt_partner.pid, projekt_partner.partner_pid "
+                    + "FROM projekt_partner "
+                    + "JOIN projekt ON projekt_partner.pid = projekt.pid " // Kopplar projektchefens aid till projektet
+                    + "WHERE projekt.projektchef = " + aid;
+            
+            // Här skapas tabellen med tabellnamnen
+            DefaultTableModel projektModellAdmin = new DefaultTableModel();
+            String [] kolumnNamn = {"Projekt-ID", "Partner-ID"};
+            projektModellAdmin.setColumnIdentifiers(kolumnNamn);
+            
+            // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
+            ArrayList<HashMap<String, String>> projektPartnerProjektledare = idb.fetchRows(query);
+            
+            if(projektPartnerProjektledare != null && !projektPartnerProjektledare.isEmpty()){ // Använder oss inte av Valideringsklassen här. Skulle behövt iterera igenom varje rad
+                // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
+                for(HashMap<String, String> tblHanteraPartnerProjektledare : projektPartnerProjektledare){
+                    projektModellAdmin.addRow(new Object []{
+                        tblHanteraPartnerProjektledare.get("pid"),
+                        tblHanteraPartnerProjektledare.get("partner_pid"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
+
+
+                    });
+                }
+            } else { // Om projektPartnerProjektledare är null eller tom
+                JOptionPane.showMessageDialog(this, "Ingen data hittades kring Projekt ID och Partner ID", "Info", JOptionPane.INFORMATION_MESSAGE);
+            }
+            // Laddar upp anvandarProjekt till tabellen tblMinaProjekt
+            tblHanteraPartnerProjektledare.setModel(projektModellAdmin);
+            
+    }catch(InfException ex){
+            System.out.println();
+            JOptionPane.showMessageDialog(this, "Fel vid hämtning av Projekt ID och Partner ID" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+            }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        scrHanteraPartnerProjektledare = new javax.swing.JScrollPane();
+        tblHanteraPartnerProjektledare = new javax.swing.JTable();
+        lblHanteraPartnerProjektledare = new javax.swing.JLabel();
+        btnHanteraPartnerProjektledare = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tblHanteraPartnerProjektledare.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Projekt ID", "Partner ID"
+            }
+        ));
+        scrHanteraPartnerProjektledare.setViewportView(tblHanteraPartnerProjektledare);
+
+        lblHanteraPartnerProjektledare.setText("Mina Partners och deras tillhörande projekt");
+
+        btnHanteraPartnerProjektledare.setText("Spara Ändringar");
+        btnHanteraPartnerProjektledare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHanteraPartnerProjektledareActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnHanteraPartnerProjektledare)
+                    .addComponent(lblHanteraPartnerProjektledare, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                    .addComponent(scrHanteraPartnerProjektledare, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(lblHanteraPartnerProjektledare)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrHanteraPartnerProjektledare, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnHanteraPartnerProjektledare)
+                .addGap(15, 15, 15))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHanteraPartnerProjektledareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraPartnerProjektledareActionPerformed
+        // TODO add your handling code here:
+        
+                                    
+        try{
+            DefaultTableModel partnerModellProjektledare = (DefaultTableModel) tblHanteraPartnerProjektledare.getModel();
+            for(int index = 0; index < partnerModellProjektledare.getRowCount(); index++){
+                int pid = Integer.parseInt(partnerModellProjektledare.getValueAt(index, 0).toString());
+                int partner_pid = Integer.parseInt(partnerModellProjektledare.getValueAt(index, 1).toString());
+       
+            
+            String updateQuery = "UPDATE projekt_partner SET partner_pid = " + partner_pid
+                    + " WHERE partner_pid = " + pid;
+                    
+                    System.out.println("SQL QUERY: " + updateQuery);
+                    idb.update(updateQuery);
+            } 
+            JOptionPane.showMessageDialog(this, "Partner har uppdaterats!", "Info", JOptionPane.INFORMATION_MESSAGE);
+
+        }catch(InfException ex){
+            JOptionPane.showMessageDialog(this, "Fel vid uppdatering av partner till projekt" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+            }
+    }//GEN-LAST:event_btnHanteraPartnerProjektledareActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(HanteraPartnerProjektledare.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(HanteraPartnerProjektledare.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(HanteraPartnerProjektledare.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(HanteraPartnerProjektledare.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+             //   new HanteraPartnerProjektledare().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHanteraPartnerProjektledare;
+    private javax.swing.JLabel lblHanteraPartnerProjektledare;
+    private javax.swing.JScrollPane scrHanteraPartnerProjektledare;
+    private javax.swing.JTable tblHanteraPartnerProjektledare;
+    // End of variables declaration//GEN-END:variables
+}

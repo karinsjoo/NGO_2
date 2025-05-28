@@ -98,7 +98,7 @@ public class MenyHandlaggare extends javax.swing.JFrame {
             }
         });
 
-        btnAllaMal.setIcon(new javax.swing.ImageIcon("/Users/erikaekholm/Documents/GitHub/NGO_2/SUSDEVALL.jpg")); // NOI18N
+        btnAllaMal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdgsweden/SUSDEVALL.jpg"))); // NOI18N
         btnAllaMal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAllaMalActionPerformed(evt);

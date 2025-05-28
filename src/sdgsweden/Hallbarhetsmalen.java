@@ -74,7 +74,7 @@ public class Hallbarhetsmalen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblCirkelMal.setIcon(new javax.swing.ImageIcon("/Users/erikaekholm/Documents/GitHub/NGO_2/CirkelMal.png")); // NOI18N
+        lblCirkelMal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdgsweden/CirkelMal.png"))); // NOI18N
         lblCirkelMal.setText("jLabel1");
 
         lstHallbarhetsmal.setModel(new javax.swing.AbstractListModel<String>() {

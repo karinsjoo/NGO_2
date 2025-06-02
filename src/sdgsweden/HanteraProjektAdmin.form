@@ -25,25 +25,40 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSparaAndringarHanteraProjektAdmin" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="873" max="-2" attributes="0"/>
                   <Component id="lblAndraProjektdataAdmin" alignment="0" min="-2" pref="292" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnSparaAndringarHanteraProjektAdmin" max="32767" attributes="0"/>
+                          <Component id="btnTaBortProjekt" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jPanelLaggtillprojekt" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <EmptySpace pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="7" max="32767" attributes="0"/>
               <Component id="lblAndraProjektdataAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="403" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnSparaAndringarHanteraProjektAdmin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="293" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btnSparaAndringarHanteraProjektAdmin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnTaBortProjekt" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jPanelLaggtillprojekt" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -139,6 +154,202 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="H&#xe4;r kan du &#xe4;ndra projektdata som Admin"/>
       </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="jPanelLaggtillprojekt">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblStatus" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="lblStartdatum" min="-2" pref="69" max="-2" attributes="0"/>
+                      <Component id="lblProjektnamn" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="txtStartdatum" min="-2" pref="96" max="-2" attributes="0"/>
+                      <Component id="txtProjektnamn" min="-2" pref="96" max="-2" attributes="0"/>
+                      <Component id="txtStatus" min="-2" pref="96" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="lblProjektchef" min="-2" pref="76" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtProjektchef" min="-2" pref="96" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblBeskrivning" min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="lblSlutdatum" pref="91" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtSlutdatum" min="-2" pref="96" max="-2" attributes="0"/>
+                              <Component id="txtBeskrivning" min="-2" pref="96" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblKostnad" pref="57" max="32767" attributes="0"/>
+                      <Component id="lblPrioritet" max="32767" attributes="0"/>
+                      <Component id="lblLand" min="-2" pref="37" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="txtLand" min="-2" pref="96" max="-2" attributes="0"/>
+                          <EmptySpace pref="32" max="32767" attributes="0"/>
+                          <Component id="btnLaggTillProjekt" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtPrioritet" min="-2" pref="96" max="-2" attributes="0"/>
+                              <Component id="txtKostnad" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Component id="lblRubriklaggtill" min="-2" pref="168" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtKostnad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblKostnad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblSlutdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSlutdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPrioritet" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPrioritet" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtStartdatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblProjektchef" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtProjektchef" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtLand" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnLaggTillProjekt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="lblRubriklaggtill" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtBeskrivning" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBeskrivning" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtProjektnamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblProjektnamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblProjektnamn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Projektnamn"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblStartdatum">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Startdatum"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblStatus">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Status"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblBeskrivning">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Beskrivning"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblSlutdatum">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Slutdatum"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblProjektchef">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Projektchef"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblKostnad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kostnad"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPrioritet">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Prio"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblLand">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Land"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtProjektnamn">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtStartdatum">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtStatus">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtBeskrivning">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtSlutdatum">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtProjektchef">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtKostnad">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPrioritet">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtLand">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblRubriklaggtill">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="L&#xe4;gg till nytt projekt"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnLaggTillProjekt">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spara projekt"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillProjektActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnTaBortProjekt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort valt projekt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortProjektActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

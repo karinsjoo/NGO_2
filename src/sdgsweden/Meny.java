@@ -40,7 +40,7 @@ public class Meny extends javax.swing.JFrame {
     public Meny(InfDB idb, String aid) {
         this.idb = idb;
         this.aid = aid;
-        
+      
         initComponents(); // Skrivs här för att använda sig av NetBeans GUI komponenter
          setSize(900, 600); // Storlek på fönstret
         setLocationRelativeTo(null); // Fönstret hamnar i mitten av datorskärmen

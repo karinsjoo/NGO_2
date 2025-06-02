@@ -366,19 +366,44 @@ public class HanteraProjektAdmin extends javax.swing.JFrame {
                 String projektchef = txtProjektchef.getText().trim();
                 String land = txtLand.getText().trim();
 
-                //Validering inmatning
-                if (!Validation.okNullEllerTom(projektnamn)
-                        || !Validation.okNullEllerTom(beskrivning)
-                        || !Validation.okNullEllerTom(kostnad)
-                        || !Validation.okNullEllerTom(startdatum)
-                        || !Validation.okNullEllerTom(slutdatum)
-                        || !Validation.okNullEllerTom(prioritet)
-                        || !Validation.okNullEllerTom(status)
-                        || !Validation.okNullEllerTom(projektchef)
-                        || !Validation.okNullEllerTom(land)) {
-                    JOptionPane.showMessageDialog(this, "Kontrollera att alla fält ifyllda korrekt.", "fel i inmatning", JOptionPane.WARNING_MESSAGE);
+                //Validering för inmatning med felmeddelanden
+                if (!Validation.okNullEllerTom(projektnamn)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Projektnamn' får inte vara tomt.");
                     return;
                 }
+                if (!Validation.okNullEllerTom(beskrivning)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Beskrivning' får inte vara tomt.");
+                    return;
+                }
+                if (!Validation.okNullEllerTom(kostnad)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Kostnad' får inte vara tomt.");
+                    return;
+                }
+                if (!Validation.okNullEllerTom(startdatum)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Startdatum' får inte vara tomt.");
+                    return;
+                }
+                if (!Validation.okNullEllerTom(slutdatum)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Slutdatum' får inte vara tomt.");
+                    return;
+                }
+                if (!Validation.okNullEllerTom(prioritet)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Prioritet' får inte vara tomt.");
+                    return;
+                }
+                if (!Validation.okNullEllerTom(status)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Status' får inte vara tomt.");
+                    return;
+                }
+                if (!Validation.okNullEllerTom(projektchef)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Projektchef' får inte vara tomt.");
+                    return;
+                }
+                if (!Validation.okNullEllerTom(land)) {
+                    JOptionPane.showMessageDialog(this, "Fältet 'Land' får inte vara tomt.");
+                    return;
+                }
+
                 //Skapar nytt pid utan att det behöver fyllas i, tar maxvärdet på befintliga och ökar värdet med 1. 
                 String nyttPid = idb.fetchSingle("SELECT MAX(pid) + 1 FROM projekt");
 

@@ -23,11 +23,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="scrHanteraPartnerAdmin" min="-2" pref="901" max="-2" attributes="0"/>
-                  <Component id="btnHanteraPartnerAdmin" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnHanteraPartnerAdmin" pref="142" max="32767" attributes="0"/>
+                          <Component id="btnTaBortPartner" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jPanelLaggTillPartner" max="32767" attributes="0"/>
+                  </Group>
                   <Component id="lblRubrikHanteraPartnerAdmin" alignment="0" min="-2" pref="355" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -37,13 +44,19 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="10" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="lblRubrikHanteraPartnerAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="scrHanteraPartnerAdmin" min="-2" pref="402" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnHanteraPartnerAdmin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Component id="scrHanteraPartnerAdmin" min="-2" pref="262" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jPanelLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="btnHanteraPartnerAdmin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnTaBortPartner" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -126,6 +139,190 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraPartnerAdminActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JPanel" name="jPanelLaggTillPartner">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblRubrikLaggTillPartner" min="-2" pref="159" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblKontaktperson" pref="80" max="32767" attributes="0"/>
+                              <Component id="lblEpost" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblStad" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblNamn" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="txtEpost" max="32767" attributes="0"/>
+                              <Component id="txtKontaktperson" max="32767" attributes="0"/>
+                              <Component id="txtNamn" max="32767" attributes="0"/>
+                              <Component id="txtStad" pref="92" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblBranch" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblAdress" min="-2" pref="81" max="-2" attributes="0"/>
+                                          <Component id="lblTelefon" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtTelefon" alignment="0" pref="90" max="32767" attributes="0"/>
+                                      <Component id="txtAdress" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtBranch" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblFormatTel" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnSparapartner" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblRubrikLaggTillPartner" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblFormatTel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblKontaktperson" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtKontaktperson" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblBranch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEpost" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBranch" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblStad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtStad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="26" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnSparapartner" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblRubrikLaggTillPartner">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="L&#xe4;gg till ny partner"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblNamn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Namn"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblKontaktperson">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kontaktperson"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblEpost">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="E-post"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblStad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Stad"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTelefon">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Telefon"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAdress">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Adress"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblBranch">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Branch"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNamn">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtKontaktperson">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEpost">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtStad">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTelefon">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtAdress">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtBranch">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnSparapartner">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spara tillagd partner"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparapartnerActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblFormatTel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="000-000-0000"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnTaBortPartner">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort vald partner"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaBortPartnerActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

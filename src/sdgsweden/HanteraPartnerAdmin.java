@@ -112,6 +112,25 @@ public class HanteraPartnerAdmin extends javax.swing.JFrame {
         tblHanteraPartnerAdmin = new javax.swing.JTable();
         lblRubrikHanteraPartnerAdmin = new javax.swing.JLabel();
         btnHanteraPartnerAdmin = new javax.swing.JButton();
+        jPanelLaggTillPartner = new javax.swing.JPanel();
+        lblRubrikLaggTillPartner = new javax.swing.JLabel();
+        lblNamn = new javax.swing.JLabel();
+        lblKontaktperson = new javax.swing.JLabel();
+        lblEpost = new javax.swing.JLabel();
+        lblStad = new javax.swing.JLabel();
+        lblTelefon = new javax.swing.JLabel();
+        lblAdress = new javax.swing.JLabel();
+        lblBranch = new javax.swing.JLabel();
+        txtNamn = new javax.swing.JTextField();
+        txtKontaktperson = new javax.swing.JTextField();
+        txtEpost = new javax.swing.JTextField();
+        txtStad = new javax.swing.JTextField();
+        txtTelefon = new javax.swing.JTextField();
+        txtAdress = new javax.swing.JTextField();
+        txtBranch = new javax.swing.JTextField();
+        btnSparapartner = new javax.swing.JButton();
+        lblFormatTel = new javax.swing.JLabel();
+        btnTaBortPartner = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,28 +156,150 @@ public class HanteraPartnerAdmin extends javax.swing.JFrame {
             }
         });
 
+        lblRubrikLaggTillPartner.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblRubrikLaggTillPartner.setText("Lägg till ny partner");
+
+        lblNamn.setText("Namn");
+
+        lblKontaktperson.setText("Kontaktperson");
+
+        lblEpost.setText("E-post");
+
+        lblStad.setText("Stad");
+
+        lblTelefon.setText("Telefon");
+
+        lblAdress.setText("Adress");
+
+        lblBranch.setText("Branch");
+
+        btnSparapartner.setText("Spara tillagd partner");
+        btnSparapartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSparapartnerActionPerformed(evt);
+            }
+        });
+
+        lblFormatTel.setText("000-000-0000");
+
+        javax.swing.GroupLayout jPanelLaggTillPartnerLayout = new javax.swing.GroupLayout(jPanelLaggTillPartner);
+        jPanelLaggTillPartner.setLayout(jPanelLaggTillPartnerLayout);
+        jPanelLaggTillPartnerLayout.setHorizontalGroup(
+            jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLaggTillPartnerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLaggTillPartnerLayout.createSequentialGroup()
+                        .addComponent(lblRubrikLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelLaggTillPartnerLayout.createSequentialGroup()
+                        .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblKontaktperson, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(lblEpost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblStad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblNamn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtEpost)
+                            .addComponent(txtKontaktperson)
+                            .addComponent(txtNamn)
+                            .addComponent(txtStad, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
+                        .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelLaggTillPartnerLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblBranch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtTelefon, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                    .addComponent(txtAdress)
+                                    .addComponent(txtBranch))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblFormatTel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLaggTillPartnerLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSparapartner)
+                                .addGap(172, 172, 172))))))
+        );
+        jPanelLaggTillPartnerLayout.setVerticalGroup(
+            jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLaggTillPartnerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRubrikLaggTillPartner)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNamn)
+                    .addComponent(lblTelefon)
+                    .addComponent(txtNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFormatTel))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblKontaktperson)
+                    .addComponent(lblAdress)
+                    .addComponent(txtKontaktperson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEpost)
+                    .addComponent(lblBranch)
+                    .addComponent(txtEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBranch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLaggTillPartnerLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelLaggTillPartnerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblStad)
+                            .addComponent(txtStad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(26, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLaggTillPartnerLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSparapartner)
+                        .addGap(17, 17, 17))))
+        );
+
+        btnTaBortPartner.setText("Ta bort vald partner");
+        btnTaBortPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortPartnerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(scrHanteraPartnerAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 901, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHanteraPartnerAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnHanteraPartnerAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(btnTaBortPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addComponent(jPanelLaggTillPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(lblRubrikHanteraPartnerAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblRubrikHanteraPartnerAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrHanteraPartnerAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnHanteraPartnerAdmin)
-                .addGap(24, 24, 24))
+                .addComponent(scrHanteraPartnerAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnHanteraPartnerAdmin)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTaBortPartner))))
         );
 
         pack();
@@ -198,6 +339,111 @@ public class HanteraPartnerAdmin extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btnHanteraPartnerAdminActionPerformed
 
+    private void btnSparapartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparapartnerActionPerformed
+        //För att lägga till ny partner
+                try{
+                String namn = txtNamn.getText().trim();
+                String kontaktperson = txtKontaktperson.getText().trim();
+                String epost = txtEpost.getText().trim();
+                String telefon = txtTelefon.getText().trim();
+                String adress = txtAdress.getText().trim();
+                String branch = txtBranch.getText().trim();
+                String stad = txtStad.getText().trim();
+               
+               
+                if (!Validation.okNullEllerTom(namn)) {
+                        JOptionPane.showMessageDialog(this, "Fältet 'namn' saknas eller är ogiltigt.");
+                        return;
+                    }
+                    if (!Validation.okNullEllerTom(kontaktperson)) {
+                        JOptionPane.showMessageDialog(this, "Fältet 'kontaktperson' saknas eller är ogiltigt.");
+                        return;
+                    }
+                    if (!Validation.okEpost(epost)) {
+                        JOptionPane.showMessageDialog(this, "Ogiltig e-postadress.");
+                        return;
+                    }
+                    if (!Validation.okTelefon(telefon)) {
+                        JOptionPane.showMessageDialog(this, "Ogiltigt telefonnummer. Exempel: 070-123-4567");
+                        return;
+                    }
+                    if (!Validation.okNullEllerTom(adress)) {
+                        JOptionPane.showMessageDialog(this, "Fältet 'adress' saknas eller är ogiltigt.");
+                        return;
+                    }
+                    if (!Validation.okNullEllerTom(branch)) {
+                        JOptionPane.showMessageDialog(this, "Fältet 'branch' saknas eller är ogiltigt.");
+                        return;
+                    }
+                    if (!Validation.okNullEllerTom(stad)) {
+                        JOptionPane.showMessageDialog(this, "Fältet 'stad' saknas eller är ogiltigt.");
+                        return;
+                    }
+                   
+                    // Kontrollera att stad är ett tal
+                    try {
+                        Integer.parseInt(stad);
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(this, "Stad måste vara ett heltal (t.ex. 1 för Stockholm).");
+                        return;
+                    }
+                    //Skapar nytt pid utan att det behöver fyllas i, tar maxvärdet på befintliga och ökar värdet med 1. Garderar för null
+                    String nyttPid = idb.fetchSingle("SELECT MAX(pid) FROM partner");
+                    if (nyttPid == null) {
+                        nyttPid = "1";
+                    } else {
+                        nyttPid = String.valueOf(Integer.parseInt(nyttPid) + 1);
+                    }
+
+                String sql = "INSERT INTO PARTNER (pid, namn, kontaktperson, kontaktepost, telefon, adress, branch, stad)" +  
+                        "VALUES (" + nyttPid + ", '" + namn + "', '" + kontaktperson + "', '" + epost + "', '" + telefon + "', '" + adress + "', '" + branch + "', " + stad+")";
+                
+                idb.insert(sql);
+                JOptionPane.showMessageDialog(this, "Partner tillagd");
+  
+                //Använder metoden laddaHanteraProjektData för att uppdatera tabell och gör därefter textfälten tomma 
+                laddaHanteraPartnerData();
+                txtNamn.setText("");
+                txtKontaktperson.setText("");
+                txtEpost.setText("");
+                txtTelefon.setText("");
+                txtAdress.setText("");
+                txtBranch.setText("");
+                txtStad.setText("");
+                
+            } catch (InfException ex){
+                JOptionPane.showMessageDialog(this, "Fel vid tillägg: " + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+            }
+                                      
+    }//GEN-LAST:event_btnSparapartnerActionPerformed
+
+    private void btnTaBortPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortPartnerActionPerformed
+        // Metod för att ta bort partner
+        
+        int rad = tblHanteraPartnerAdmin.getSelectedRow();
+        
+        if (rad == -1){
+            JOptionPane.showMessageDialog(this, "Markera en partner att ta bort.");
+            return;
+        }
+        //Kontroll, rätt partner att ta bort?
+        int bekrafta = JOptionPane.showConfirmDialog(this, "Är du säker på att du vill ta bort denna partner?", "Bekräfta borttagning", JOptionPane.YES_NO_OPTION);
+        if (bekrafta != JOptionPane.YES_OPTION)
+            return;
+
+        try {
+            String pid = tblHanteraPartnerAdmin.getValueAt(rad, 0).toString();
+            String sql = "DELETE FROM partner WHERE pid = " + pid;
+            idb.delete(sql);
+
+            JOptionPane.showMessageDialog(this, "Partnern har tagits bort.");
+            laddaHanteraPartnerData();
+        } catch (InfException ex){
+            JOptionPane.showMessageDialog(this, "Fel vid borttagning: " + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+        }
+                                                    
+    }//GEN-LAST:event_btnTaBortPartnerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,8 +481,27 @@ public class HanteraPartnerAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHanteraPartnerAdmin;
+    private javax.swing.JButton btnSparapartner;
+    private javax.swing.JButton btnTaBortPartner;
+    private javax.swing.JPanel jPanelLaggTillPartner;
+    private javax.swing.JLabel lblAdress;
+    private javax.swing.JLabel lblBranch;
+    private javax.swing.JLabel lblEpost;
+    private javax.swing.JLabel lblFormatTel;
+    private javax.swing.JLabel lblKontaktperson;
+    private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblRubrikHanteraPartnerAdmin;
+    private javax.swing.JLabel lblRubrikLaggTillPartner;
+    private javax.swing.JLabel lblStad;
+    private javax.swing.JLabel lblTelefon;
     private javax.swing.JScrollPane scrHanteraPartnerAdmin;
     private javax.swing.JTable tblHanteraPartnerAdmin;
+    private javax.swing.JTextField txtAdress;
+    private javax.swing.JTextField txtBranch;
+    private javax.swing.JTextField txtEpost;
+    private javax.swing.JTextField txtKontaktperson;
+    private javax.swing.JTextField txtNamn;
+    private javax.swing.JTextField txtStad;
+    private javax.swing.JTextField txtTelefon;
     // End of variables declaration//GEN-END:variables
 }

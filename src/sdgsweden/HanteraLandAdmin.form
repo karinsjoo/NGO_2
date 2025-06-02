@@ -23,27 +23,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scrHanteraLandAdmin" min="-2" pref="860" max="-2" attributes="0"/>
-                  <Component id="lblRubrikHanderaLandAdmin" min="-2" pref="365" max="-2" attributes="0"/>
-                  <Component id="btnSparaAndringarHanteraLandAdmin" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="scrHanteraLandAdmin" min="-2" pref="860" max="-2" attributes="0"/>
+                      <Component id="lblRubrikHanderaLandAdmin" min="-2" pref="365" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="btnSparaAndringarHanteraLandAdmin" min="-2" pref="159" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="jPanelLaggTillLand" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="lblRubrikHanderaLandAdmin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="scrHanteraLandAdmin" min="-2" pref="408" max="-2" attributes="0"/>
+              <Component id="scrHanteraLandAdmin" min="-2" pref="267" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnSparaAndringarHanteraLandAdmin" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanelLaggTillLand" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnSparaAndringarHanteraLandAdmin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -83,5 +92,144 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSparaAndringarHanteraLandAdminActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JPanel" name="jPanelLaggTillLand">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel1" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="lblValuta" alignment="0" pref="92" max="32767" attributes="0"/>
+                              <Component id="lblSprak" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblNamn" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtSprak" min="-2" pref="94" max="-2" attributes="0"/>
+                              <Component id="txtNamn" min="-2" pref="94" max="-2" attributes="0"/>
+                              <Component id="txtValuta" min="-2" pref="94" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblTidszon" min="-2" pref="92" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lblEkonomi" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblPolitsikStruktur" alignment="0" pref="92" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtPolitiskStruktur" min="-2" pref="94" max="-2" attributes="0"/>
+                              <Component id="txtTidszon" min="-2" pref="94" max="-2" attributes="0"/>
+                              <Component id="txtEkonomi" min="-2" pref="94" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="195" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnLaggTillLand" min="-2" pref="121" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNamn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTidszon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTidszon" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblSprak" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSprak" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblPolitsikStruktur" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPolitiskStruktur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblValuta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtValuta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEkonomi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEkonomi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <Component id="btnLaggTillLand" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="L&#xe4;gg till nytt land"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblNamn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Namn"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblSprak">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spr&#xe5;k"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblValuta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Valuta"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNamn">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtSprak">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtValuta">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTidszon">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tidszon"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPolitsikStruktur">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Politisk Struktur"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblEkonomi">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ekonomi"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTidszon">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtPolitiskStruktur">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEkonomi">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnLaggTillLand">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Spara nytt land"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillLandActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

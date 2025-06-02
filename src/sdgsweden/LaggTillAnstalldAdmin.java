@@ -119,9 +119,9 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
 
         lblEpostLaggTill.setText("E-post");
 
-        lblTelefonLaggTill.setText("Telefon");
+        lblTelefonLaggTill.setText("Telefon (Format XXX-XXX-XXXX)");
 
-        lblAnstallningsdatumLaggTill.setText("Anställningsdatum");
+        lblAnstallningsdatumLaggTill.setText("Anställningsdatum (Format YYYY-MM-DD)");
 
         lblLosenordLaggTill.setText("Lösenord");
 
@@ -143,12 +143,12 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAnstallningsdatumLaggTill)
                             .addComponent(lblAvdelningLaggTill)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblLosenordLaggTill)
                                 .addGap(43, 43, 43)
-                                .addComponent(btnSlumpaNyttLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnSlumpaNyttLosenord, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAnstallningsdatumLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(146, 146, 146))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +168,7 @@ public class LaggTillAnstalldAdmin extends javax.swing.JFrame {
                                     .addComponent(lblEfternamnLaggTill)
                                     .addComponent(lblAdressLaggTill)
                                     .addComponent(lblEpostLaggTill)
-                                    .addComponent(lblTelefonLaggTill))))
+                                    .addComponent(lblTelefonLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()

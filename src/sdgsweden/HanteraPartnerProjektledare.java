@@ -63,24 +63,26 @@ public class HanteraPartnerProjektledare extends javax.swing.JFrame {
                     + "JOIN projekt ON projekt_partner.pid = projekt.pid " // Kopplar projektchefens aid till projektet
                     + "WHERE projekt.projektchef = " + aid;
             
-            // Här skapas tabellen med tabellnamnen
-            DefaultTableModel projektModellAdmin = new DefaultTableModel();
-            String [] kolumnNamn = {"Projekt-ID", "Partner-ID"};
-            projektModellAdmin.setColumnIdentifiers(kolumnNamn);
+    // Här skapas den redigerbara tabellmodellen
+        String[] kolumnNamn = {"Projekt-ID", "Partner-ID"};
+        DefaultTableModel projektModellAdmin = new DefaultTableModel(kolumnNamn, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column == 1; // Endast "Partner-ID" får redigeras
+            }
+        };
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
             ArrayList<HashMap<String, String>> projektPartnerProjektledare = idb.fetchRows(query);
             
-            if(projektPartnerProjektledare != null && !projektPartnerProjektledare.isEmpty()){ // Använder oss inte av Valideringsklassen här. Skulle behövt iterera igenom varje rad
-                // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
-                for(HashMap<String, String> tblHanteraPartnerProjektledare : projektPartnerProjektledare){
-                    projektModellAdmin.addRow(new Object []{
-                        tblHanteraPartnerProjektledare.get("pid"),
-                        tblHanteraPartnerProjektledare.get("partner_pid"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
+        if (projektPartnerProjektledare != null && !projektPartnerProjektledare.isEmpty()) {
+            for (HashMap<String, String> row : projektPartnerProjektledare) {
+                projektModellAdmin.addRow(new Object[]{
+                    row.get("pid"),
+                    row.get("partner_pid"),
+                });
+            }
 
-
-                    });
-                }
             } else { // Om projektPartnerProjektledare är null eller tom
                 JOptionPane.showMessageDialog(this, "Ingen data hittades kring Projekt ID och Partner ID", "Info", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -88,7 +90,8 @@ public class HanteraPartnerProjektledare extends javax.swing.JFrame {
             tblHanteraPartnerProjektledare.setModel(projektModellAdmin);
             
     }catch(InfException ex){
-            System.out.println();
+            System.out.println("Fel vid hämtning av Projekt ID och Partner ID: " + ex.getMessage());
+            ex.printStackTrace(); // Skriver ut fullständig felrapport
             JOptionPane.showMessageDialog(this, "Fel vid hämtning av Projekt ID och Partner ID" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
             }
     }
@@ -105,7 +108,9 @@ public class HanteraPartnerProjektledare extends javax.swing.JFrame {
         scrHanteraPartnerProjektledare = new javax.swing.JScrollPane();
         tblHanteraPartnerProjektledare = new javax.swing.JTable();
         lblHanteraPartnerProjektledare = new javax.swing.JLabel();
-        btnHanteraPartnerProjektledare = new javax.swing.JButton();
+        btnSparaAndringar = new javax.swing.JButton();
+        btnTaBortPartner = new javax.swing.JButton();
+        btnLaggTillPartner = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,10 +129,24 @@ public class HanteraPartnerProjektledare extends javax.swing.JFrame {
 
         lblHanteraPartnerProjektledare.setText("Mina Partners och deras tillhörande projekt");
 
-        btnHanteraPartnerProjektledare.setText("Spara Ändringar");
-        btnHanteraPartnerProjektledare.addActionListener(new java.awt.event.ActionListener() {
+        btnSparaAndringar.setText("Spara Ändringar");
+        btnSparaAndringar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHanteraPartnerProjektledareActionPerformed(evt);
+                btnSparaAndringarActionPerformed(evt);
+            }
+        });
+
+        btnTaBortPartner.setText("Ta bort partner");
+        btnTaBortPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaBortPartnerActionPerformed(evt);
+            }
+        });
+
+        btnLaggTillPartner.setText("Lägg rad av partner");
+        btnLaggTillPartner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLaggTillPartnerActionPerformed(evt);
             }
         });
 
@@ -137,50 +156,128 @@ public class HanteraPartnerProjektledare extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnHanteraPartnerProjektledare)
-                    .addComponent(lblHanteraPartnerProjektledare, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                    .addComponent(scrHanteraPartnerProjektledare, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblHanteraPartnerProjektledare, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                                .addComponent(scrHanteraPartnerProjektledare, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(btnLaggTillPartner, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(75, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnTaBortPartner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSparaAndringar, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblHanteraPartnerProjektledare)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrHanteraPartnerProjektledare, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnHanteraPartnerProjektledare)
-                .addGap(15, 15, 15))
+                .addGap(18, 18, 18)
+                .addComponent(btnLaggTillPartner)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTaBortPartner)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSparaAndringar)
+                .addGap(46, 46, 46))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHanteraPartnerProjektledareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHanteraPartnerProjektledareActionPerformed
+    private void btnSparaAndringarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaAndringarActionPerformed
         // TODO add your handling code here:
-        
-                                    
+                                 
         try{
             DefaultTableModel partnerModellProjektledare = (DefaultTableModel) tblHanteraPartnerProjektledare.getModel();
-            for(int index = 0; index < partnerModellProjektledare.getRowCount(); index++){
-                int pid = Integer.parseInt(partnerModellProjektledare.getValueAt(index, 0).toString());
-                int partner_pid = Integer.parseInt(partnerModellProjektledare.getValueAt(index, 1).toString());
-       
             
-            String updateQuery = "UPDATE projekt_partner SET partner_pid = " + partner_pid
-                    + " WHERE partner_pid = " + pid;
-                    
-                    System.out.println("SQL QUERY: " + updateQuery);
-                    idb.update(updateQuery);
+            
+            for(int index = 0; index < partnerModellProjektledare.getRowCount(); index++){
+                String pidStr = partnerModellProjektledare.getValueAt(index, 0).toString();
+                // Hämta partner_pid som en sträng och kontrollera om den är tom
+                String partner_pidStr = partnerModellProjektledare.getValueAt(index, 1).toString();
+                
+                // Kolla att partner_pid inte är tomt
+            if (partner_pidStr == null || partner_pidStr.trim().isEmpty()) {
+                        continue; // Hoppa över tomma rader
             } 
-            JOptionPane.showMessageDialog(this, "Partner har uppdaterats!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            try{
+            int pid = Integer.parseInt(partner_pidStr);
+            int partner_pid = Integer.parseInt(partner_pidStr);
+
+                // Kolla om partner redan finns kopplad
+            String checkQuery = "SELECT COUNT(*) FROM projekt_partner WHERE pid = " + pid + " AND partner_pid = " + partner_pid;
+            int count = Integer.parseInt(idb.fetchSingle(checkQuery));
+            
+            if (count == 0) {
+                // LÄGG TILL NY PARTNER
+                String insertQuery = "INSERT INTO projekt_partner (pid, partner_pid) VALUES (" + pid + ", " + partner_pid + ")";
+                idb.insert(insertQuery);
+                System.out.println("Ny partner lades till projektet!");
+            } else {
+                // UPPDATERA BEFINTLIG PARTNERKOPPLING
+                String updateQuery = "UPDATE projekt_partner SET partner_pid = " + partner_pid + " WHERE pid = " + pid;
+
+                idb.update(updateQuery);
+                System.out.println("Partner har uppdaterats!");
+            
+            }
+            } catch (NumberFormatException e) {
+                System.out.println("Felaktigt nummerformat: " + e.getMessage());
+                continue; // Hoppa över rader med felaktiga värden
+            }
+        }
+
+        JOptionPane.showMessageDialog(this, "Ändringar har sparats!", "Info", JOptionPane.INFORMATION_MESSAGE);
 
         }catch(InfException ex){
+        System.out.println("Fel vid hantering av partners: " + ex.getMessage());
+        ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Fel vid uppdatering av partner till projekt" + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
             }
-    }//GEN-LAST:event_btnHanteraPartnerProjektledareActionPerformed
+    }//GEN-LAST:event_btnSparaAndringarActionPerformed
+
+    private void btnTaBortPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaBortPartnerActionPerformed
+        // TODO add your handling code here:
+        
+            try {
+        DefaultTableModel model = (DefaultTableModel) tblHanteraPartnerProjektledare.getModel();
+        int selectedRow = tblHanteraPartnerProjektledare.getSelectedRow();
+
+        if (selectedRow != -1) { // Kontrollera att en rad är markerad
+            int pid = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+            int partner_pid = Integer.parseInt(model.getValueAt(selectedRow, 1).toString());
+
+            // Kör DELETE i databasen
+            String deleteQuery = "DELETE FROM projekt_partner WHERE pid = " + pid + " AND partner_pid = " + partner_pid;
+            idb.delete(deleteQuery);
+
+            // Ta bort raden från JTable
+            model.removeRow(selectedRow);
+
+            JOptionPane.showMessageDialog(this, "Partner har tagits bort!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Välj en rad att ta bort", "Fel", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (InfException ex) {
+        System.out.println("Fel vid borttagning av partner: " + ex.getMessage());
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Fel vid borttagning av partner: " + ex.getMessage(), "Fel", JOptionPane.ERROR_MESSAGE);
+    }
+
+    }//GEN-LAST:event_btnTaBortPartnerActionPerformed
+
+    private void btnLaggTillPartnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaggTillPartnerActionPerformed
+        // TODO add your handling code here:
+      DefaultTableModel model = (DefaultTableModel) tblHanteraPartnerProjektledare.getModel();
+      model.addRow(new Object[]{"", ""}); // Skapar en tom rad som användaren kan fylla i
+    
+    }//GEN-LAST:event_btnLaggTillPartnerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,9 +315,12 @@ public class HanteraPartnerProjektledare extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHanteraPartnerProjektledare;
+    private javax.swing.JButton btnLaggTillPartner;
+    private javax.swing.JButton btnSparaAndringar;
+    private javax.swing.JButton btnTaBortPartner;
     private javax.swing.JLabel lblHanteraPartnerProjektledare;
     private javax.swing.JScrollPane scrHanteraPartnerProjektledare;
     private javax.swing.JTable tblHanteraPartnerProjektledare;
     // End of variables declaration//GEN-END:variables
+
 }

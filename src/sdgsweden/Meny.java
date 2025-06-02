@@ -203,6 +203,11 @@ public class Meny extends javax.swing.JFrame {
         btnTaBortProjektAdmin.setText("Ta bort projekt");
 
         jButton3.setText("Lägg till Partners");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Ta bort Partners");
 
@@ -394,6 +399,11 @@ public class Meny extends javax.swing.JFrame {
         // TODO add your handling code here:
         new LaggTillProjektAdmin(idb, aid).setVisible(true);
     }//GEN-LAST:event_btnLaggTillProjektAdminActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new LaggTillPartnerAdmin(idb, aid).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

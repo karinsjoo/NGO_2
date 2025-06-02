@@ -295,6 +295,7 @@ public class LaggTillProjektAdmin extends javax.swing.JFrame {
 
     private void btnSparaNyttProjektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSparaNyttProjektActionPerformed
         // TODO add your handling code here:
+        int nyttPid = Integer.parseInt(txtpid.getText());
         String projektnamn = txtProjektnamn.getText();
         String beskrivning = txtBeskrivning.getText();
         String startdatum = txtStartdatum.getText();
@@ -307,11 +308,11 @@ public class LaggTillProjektAdmin extends javax.swing.JFrame {
 
         try {
         //Skapa SQL-fråga utan `pid`
-        String query = "INSERT INTO projekt(projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES ('"
-                        + projektnamn + "', '" + beskrivning + "', '" 
+        String query = "INSERT INTO projekt(pid, projektnamn, beskrivning, startdatum, slutdatum, kostnad, status, prioritet, projektchef, land) VALUES ("
+                        + nyttPid + ", '" + projektnamn + "', '" + beskrivning + "', '" 
                         + startdatum + "', '" + slutdatum + "', " 
                         + kostnad + ", '" + valdStatus + "', '"
-                        + prioritet + "', '" + valdProjektchef + "', " + valtland + ")";
+                        + prioritet + "', " + valdProjektchef + ", " + valtland + ")";
         
         idb.insert(query);
         

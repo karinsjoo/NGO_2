@@ -37,13 +37,13 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblAnstallningsdatumLaggTill" min="-2" max="-2" attributes="0"/>
                           <Component id="lblAvdelningLaggTill" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblLosenordLaggTill" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                               <Component id="btnSlumpaNyttLosenord" min="-2" pref="177" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="lblAnstallningsdatumLaggTill" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
@@ -66,7 +66,7 @@
                                   <Component id="lblEfternamnLaggTill" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAdressLaggTill" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblEpostLaggTill" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTelefonLaggTill" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTelefonLaggTill" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -233,12 +233,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblTelefonLaggTill">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Telefon"/>
+        <Property name="text" type="java.lang.String" value="Telefon (Format XXX-XXX-XXXX)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAnstallningsdatumLaggTill">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Anst&#xe4;llningsdatum"/>
+        <Property name="text" type="java.lang.String" value="Anst&#xe4;llningsdatum (Format YYYY-MM-DD)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblLosenordLaggTill">

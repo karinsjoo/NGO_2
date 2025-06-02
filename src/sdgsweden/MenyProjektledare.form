@@ -34,14 +34,15 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnMinaUppgifterProjektledare" max="32767" attributes="0"/>
-                              <Component id="btnMinaProjektProjektledare" max="32767" attributes="0"/>
-                              <Component id="btnMinAvdelning" max="32767" attributes="0"/>
-                              <Component id="btnPersonal" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="btnMinaUppgifterProjektledare" max="32767" attributes="0"/>
+                          <Component id="btnMinaProjektProjektledare" max="32767" attributes="0"/>
+                          <Component id="btnMinAvdelning" max="32767" attributes="0"/>
+                          <Component id="btnPersonal" max="32767" attributes="0"/>
                           <Component id="btnHanteraProjektProjektledare" max="32767" attributes="0"/>
-                          <Component id="btnLaggaTillOchTaBortPartners" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnLaggTillHandlaggareProjektledare" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnLaggTillPartnersProjektledare" max="32767" attributes="0"/>
+                          <Component id="jButton2" max="32767" attributes="0"/>
+                          <Component id="jButton1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnAllaMal" min="-2" pref="617" max="-2" attributes="0"/>
@@ -74,7 +75,13 @@
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Component id="btnHanteraProjektProjektledare" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnLaggaTillOchTaBortPartners" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnLaggTillHandlaggareProjektledare" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Component id="btnLaggTillPartnersProjektledare" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -141,7 +148,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraProjektProjektledare">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hantera Projekt"/>
+        <Property name="text" type="java.lang.String" value="Se Projektstatistik"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraProjektProjektledareActionPerformed"/>
@@ -160,12 +167,36 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoggaUtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnLaggaTillOchTaBortPartners">
+    <Component class="javax.swing.JButton" name="btnLaggTillHandlaggareProjektledare">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hantera Partners"/>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till Handl&#xe4;ggare"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggaTillOchTaBortPartnersActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillHandlaggareProjektledareActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLaggTillPartnersProjektledare">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till Partners"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillPartnersProjektledareActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort Partners"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort Handl&#xe4;ggare"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

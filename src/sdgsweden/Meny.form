@@ -36,10 +36,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Component id="lblinloggadanvandare3" min="-2" pref="398" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -50,30 +51,65 @@
                               <Component id="lblHallbarhetsmalenRubrik" min="-2" pref="393" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnMinaUppgifterAdmin" max="32767" attributes="0"/>
-                                  <Component id="btnProjekt" max="32767" attributes="0"/>
-                                  <Component id="btnAvdelning" max="32767" attributes="0"/>
-                                  <Component id="btnPersonal" max="32767" attributes="0"/>
-                                  <Component id="btnTaBortAnstalldAdmin" max="32767" attributes="0"/>
-                                  <Component id="btnHanteraAvdelningar" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnHanteraProjekt" max="32767" attributes="0"/>
-                                  <Component id="btnHanteraPartners" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnHanteraLand" max="32767" attributes="0"/>
-                                  <Component id="btnLaggTillAnstalldAdmin" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnLaggTillProjektAdmin" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnTaBortProjektAdmin" min="-2" pref="147" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jButton3" min="-2" pref="147" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jButton4" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="btnMinaUppgifterAdmin" min="-2" pref="147" max="-2" attributes="0"/>
+                                                          <Component id="btnLaggTillAnstalldAdmin" min="-2" pref="147" max="-2" attributes="0"/>
+                                                          <Component id="btnProjekt" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                                          <Component id="btnAvdelning" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                                          <Component id="btnPersonal" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btnTaBortAnstalldAdmin" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="btnHanteraProjekt" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Component id="btnHanteraPartners" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jButton5" min="-2" pref="147" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jButton6" min="-2" pref="147" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                          <Component id="jButton7" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="btnHanteraLand" alignment="0" pref="147" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="btnHanteraAvdelningar" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="50" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="112" max="32767" attributes="0"/>
                               <Component id="btnAllaMal" min="-2" pref="612" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,33 +124,51 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnAllaMal" min="-2" pref="397" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="52" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnMinaUppgifterAdmin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnProjekt" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnAvdelning" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnPersonal" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="btnLaggTillAnstalldAdmin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnLaggTillAnstalldAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTaBortAnstalldAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnTaBortAnstalldAdmin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnHanteraAvdelningar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnLaggTillProjektAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnTaBortProjektAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnHanteraProjekt" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnHanteraPartners" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnHanteraLand" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnHanteraAvdelningar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -178,7 +232,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraAvdelningar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hantera Avdelningar"/>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra Avdelningar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraAvdelningarActionPerformed"/>
@@ -186,7 +240,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraProjekt">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hantera Projekt"/>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra Projekt"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraProjektActionPerformed"/>
@@ -194,7 +248,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraPartners">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hantera Partners"/>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra Partners"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraPartnersActionPerformed"/>
@@ -215,7 +269,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnHanteraLand">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hantera Land"/>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra Land"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHanteraLandActionPerformed"/>
@@ -228,6 +282,44 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillAnstalldAdminActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLaggTillProjektAdmin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till Projekt"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLaggTillProjektAdminActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTaBortProjektAdmin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort projekt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till Partners"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort Partners"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till Land"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort Land"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe4;gg till Avdelning"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

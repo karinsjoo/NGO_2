@@ -63,16 +63,26 @@ public class MinAvdelningAlla extends javax.swing.JFrame {
         try{
             // SQL fråga som hämtar projekt kopplade till inloggade användaren. Konstruktorn bär med sig info kring aid
             // aid skickas med vid skapandet av MinaProjektPopup och sedan använder vi aid i SQl frågan nedan som filter för resultatet
-            String query = "SELECT avdelning.namn, projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.status "
-                    + "FROM ans_proj "
-                    + "JOIN projekt ON ans_proj.pid = projekt.pid "
-                    + "JOIN anstalld ON ans_proj.aid = anstalld.aid "
-                    + "JOIN avdelning ON anstalld.avdelning = avdelning.avdid "
-                    + "WHERE ans_proj.aid = '" + aid + "'";
+        //    String query = "SELECT avdelning.namn, projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.status "
+        //            + "FROM ans_proj "
+        //            + "JOIN projekt ON ans_proj.pid = projekt.pid "
+         //           + "JOIN anstalld ON ans_proj.aid = anstalld.aid "
+         //           + "JOIN avdelning ON anstalld.avdelning = avdelning.avdid "
+         //           + "WHERE ans_proj.aid = '" + aid + "'";
+            
+         String query = "SELECT avdelning.namn, projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.status " 
+            + "FROM projekt "
+            + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
+            + "JOIN anstalld ON anstalld.aid = ans_proj.aid "
+            + "JOIN avdelning ON anstalld.avdelning = avdelning.avdid "
+            + "WHERE avdelning.avdid = (SELECT avdelning FROM anstalld WHERE aid = '" + aid + "') "
+            + "GROUP BY projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.status, avdelning.namn;";
+            
+            
             
             // Här skapas tabellen med tabellnamnen
             DefaultTableModel avdelningModell = new DefaultTableModel();
-            String [] kolumnNamn = {"Avdelningsnamn", "Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Status","Prioritet"};
+            String [] kolumnNamn = {"Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Status","Prioritet"};
             avdelningModell.setColumnIdentifiers(kolumnNamn);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
@@ -82,7 +92,7 @@ public class MinAvdelningAlla extends javax.swing.JFrame {
                 // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
                 for(HashMap<String, String> anvandarAvdelning : avdelningData){
                     avdelningModell.addRow(new Object []{
-                        anvandarAvdelning.get("namn"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
+                     //   anvandarAvdelning.get("namn"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
                         anvandarAvdelning.get("projektnamn"),
                         anvandarAvdelning.get("beskrivning"),
                         anvandarAvdelning.get("startdatum"),

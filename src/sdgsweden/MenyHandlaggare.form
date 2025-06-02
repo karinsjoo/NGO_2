@@ -32,12 +32,12 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnMinaUppgifterHandlaggare" max="32767" attributes="0"/>
+                          <Component id="btnMinaUppgifterHandlaggare" pref="139" max="32767" attributes="0"/>
                           <Component id="btnMinaProjektHandlaggare" max="32767" attributes="0"/>
                           <Component id="btnMinAvdelning" max="32767" attributes="0"/>
                           <Component id="btnPersonal" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="133" max="32767" attributes="0"/>
+                      <EmptySpace pref="110" max="32767" attributes="0"/>
                       <Component id="btnAllaMal" min="-2" pref="612" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -62,7 +62,11 @@
               <Component id="lblHallbarhetsmalenRubrik" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnAllaMal" min="-2" pref="408" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="btnMinaUppgifterHandlaggare" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="btnMinaProjektHandlaggare" min="-2" max="-2" attributes="0"/>
@@ -70,10 +74,9 @@
                       <Component id="btnMinAvdelning" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnPersonal" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="115" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="btnAllaMal" min="-2" pref="408" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
               <Component id="btnLoggaUt" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>

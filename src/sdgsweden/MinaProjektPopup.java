@@ -60,22 +60,28 @@ public class MinaProjektPopup extends javax.swing.JFrame {
     // Fungerar annorlunda än JButton - här var vi tvungna att skriva in kod för kolumner osv och koppla metoden laddaProjektData till konstruktorn.
     // Detta för att öppna den direkt när MinaProjektPopup öppnas
         try{
+            
             // SQL fråga som hämtar projekt kopplade till inloggade användaren. Konstruktorn bär med sig info kring aid
             // aid skickas med vid skapandet av MinaProjektPopup och sedan använder vi aid i SQl frågan nedan som filter för resultatet
             // DISTINCT kopplar bara samman samma projekt med partner en gång, fick dubbla rader först på en användare
-            String query = "SELECT DISTINCT projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, "
-                    + "projekt.prioritet, projekt.projektchef, projekt.land, partner.namn, partner.branch "
+            String query = "SELECT projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, "
+                    + "projekt.prioritet, projekt.projektchef, projekt.land, " //partner.namn, partner.branch "
+                    + "GROUP_CONCAT(partner.namn SEPARATOR ', ') AS partner, "
+                    + "GROUP_CONCAT(partner.branch SEPARATOR ', ') AS branch "               
                     + "FROM projekt "
                     + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
                     // Left JOIN för att även se projekt utan partner
                     + "LEFT JOIN projekt_partner ON projekt.pid = projekt_partner.pid "
                     + "LEFT JOIN partner ON projekt_partner.pid = partner.pid "
-                    + "WHERE ans_proj.aid = '" + aid + "'";
+                    + "WHERE ans_proj.aid = '" + aid + "'"
+                    + " GROUP BY projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, projekt.prioritet, projekt.projektchef, projekt.land ";
             
             // Här skapas tabellen med tabellnamnen
             DefaultTableModel projektModell = new DefaultTableModel();
             String [] kolumnNamn = {"Projektnamn", "Beskrivning", "Startdatum", "Slutdatum", "Kostnad", "Status","Prioritet", "Projektchef", "Land", "Partner namn", "Partner branch"};
             projektModell.setColumnIdentifiers(kolumnNamn);
+            
+            System.out.println("SQL fråga " + query);
             
             // Hämtar ifrån databasen i form av en ArrayList eftersom vi hämtar flera rader på en gång. Lagrat i en HashMap
             ArrayList<HashMap<String, String>> projektData = idb.fetchRows(query);
@@ -83,6 +89,7 @@ public class MinaProjektPopup extends javax.swing.JFrame {
             if(projektData != null){ // Använder oss inte av Valideringsklassen här. Skulle behövt iterera igenom varje rad
                 // Nu kollar vi om HELA projektlistan är tom vilket är mer logiskt i detta fall då vi vill ha fram flera kolumner data
                 for(HashMap<String, String> anvandarProjekt : projektData){
+                    System.out.println("Hämtad rad: " + anvandarProjekt);
                     projektModell.addRow(new Object []{
                         anvandarProjekt.get("projektnamn"), // Projektnycklarna (varje kolumn i tabellen i detta fall)
                         anvandarProjekt.get("beskrivning"),
@@ -93,7 +100,7 @@ public class MinaProjektPopup extends javax.swing.JFrame {
                         anvandarProjekt.get("prioritet"),
                         anvandarProjekt.get("projektchef"),
                         anvandarProjekt.get("land"),
-                        anvandarProjekt.get("namn"),
+                        anvandarProjekt.get("partner"),
                         anvandarProjekt.get("branch")
                     });
                 }
@@ -254,8 +261,10 @@ public class MinaProjektPopup extends javax.swing.JFrame {
             
         
         try {
-            String query = "SELECT DISTINCT projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, "
-                    + "projekt.prioritet, projekt.projektchef, projekt.land, partner.namn, partner.branch "
+            String query = "SELECT projekt.projektnamn, projekt.beskrivning, projekt.startdatum, projekt.slutdatum, projekt.kostnad, projekt.status, "
+                    + "projekt.prioritet, projekt.projektchef, projekt.land, " // partner.namn, partner.branch "
+                    + "GROUP CONCAT DISTINCT partner.namn SEPARATOR ', ') AS partners, "
+                    + "GROUP CONCAT DISTINCT partner.branch SEPARATOR ', ') AS partners, "
                     + "FROM projekt "
                     + "JOIN ans_proj ON projekt.pid = ans_proj.pid "
                     // Left JOIN för att även se projekt utan partner
